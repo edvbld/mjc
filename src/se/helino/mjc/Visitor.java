@@ -10,4 +10,6 @@ public interface Visitor {
     public void visit(MJIntArrayType n);
     public void visit(MJBooleanType n);
     public void visit(MJIdentifierType n);
+    public void visit(MJMethodDecl n);
+    public void visit(MJMethodArg n);
 }

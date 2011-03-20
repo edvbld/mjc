@@ -88,6 +88,7 @@ MJClass ClassProd():
     MJIdentifier id;
     MJClass mc;
     MJVarDecl vd;
+    MJMethodDecl method;
 }
 {
     <CLASS> id = IdentifierProd() <LCURLY>
@@ -96,6 +97,10 @@ MJClass ClassProd():
         vd = VarDeclProd()
         { mc.addMJVarDecl(vd); }
     )* 
+    (
+        method = MethodDeclProd()
+        { mc.addMJMethod(method); }
+    )*
     <RCURLY>
     { return mc; }
 }
@@ -135,4 +140,40 @@ MJIdentifier IdentifierProd():
 {
     t = <IDENTIFIER>
     { return new MJIdentifier(t.image); }
+}
+
+MJMethodDecl MethodDeclProd():
+{
+    MJType t;
+    MJIdentifier id;
+    MJMethodArg arg = null;
+    MJVarDecl vd;
+    MJMethodDecl method;
+}
+{
+    <PUBLIC> t = TypeProd() id = IdentifierProd() <LPAREN>
+    { method = new MJMethodDecl(t, id); }
+    (arg = MethodArgProd())?
+    { method.addMJMethodArg(arg); }
+    (
+        <COMMA> arg = MethodArgProd()
+        { method.addMJMethodArg(arg); }
+    )*
+    <RPAREN> <LCURLY>
+    (
+        vd = VarDeclProd()
+        { method.addMJVarDecl(vd); }
+    )*
+    <RCURLY>
+    { return method; }
+}
+
+MJMethodArg MethodArgProd():
+{
+    MJType t;
+    MJIdentifier id;
+}
+{
+    t = TypeProd() id = IdentifierProd()
+    { return new MJMethodArg(t, id); }
 }

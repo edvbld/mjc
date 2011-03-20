@@ -4,7 +4,8 @@ import java.util.ArrayList;
 
 public class MJClass implements Acceptable {
     private MJIdentifier id;
-    private ArrayList<MJVarDecl> varDeclarations = new ArrayList<MJVarDecl>();
+    private ArrayList<MJVarDecl> vars = new ArrayList<MJVarDecl>();
+    private ArrayList<MJMethodDecl> methods = new ArrayList<MJMethodDecl>();
 
     public MJClass(MJIdentifier id) {
         this.id = id;
@@ -15,11 +16,19 @@ public class MJClass implements Acceptable {
     }
     
     public void addMJVarDecl(MJVarDecl vd) {
-        varDeclarations.add(vd);
+        vars.add(vd);
     }
 
-    public ArrayList<MJVarDecl> getMJVarDeclarations() {
-        return varDeclarations;
+    public ArrayList<MJVarDecl> getVariableDeclarations() {
+        return vars;
+    }
+
+    public void addMJMethod(MJMethodDecl m) {
+        methods.add(m);
+    }
+
+    public ArrayList<MJMethodDecl> getMethods() {
+        return methods;
     }
 
     public void accept(Visitor v) {
