@@ -1,0 +1,41 @@
+<project name="mjc" default="dist" basedir=".">
+    <property name="javacc.home" value="lib" />
+    <property name="src" value="src" />
+    <property name="build" value="build" />
+    <property name="dist" value="dist" />
+    <property name="manifest" value="${build}/MANIFEST.MF" />
+
+    <target name="setup">
+        <delete dir="${build}" />
+        <delete dir="${dist}" />
+        <mkdir dir="${build}" />
+        <mkdir dir="${build}/src" />
+        <mkdir dir="${dist}" />
+    </target>
+
+    <target name="javacc" depends="setup">
+        <javacc target="${src}/se/helino/mjc/MJParser.jj" 
+                outputdirectory="${build}/src/" 
+                javacchome="${javacc.home}" />
+    </target>
+    <target name="compile" depends="javacc">
+        <javac srcdir="${src};${build}/src" destdir="${build}" />
+    </target>
+
+    <target name="manifest" depends="setup">
+        <manifest file="${manifest}">
+            <attribute name="Main-Class" value="se.helino.mjc.Main"/>
+        </manifest>
+    </target>
+
+    <target name="dist" depends="compile, manifest">
+        <jar jarfile="${dist}/mjc.jar" basedir="${build}" 
+             manifest="${manifest}" />
+    </target>
+
+    <target name="clean">
+        <delete dir="${build}" />
+        <delete dir="${dist}" />
+    </target>
+
+</project>
