@@ -45,6 +45,9 @@ public class SyntaxPrinter implements Visitor {
         println("(Class");
         indentation++;
         n.getId().accept(this);
+        for(MJVarDecl vd : n.getMJVarDeclarations()) {
+            vd.accept(this);
+        }
         indentation--;
         println(")");
     }
@@ -53,6 +56,35 @@ public class SyntaxPrinter implements Visitor {
         print("(Identifier [ ");
         System.out.print(n.getName());
         System.out.println(" ]");
+        println(")");
+    }
+    
+    public void visit(MJVarDecl n) {
+        println("(VarDecl");
+        indentation++;
+        n.getMJType().accept(this);
+        n.getId().accept(this);
+        indentation--;
+        println(")");
+    }
+
+    public void visit(MJIntType n) {
+        println("(IntegerType");
+        println(")");
+    }
+
+    public void visit(MJIntArrayType n) {
+        println("(IntArrayType");
+        println(")");
+    }
+
+    public void visit(MJBooleanType n) {
+        println("(BooleanType");
+        println(")");
+    }
+
+    public void visit(MJIdentifierType n) {
+        println("(IdentifierType");
         println(")");
     }
 }

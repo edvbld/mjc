@@ -86,10 +86,46 @@ MJMainClass MainClassProd():
 MJClass ClassProd(): 
 {
     MJIdentifier id;
+    MJClass mc;
+    MJVarDecl vd;
 }
 {
-    <CLASS> id = IdentifierProd() <LCURLY> <RCURLY>
-    { return new MJClass(id); }
+    <CLASS> id = IdentifierProd() <LCURLY>
+    { mc = new MJClass(id); }
+    (
+        vd = VarDeclProd()
+        { mc.addMJVarDecl(vd); }
+    )* 
+    <RCURLY>
+    { return mc; }
+}
+
+MJVarDecl VarDeclProd():
+{
+    MJIdentifier id;
+    MJType t;
+}
+{
+    t = TypeProd() id = IdentifierProd() <SEMICOLON>
+    { return new MJVarDecl(t, id); }
+}
+
+MJType TypeProd():
+{
+    Token t;
+}
+{
+    <BOOLEAN>
+    { return new MJBooleanType(); }
+|   <INT> 
+    (
+        <LSQUARE> <RSQUARE>
+        { return new MJIntArrayType();}
+        |
+        { return new MJIntType(); }
+    )
+|   t = <IDENTIFIER>
+    { return new MJIdentifierType(t.image); }
 }
 
 MJIdentifier IdentifierProd():
