@@ -14,7 +14,7 @@
     </target>
 
     <target name="javacc" depends="setup">
-        <javacc target="${src}/se/helino/mjc/MJParser.jj" 
+        <javacc target="${src}/se/helino/mjc/parser/MJParser.jj" 
                 outputdirectory="${build}/src/" 
                 javacchome="${javacc.home}" />
     </target>

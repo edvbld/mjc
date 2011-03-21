@@ -1,6 +1,10 @@
 package se.helino.mjc;
 
 import java.io.*;
+import se.helino.mjc.parser.MJParser;
+import se.helino.mjc.parser.ParseException;
+import se.helino.mjc.parser.SyntaxPrinter;
+import se.helino.mjc.parser.MJProgram;
 
 public class Main {
     public static void main(String[] args) {
@@ -12,9 +16,9 @@ public class Main {
             File input = new File(args[0]);
             MJParser parser = new MJParser(new BufferedReader(
                         new FileReader(input)));
-            Visitor v = new SyntaxPrinter();
-            Acceptable a = parser.ProgramProd();
-            a.accept(v);
+            SyntaxPrinter sp = new SyntaxPrinter();
+            MJProgram p = parser.ProgramProd();
+            p.accept(sp);
         } catch(ParseException e) {
             System.out.println("Syntax error:");
             System.out.println(e.toString());
