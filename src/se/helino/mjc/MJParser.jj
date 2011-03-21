@@ -225,6 +225,49 @@ MJStatement StatementProd():
 {
     MJIdentifier id;
     MJExpression e1, e2;
+    MJStatement stmt, stmt2, stmt3;
+}
+{
+    stmt = AssingStatementProd()
+    { return stmt; }
+    |
+    stmt = IfStatementProd()
+    { return stmt; }
+    |
+    stmt = BlockStatementProd()
+    { return stmt; }
+}
+
+MJStatement BlockStatementProd():
+{
+    MJBlock block = new MJBlock();
+    MJStatement s;
+}
+{
+    <LCURLY>
+    (
+        s = StatementProd()
+        { block.addMJStatement(s); }
+    )*
+    <RCURLY>
+    { return block; }
+}
+
+MJStatement IfStatementProd():
+{
+    MJExpression e;
+    MJStatement stmt1, stmt2;
+}
+{
+    <IF> <LPAREN> e = ExpressionProd() <RPAREN> stmt1 = StatementProd()
+    <ELSE>  stmt2 = StatementProd()
+    { return new MJIf(e, stmt1, stmt2); }
+}
+
+MJStatement AssingStatementProd():
+{
+    MJIdentifier id;
+    MJExpression e1, e2;
     MJStatement stmt;
 }
 {

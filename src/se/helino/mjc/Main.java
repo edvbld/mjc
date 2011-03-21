@@ -7,7 +7,12 @@ public class Main {
         StringReader sr = new StringReader(
                 "class Main { \n" +
                 "   public static void main(String[] args) {\n" +
-                "       foo = boo; \n" +
+                "       if(foo) {\n" +
+                "           boo = foo; \n" +
+                "       }\n" +
+                "       else {\n" +
+                "           foo = boo; \n" +
+                "       }\n" + 
                 "   }\n" +
                 "}\n" +
                 "class Foo {\n" +

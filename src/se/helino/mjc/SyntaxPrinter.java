@@ -142,4 +142,23 @@ public class SyntaxPrinter implements Visitor {
         indentation--;
         println(")");
     }
+
+    public void visit(MJIf n) {
+        println("(If");
+        indentation++;
+        n.getCondition().accept(this);
+        n.getIfStatement().accept(this);
+        n.getElseStatement().accept(this);
+        indentation--;
+        println(")");
+    }
+
+    public void visit(MJBlock n) {
+        println("(Block");
+        indentation++;
+        for(MJStatement s : n.getStatements()) {
+            s.accept(this);
+        }
+        indentation--;
+    }
 }
