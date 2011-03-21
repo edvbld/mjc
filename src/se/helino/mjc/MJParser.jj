@@ -75,12 +75,21 @@ MJProgram ProgramProd():
 MJMainClass MainClassProd():
 {
     MJIdentifier classId, argId;
+    MJMainClass mc;
+    MJStatement s;
 }
 {
     <CLASS> classId = IdentifierProd() <LCURLY>
     <MAIN> <LPAREN> <STRING> <LSQUARE> <RSQUARE> argId = IdentifierProd()
-    <RPAREN> <LCURLY> <RCURLY> <RCURLY>
-    { return new MJMainClass(classId, argId); }
+    <RPAREN> 
+    { mc = new MJMainClass(classId, argId); }
+    <LCURLY> 
+    (
+        s = StatementProd()
+        { mc.addMJStatement(s); }
+    )*
+    <RCURLY> <RCURLY>
+    { return mc; }
 }
 
 MJClass ClassProd(): 

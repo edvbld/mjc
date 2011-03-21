@@ -7,6 +7,7 @@ public class Main {
         StringReader sr = new StringReader(
                 "class Main { \n" +
                 "   public static void main(String[] args) {\n" +
+                "       foo = boo; \n" +
                 "   }\n" +
                 "}\n" +
                 "class Foo {\n" +

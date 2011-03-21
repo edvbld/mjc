@@ -37,6 +37,9 @@ public class SyntaxPrinter implements Visitor {
         indentation++;
         n.getClassId().accept(this);
         n.getArgId().accept(this);
+        for(MJStatement s : n.getStatements()) {
+            s.accept(this);
+        }
         indentation--;
         println(")");
     }
