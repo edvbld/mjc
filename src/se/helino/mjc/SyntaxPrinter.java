@@ -178,4 +178,11 @@ public class SyntaxPrinter implements Visitor {
         indentation--;
         println(")");
     }
+    
+    public void visit(MJIdentifierExp n) {
+        print("(IdentifierExp [ ");
+        System.out.print(n.getName());
+        System.out.println(" ]");
+        println(")");
+    }
 }

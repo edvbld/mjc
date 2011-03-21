@@ -313,6 +313,15 @@ MJExpression ExpressionProd():
     MJExpression exp;
 }
 {
-    exp = IdentifierProd() 
+    exp = IdentifierExpProd() 
     { return exp; }
+}
+
+MJExpression IdentifierExpProd():
+{
+    Token t;
+}
+{
+    t = <IDENTIFIER>
+    { return new MJIdentifierExp(t.image); }
 }

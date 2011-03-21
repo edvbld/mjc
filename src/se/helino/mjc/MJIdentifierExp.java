@@ -1,9 +1,9 @@
 package se.helino.mjc;
 
-public class MJIdentifier implements Acceptable {
+public class MJIdentifierExp extends MJExpression implements Acceptable {
     private String name;
 
-    public MJIdentifier(String name) {
+    public MJIdentifierExp(String name) {
         this.name = name;
     }
 
