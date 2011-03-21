@@ -61,6 +61,12 @@ public class Main {
                 "       f = !b && !c && d;\n" + 
                 "       return f;\n" +
                 "   }\n" +
+                "   public int BooFun4() {\n" +
+                "       f[c*d] = b[a+b];\n" +
+                "       f[a] = b[a][c];\n" +
+                "       f = b.length;\n" +
+                "       return k;\n" +
+                "   }\n" +
                 "}");
         MJParser parser = new MJParser(new BufferedReader(sr));
         try {

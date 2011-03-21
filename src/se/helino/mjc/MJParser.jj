@@ -378,12 +378,51 @@ MJExpression UnaryExpProd():
 
 MJExpression CallExpProd():
 {
+    MJExpression e1, e2;
+}
+{
+    e1 = ArrayLookupProd() 
+    (
+        <DOT> 
+        (
+            <LENGTH>
+            { return new MJArrayLength(e1); }
+            |
+            <LPAREN> <RPAREN>
+            { return null; }
+        )
+    )?
+    { return e1; }
+}
+
+MJExpression ArrayLookupProd():
+{
+    MJExpression e1, e2, e3;
+    MJArrayLookup al;
+}
+{   
+    e1 = NewExpProd()
+    (
+        <LSQUARE> e2 = ExpressionProd() <RSQUARE>
+        { al = new MJArrayLookup(e1, e2); }
+        (
+            <LSQUARE> e3 = ExpressionProd() <RSQUARE>
+            { return new MJArrayLookup(al, e3); }
+        )?
+        { return al; }
+    )?
+    { return e1; }
+}
+
+MJExpression NewExpProd():
+{
     MJExpression e;
 }
 {
     e = BasicExpProd()
     { return e; }
 }
+
 
 MJExpression BasicExpProd():
 {

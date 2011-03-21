@@ -222,4 +222,16 @@ public class SyntaxPrinter implements Visitor {
         indentation--;
         println(")");
     }
+
+    public void visit(MJArrayLength n) {
+        println("(ArrayLength");
+        indentation++;
+        n.getExpression().accept(this);
+        indentation--;
+        println(")");
+    }
+
+    public void visit(MJArrayLookup n) {
+        printBinaryExp("ArrayLookup", n);
+    }
 }
