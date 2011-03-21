@@ -185,4 +185,13 @@ public class SyntaxPrinter implements Visitor {
         System.out.println(" ]");
         println(")");
     }
+
+    public void visit(MJAnd n) {
+        println("(And");
+        indentation++;
+        n.getLeft().accept(this);
+        n.getRight().accept(this);
+        indentation--;
+        println(")");
+    }
 }

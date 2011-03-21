@@ -19,4 +19,5 @@ public interface Visitor {
     public void visit(MJWhile n);
     public void visit(MJPrint n);
     public void visit(MJIdentifierExp n);
+    public void visit(MJAnd n);
 }

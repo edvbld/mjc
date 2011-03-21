@@ -310,11 +310,33 @@ MJStatement AssingStatementProd():
 
 MJExpression ExpressionProd():
 {
-    MJExpression exp;
+    MJExpression e1, e2;
 }
 {
-    exp = IdentifierExpProd() 
-    { return exp; }
+    e1 = AdditiveExpProd() 
+    (   
+        <AND> e2 = ExpressionProd()
+        { return new MJAnd(e1, e2); }
+    )?
+    { return e1; }
+}
+
+MJExpression AdditiveExpProd():
+{
+    MJExpression e;
+}
+{
+    e = BasicExpProd()
+    { return e; }
+}
+
+MJExpression BasicExpProd():
+{
+    MJExpression e;
+}
+{
+    e = IdentifierExpProd()
+    { return e; }
 }
 
 MJExpression IdentifierExpProd():

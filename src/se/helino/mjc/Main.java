@@ -41,7 +41,14 @@ public class Main {
                 "       Foo = y;\n" +
                 "       Foo[x] = y;\n" +
                 "       return x;\n" +
-                "   }\n" + 
+                "   }\n" +
+                "}\n" +
+                "class Boo {\n" +
+                "   public int BooFun1() {\n" +
+                "       boolean b;\n" +
+                "       b = x && y && z;\n" +
+                "       return b; \n" +
+                "   }\n" +
                 "}");
         MJParser parser = new MJParser(new BufferedReader(sr));
         try {
