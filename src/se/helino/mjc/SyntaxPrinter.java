@@ -161,4 +161,21 @@ public class SyntaxPrinter implements Visitor {
         }
         indentation--;
     }
+
+    public void visit(MJWhile n) {
+        println("(While");
+        indentation++;
+        n.getCondition().accept(this);
+        n.getStatement().accept(this);
+        indentation--;
+        println(")");
+    }
+
+    public void visit(MJPrint n) {
+        println("(Print");
+        indentation++;
+        n.getExpression().accept(this);
+        indentation--;
+        println(")");
+    }
 }

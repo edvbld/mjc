@@ -236,6 +236,31 @@ MJStatement StatementProd():
     |
     stmt = BlockStatementProd()
     { return stmt; }
+    |
+    stmt = WhileStatementProd()
+    { return stmt; }
+    |
+    stmt = PrintStatementProd()
+    { return stmt; }
+}
+
+MJStatement PrintStatementProd():
+{
+    MJExpression e;
+}
+{
+    <PRINT> <LPAREN> e = ExpressionProd() <RPAREN> <SEMICOLON>
+    { return new MJPrint(e); }
+}
+
+MJStatement WhileStatementProd():
+{
+    MJExpression e;
+    MJStatement stmt;
+}
+{
+    <WHILE> <LPAREN> e = ExpressionProd() <RPAREN> stmt = StatementProd()
+    { return new MJWhile(e, stmt); }
 }
 
 MJStatement BlockStatementProd():

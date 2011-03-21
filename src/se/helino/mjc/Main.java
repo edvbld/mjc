@@ -10,9 +10,9 @@ public class Main {
                 "       if(foo) {\n" +
                 "           boo = foo; \n" +
                 "       }\n" +
-                "       else {\n" +
-                "           foo = boo; \n" +
-                "       }\n" + 
+                "       else\n" +
+                "           while(boo) \n" +
+                "               System.out.println(foo); \n" +
                 "   }\n" +
                 "}\n" +
                 "class Foo {\n" +
