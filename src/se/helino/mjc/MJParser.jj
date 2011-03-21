@@ -313,7 +313,7 @@ MJExpression ExpressionProd():
     MJExpression e1, e2;
 }
 {
-    e1 = AdditiveExpProd() 
+    e1 = RelationalExpProd() 
     (   
         <AND> e2 = ExpressionProd()
         { return new MJAnd(e1, e2); }
@@ -321,7 +321,37 @@ MJExpression ExpressionProd():
     { return e1; }
 }
 
+MJExpression RelationalExpProd():
+{
+    MJExpression e1, e2;
+}
+{
+    e1 = AdditiveExpProd()
+    (
+        <LESS> e2 = RelationalExpProd()
+        { return new MJLess(e1, e2); }
+    )?
+    { return e1; }
+}
+
+
 MJExpression AdditiveExpProd():
+{
+    MJExpression e1, e2;
+}
+{
+    e1 = MultiplicativeExpProd()
+    (
+        <PLUS> e2 = AdditiveExpProd()
+        { return new MJPlus(e1, e2); }
+        |
+        <MINUS> e2 = AdditiveExpProd()
+        { return new MJMinus(e1, e2); }
+    )?
+    { return e1; }
+}
+
+MJExpression MultiplicativeExpProd():
 {
     MJExpression e;
 }

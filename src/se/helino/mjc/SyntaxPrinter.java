@@ -185,13 +185,29 @@ public class SyntaxPrinter implements Visitor {
         System.out.println(" ]");
         println(")");
     }
-
-    public void visit(MJAnd n) {
-        println("(And");
+    
+    private void printBinaryExp(String name, MJBinaryExpression n) {
+        println("(" + name);
         indentation++;
         n.getLeft().accept(this);
         n.getRight().accept(this);
         indentation--;
         println(")");
+    }
+
+    public void visit(MJAnd n) {
+        printBinaryExp("And", n);
+    }
+
+    public void visit(MJLess n) {
+        printBinaryExp("Less", n);
+    }
+
+    public void visit(MJPlus n) {
+        printBinaryExp("Plus", n);
+    }
+    
+    public void visit(MJMinus n) {
+        printBinaryExp("Minus", n);
     }
 }

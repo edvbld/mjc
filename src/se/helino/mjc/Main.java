@@ -49,6 +49,13 @@ public class Main {
                 "       b = x && y && z;\n" +
                 "       return b; \n" +
                 "   }\n" +
+                "   public int BooFun2() {\n" +
+                "       if(a < b < c)\n" +
+                "           d = a + b + c;\n" +
+                "       else\n" +
+                "           d = a - b -c;\n" +
+                "       return d;\n" +
+                "   }\n" +
                 "}");
         MJParser parser = new MJParser(new BufferedReader(sr));
         try {

@@ -20,4 +20,7 @@ public interface Visitor {
     public void visit(MJPrint n);
     public void visit(MJIdentifierExp n);
     public void visit(MJAnd n);
+    public void visit(MJLess n);
+    public void visit(MJPlus n);
+    public void visit(MJMinus n);
 }
