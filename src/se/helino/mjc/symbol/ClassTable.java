@@ -3,10 +3,15 @@ package se.helino.mjc.symbol;
 import java.util.ArrayList;
 
 public class ClassTable {
-    private ArrayList<Field> fields = new ArrayList<Field>();
+    private ArrayList<TypeNamePair> fields = new ArrayList<TypeNamePair>();
     private ArrayList<MethodTable> methods = new ArrayList<MethodTable>();
+    private String name;
+    
+    public ClassTable(String name) {
+        this.name = name;
+    }
 
-    public void addField(Field f) {
+    public void addField(TypeNamePair f) {
         fields.add(f);
     }
 
@@ -14,11 +19,15 @@ public class ClassTable {
         methods.add(m);
     }
 
-    public ArrayList<Field> getFields() {
+    public ArrayList<TypeNamePair> getFields() {
         return fields;
     }
 
     public ArrayList<MethodTable> getMethods() {
         return methods;
+    }
+
+    public String getName() {
+        return name;
     }
 }

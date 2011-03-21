@@ -14,4 +14,8 @@ public class MJIdentifierType implements MJType {
     public void accept(Visitor v) {
         v.visit(this);
     }
+
+    public String toString() {
+        return name;
+    }
 }

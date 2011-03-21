@@ -6,6 +6,10 @@ import se.helino.mjc.parser.ParseException;
 import se.helino.mjc.parser.SyntaxPrinter;
 import se.helino.mjc.parser.MJProgram;
 
+import se.helino.mjc.symbol.SymbolTableBuilder;
+import se.helino.mjc.symbol.ProgramTable;
+import se.helino.mjc.symbol.SymbolTablePrinter;
+
 public class Main {
     public static void main(String[] args) {
         if(args.length == 0 || args.length > 1) {
@@ -19,6 +23,8 @@ public class Main {
             SyntaxPrinter sp = new SyntaxPrinter();
             MJProgram p = parser.ProgramProd();
             p.accept(sp);
+            ProgramTable pt = new SymbolTableBuilder().build(p);
+            new SymbolTablePrinter().print(pt);
         } catch(ParseException e) {
             System.out.println("Syntax error:");
             System.out.println(e.toString());

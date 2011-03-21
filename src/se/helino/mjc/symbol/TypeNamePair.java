@@ -2,11 +2,11 @@ package se.helino.mjc.symbol;
 
 import se.helino.mjc.parser.MJType;
 
-public class Field {
+public class TypeNamePair {
     private MJType type;
     private String name;
 
-    public Field(MJType type, String name) {
+    public TypeNamePair(MJType type, String name) {
         this.type = type;
         this.name = name;
     }
