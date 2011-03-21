@@ -234,4 +234,18 @@ public class SyntaxPrinter implements Visitor {
     public void visit(MJArrayLookup n) {
         printBinaryExp("ArrayLookup", n);
     }
+
+    public void visit(MJCall n) {
+        print("(Call [ ");
+        System.out.print(n.getMethodId().getName());
+        System.out.println(" ]");
+        indentation++;
+        n.getExpression().accept(this);
+        n.getMethodId().accept(this);
+        for(MJExpression e : n.getParameters()) {
+            e.accept(this);
+        }
+        indentation--;
+        println(")");
+    }
 }

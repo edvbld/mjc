@@ -65,7 +65,15 @@ public class Main {
                 "       f[c*d] = b[a+b];\n" +
                 "       f[a] = b[a][c];\n" +
                 "       f = b.length;\n" +
+                "       g = f[a].length;\n" +
                 "       return k;\n" +
+                "   }\n" +
+                "   public int BooFun5() {\n" +
+                "       g = f.apa();\n" +
+                "       g = f.apa(b);\n" +
+                "       g = f.apa(b,c,d);\n" +
+                "       g = f.foo(c*d, a && b);\n" +
+                "       return g;\n" +
                 "   }\n" +
                 "}");
         MJParser parser = new MJParser(new BufferedReader(sr));

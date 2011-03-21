@@ -162,7 +162,7 @@ MJMethodDecl MethodDeclProd():
 {
     MJType t;
     MJIdentifier id;
-    MJMethodArg arg = null;
+    MJMethodArg arg;
     MJVarDecl vd;
     MJMethodDecl method;
     MJMethodBody body = null;
@@ -171,8 +171,10 @@ MJMethodDecl MethodDeclProd():
 {
     <PUBLIC> t = TypeProd() id = IdentifierProd() <LPAREN>
     { method = new MJMethodDecl(t, id); }
-    (arg = MethodArgProd())?
-    { method.addMJMethodArg(arg); }
+    (
+        arg = MethodArgProd()
+        { method.addMJMethodArg(arg); }
+    )?
     (
         <COMMA> arg = MethodArgProd()
         { method.addMJMethodArg(arg); }
@@ -379,6 +381,8 @@ MJExpression UnaryExpProd():
 MJExpression CallExpProd():
 {
     MJExpression e1, e2;
+    MJIdentifier id;
+    MJCall c;
 }
 {
     e1 = ArrayLookupProd() 
@@ -388,8 +392,18 @@ MJExpression CallExpProd():
             <LENGTH>
             { return new MJArrayLength(e1); }
             |
-            <LPAREN> <RPAREN>
-            { return null; }
+            id = IdentifierProd() <LPAREN> 
+            { c = new MJCall(e1, id); }
+            (
+                e2 = ExpressionProd()
+                { c.addParameter(e2); }
+            )?
+            (
+                <COMMA> e2 = ExpressionProd()
+                { c.addParameter(e2); }
+            )*
+            <RPAREN>
+            { return c; }
         )
     )?
     { return e1; }
