@@ -464,6 +464,18 @@ MJExpression BasicExpProd():
     |
     e = IntegerLiteralProd()
     { return e; }
+    |
+    e = ThisExpProd()
+    { return e; }
+    |
+    <LPAREN> e = ExpressionProd() <RPAREN>
+    { return e; }
+}
+
+MJExpression ThisExpProd(): { }
+{
+    <THIS>
+    { return new MJThis(); }
 }
 
 MJExpression IntegerLiteralProd(): 

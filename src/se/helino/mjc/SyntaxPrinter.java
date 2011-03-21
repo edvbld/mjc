@@ -281,4 +281,9 @@ public class SyntaxPrinter implements Visitor {
         System.out.println(" ]");
         println(")");
     }
+
+    public void visit(MJThis n) {
+        println("(This");
+        println(")");
+    }
 }

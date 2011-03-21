@@ -84,6 +84,8 @@ public class Main {
                 "       a = false;\n" +
                 "       b = true;\n" +
                 "       h = 10 + 25;\n" +
+                "       h = this;\n" +
+                "       k = (5 + 3) * 6;\n" +
                 "       return a && b;\n" +
                 "   }\n" +
                 "}");

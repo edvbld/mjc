@@ -33,4 +33,5 @@ public interface Visitor {
     public void visit(MJTrue n);
     public void visit(MJFalse n);
     public void visit(MJIntegerLiteral n);
+    public void visit(MJThis n);
 }
