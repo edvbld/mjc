@@ -248,4 +248,20 @@ public class SyntaxPrinter implements Visitor {
         indentation--;
         println(")");
     }
+
+    public void visit(MJNewObject n) {
+        println("(NewObject");
+        indentation++;
+        n.getId().accept(this);
+        indentation--;
+        println(")");
+    }
+
+    public void visit(MJNewArray n) {
+        println("(NewArray");
+        indentation++;
+        n.getExpression().accept(this);
+        indentation--;
+        println(")");
+    }
 }

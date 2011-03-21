@@ -75,6 +75,11 @@ public class Main {
                 "       g = f.foo(c*d, a && b);\n" +
                 "       return g;\n" +
                 "   }\n" +
+                "   public int BooFun6() {\n" +
+                "       g = new Foo();\n" +
+                "       h = new int[A*B];\n" +
+                "       return h + g;\n" +
+                "   }\n" +
                 "}");
         MJParser parser = new MJParser(new BufferedReader(sr));
         try {

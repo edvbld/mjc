@@ -431,8 +431,18 @@ MJExpression ArrayLookupProd():
 MJExpression NewExpProd():
 {
     MJExpression e;
+    MJIdentifier id;
 }
 {
+    <NEW>
+    (
+        id = IdentifierProd() <LPAREN> <RPAREN>
+        { return new MJNewObject(id); }
+        |
+        <INT> <LSQUARE> e = ExpressionProd() <RSQUARE>
+        { return new MJNewArray(e); }
+    )
+    |
     e = BasicExpProd()
     { return e; }
 }

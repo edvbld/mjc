@@ -28,4 +28,6 @@ public interface Visitor {
     public void visit(MJArrayLength n);
     public void visit(MJArrayLookup n);
     public void visit(MJCall n);
+    public void visit(MJNewObject n);
+    public void visit(MJNewArray n);
 }
