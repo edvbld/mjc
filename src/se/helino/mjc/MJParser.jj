@@ -455,6 +455,36 @@ MJExpression BasicExpProd():
 {
     e = IdentifierExpProd()
     { return e; }
+    |
+    e = TrueExpProd()
+    { return e; }
+    |
+    e = FalseExpProd()
+    { return e; }
+    |
+    e = IntegerLiteralProd()
+    { return e; }
+}
+
+MJExpression IntegerLiteralProd(): 
+{
+    Token t;
+}
+{
+    t = <NUMBER>
+    { return new MJIntegerLiteral(Integer.parseInt(t.image)); }
+}
+
+MJExpression TrueExpProd(): {}
+{
+    <TRUE>
+    { return new MJTrue(); }
+}
+
+MJExpression FalseExpProd(): {}
+{
+    <FALSE>
+    { return new MJFalse(); }
 }
 
 MJExpression IdentifierExpProd():

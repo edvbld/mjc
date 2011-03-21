@@ -264,4 +264,21 @@ public class SyntaxPrinter implements Visitor {
         indentation--;
         println(")");
     }
+
+    public void visit(MJTrue n) {
+        println("(True");
+        println(")");
+    }
+    
+    public void visit(MJFalse n) {
+        println("(False");
+        println(")");
+    }
+
+    public void visit(MJIntegerLiteral n) {
+        print("(IntegerLiteral [ ");
+        System.out.print(n.getValue());
+        System.out.println(" ]");
+        println(")");
+    }
 }

@@ -80,6 +80,12 @@ public class Main {
                 "       h = new int[A*B];\n" +
                 "       return h + g;\n" +
                 "   }\n" +
+                "   public int BooFun7() {\n" +
+                "       a = false;\n" +
+                "       b = true;\n" +
+                "       h = 10 + 25;\n" +
+                "       return a && b;\n" +
+                "   }\n" +
                 "}");
         MJParser parser = new MJParser(new BufferedReader(sr));
         try {

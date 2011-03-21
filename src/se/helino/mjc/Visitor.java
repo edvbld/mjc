@@ -30,4 +30,7 @@ public interface Visitor {
     public void visit(MJCall n);
     public void visit(MJNewObject n);
     public void visit(MJNewArray n);
+    public void visit(MJTrue n);
+    public void visit(MJFalse n);
+    public void visit(MJIntegerLiteral n);
 }
