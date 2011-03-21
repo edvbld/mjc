@@ -210,4 +210,8 @@ public class SyntaxPrinter implements Visitor {
     public void visit(MJMinus n) {
         printBinaryExp("Minus", n);
     }
+
+    public void visit(MJTimes n) {
+        printBinaryExp("Times", n);
+    }
 }

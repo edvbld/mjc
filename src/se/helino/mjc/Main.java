@@ -56,6 +56,10 @@ public class Main {
                 "           d = a - b -c;\n" +
                 "       return d;\n" +
                 "   }\n" +
+                "   public int BooFun3() {\n" +
+                "       f = a + b * c * d - e;\n" +
+                "       return f;\n" +
+                "   }\n" +
                 "}");
         MJParser parser = new MJParser(new BufferedReader(sr));
         try {

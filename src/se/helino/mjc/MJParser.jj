@@ -353,6 +353,19 @@ MJExpression AdditiveExpProd():
 
 MJExpression MultiplicativeExpProd():
 {
+    MJExpression e1, e2;
+}
+{
+    e1 = UnaryExpProd()
+    (
+        <STAR> e2 = MultiplicativeExpProd()
+        { return new MJTimes(e1, e2); }
+    )?
+    { return e1; }
+}
+
+MJExpression UnaryExpProd():
+{
     MJExpression e;
 }
 {

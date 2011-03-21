@@ -23,4 +23,5 @@ public interface Visitor {
     public void visit(MJLess n);
     public void visit(MJPlus n);
     public void visit(MJMinus n);
+    public void visit(MJTimes n);
 }
