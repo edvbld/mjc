@@ -57,9 +57,10 @@ class Boo {
     }
     public int BooFun4() {
        f[c*d] = b[a+b];
-       f[a] = b[a][c];
+       f[a] = b[a][c][d][e].foo().length;
        f = b.length;
        g = f[a].length;
+       a = this.getv()[a];
        return k;
     }
     public int BooFun5() {

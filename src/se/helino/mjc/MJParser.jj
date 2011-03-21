@@ -375,60 +375,62 @@ MJExpression UnaryExpProd():
     <BANG> e = UnaryExpProd()
     { return new MJNot(e); }
     |
-    e = CallExpProd()
+    e = MethodExpProd()
     { return e; }
 }
 
-MJExpression CallExpProd():
+MJExpression MethodExpProd():
 {
     MJExpression e1, e2;
-    MJIdentifier id;
-    MJCall c;
 }
 {
-    e1 = ArrayLookupProd() 
+    e1 = NewExpProd() 
     (
-        <DOT> 
-        (
-            <LENGTH>
-            { return new MJArrayLength(e1); }
-            |
-            id = IdentifierProd() <LPAREN> 
-            { c = new MJCall(e1, id); }
-            (
-                e2 = ExpressionProd()
-                { c.addParameter(e2); }
-            )?
-            (
-                <COMMA> e2 = ExpressionProd()
-                { c.addParameter(e2); }
-            )*
-            <RPAREN>
-            { return c; }
-        )
+        e2 = ChainedCallProd(e1)
+        { return e2; }
     )?
     { return e1; }
 }
 
-MJExpression ArrayLookupProd():
+MJExpression ChainedCallProd(MJExpression e):
 {
-    MJExpression e1, e2, e3;
+    MJIdentifier id;
+    MJExpression e2, e3;
+    MJCall c;
     MJArrayLookup al;
 }
-{   
-    e1 = NewExpProd()
+{
+    <DOT> 
     (
-        <LSQUARE> e2 = ExpressionProd() <RSQUARE>
-        { al = new MJArrayLookup(e1, e2); }
+        <LENGTH>
+        { return new MJArrayLength(e); }
+        |
+        id = IdentifierProd() <LPAREN> 
+        { c = new MJCall(e, id); }
         (
-            <LSQUARE> e3 = ExpressionProd() <RSQUARE>
-            { return new MJArrayLookup(al, e3); }
+            e2 = ExpressionProd()
+            { c.addParameter(e2); }
         )?
-        { return al; }
+        (
+            <COMMA> e2 = ExpressionProd()
+            { c.addParameter(e2); }
+        )*
+        <RPAREN>
+        (
+            e3 = ChainedCallProd(c)
+            { return e3; }
+        )?
+        { return c; }
+    )
+    |
+    <LSQUARE> e2 = ExpressionProd() <RSQUARE>
+    { al = new MJArrayLookup(e, e2); }
+    (
+        e3 = ChainedCallProd(al)
+        { return e3; }
     )?
-    { return e1; }
+    { return al; }
 }
-
 MJExpression NewExpProd():
 {
     MJExpression e;
