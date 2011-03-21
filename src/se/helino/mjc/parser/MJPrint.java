@@ -1,6 +1,6 @@
 package se.helino.mjc.parser;
 
-public class MJPrint extends MJStatement implements Acceptable {
+public class MJPrint implements MJStatement {
     private MJExpression exp;
 
     public MJPrint(MJExpression exp) {

@@ -1,7 +1,5 @@
 package se.helino.mjc.parser;
 
-import java.lang.IllegalStateException;
-
 public abstract class MJBinaryExpression implements MJExpression {
     private MJExpression left;
     private MJExpression right;

@@ -2,7 +2,7 @@ package se.helino.mjc.parser;
 
 import java.util.ArrayList;
 
-public class MJBlock extends MJStatement implements Acceptable {
+public class MJBlock implements MJStatement {
     private ArrayList<MJStatement> statements = new ArrayList<MJStatement>();
 
     public void addMJStatement(MJStatement s) {

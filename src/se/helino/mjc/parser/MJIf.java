@@ -1,6 +1,6 @@
 package se.helino.mjc.parser;
 
-public class MJIf extends MJStatement implements Acceptable {
+public class MJIf implements MJStatement {
     private MJExpression condition;
     private MJStatement ifStatement;
     private MJStatement elseStatement;

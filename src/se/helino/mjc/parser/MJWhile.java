@@ -1,6 +1,6 @@
 package se.helino.mjc.parser;
 
-public class MJWhile extends MJStatement implements Acceptable {
+public class MJWhile implements MJStatement {
     private MJExpression condition;
     private MJStatement statement;
 
