@@ -369,6 +369,18 @@ MJExpression UnaryExpProd():
     MJExpression e;
 }
 {
+    <BANG> e = UnaryExpProd()
+    { return new MJNot(e); }
+    |
+    e = CallExpProd()
+    { return e; }
+}
+
+MJExpression CallExpProd():
+{
+    MJExpression e;
+}
+{
     e = BasicExpProd()
     { return e; }
 }

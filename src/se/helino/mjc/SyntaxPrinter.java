@@ -214,4 +214,12 @@ public class SyntaxPrinter implements Visitor {
     public void visit(MJTimes n) {
         printBinaryExp("Times", n);
     }
+
+    public void visit(MJNot n) {
+        println("(Not");
+        indentation++;
+        n.getExpression().accept(this);
+        indentation--;
+        println(")");
+    }
 }

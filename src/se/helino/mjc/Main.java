@@ -58,6 +58,7 @@ public class Main {
                 "   }\n" +
                 "   public int BooFun3() {\n" +
                 "       f = a + b * c * d - e;\n" +
+                "       f = !b && !c && d;\n" + 
                 "       return f;\n" +
                 "   }\n" +
                 "}");
