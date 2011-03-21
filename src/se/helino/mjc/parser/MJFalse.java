@@ -1,6 +1,6 @@
 package se.helino.mjc.parser;
 
-public class MJFalse extends MJExpression implements Acceptable {
+public class MJFalse implements MJExpression {
     public void accept(Visitor v) {
         v.visit(this);
     }

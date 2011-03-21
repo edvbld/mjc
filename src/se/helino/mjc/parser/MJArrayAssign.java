@@ -1,6 +1,6 @@
 package se.helino.mjc.parser;
 
-public class MJArrayAssign extends MJStatement implements Acceptable {
+public class MJArrayAssign extends MJStatement {
     private MJIdentifier id;
     private MJExpression bracketExp;
     private MJExpression exp;

@@ -1,6 +1,6 @@
 package se.helino.mjc.parser;
 
-public class MJAssign extends MJStatement implements Acceptable {
+public class MJAssign extends MJStatement {
     private MJIdentifier id;
     private MJExpression exp;
     

@@ -2,7 +2,7 @@ package se.helino.mjc.parser;
 
 import java.util.ArrayList;
 
-public class MJCall extends MJExpression implements Acceptable {
+public class MJCall implements MJExpression {
     private MJExpression exp;
     private MJIdentifier methodId;
     private ArrayList<MJExpression> parameters = new ArrayList<MJExpression>();

@@ -1,6 +1,6 @@
 package se.helino.mjc.parser;
 
-public class MJIdentifierType extends MJType implements Acceptable {
+public class MJIdentifierType implements MJType {
     private String name;
 
     public MJIdentifierType(String name) {

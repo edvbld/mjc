@@ -1,6 +1,6 @@
 package se.helino.mjc.parser;
 
-public class MJNewArray extends MJExpression implements Acceptable {
+public class MJNewArray implements MJExpression {
     private MJExpression exp;
     
     public MJNewArray(MJExpression exp) {

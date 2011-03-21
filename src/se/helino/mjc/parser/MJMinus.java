@@ -1,6 +1,6 @@
 package se.helino.mjc.parser;
 
-public class MJMinus extends MJBinaryExpression implements Acceptable {
+public class MJMinus extends MJBinaryExpression {
 
     public MJMinus(MJExpression left, MJExpression right) {
         super(left, right);

@@ -2,7 +2,7 @@ package se.helino.mjc.parser;
 
 import java.lang.IllegalStateException;
 
-public class MJBinaryExpression extends MJExpression implements Acceptable {
+public abstract class MJBinaryExpression implements MJExpression {
     private MJExpression left;
     private MJExpression right;
 
@@ -19,7 +19,5 @@ public class MJBinaryExpression extends MJExpression implements Acceptable {
         return right;
     }
 
-    public void accept(Visitor v) {
-        throw new IllegalStateException();
-    }
+    public abstract void accept(Visitor v);
 }

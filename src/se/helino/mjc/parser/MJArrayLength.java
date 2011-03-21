@@ -1,6 +1,6 @@
 package se.helino.mjc.parser;
 
-public class MJArrayLength extends MJExpression implements Acceptable {
+public class MJArrayLength implements MJExpression {
     private MJExpression exp;
 
     public MJArrayLength(MJExpression exp) {

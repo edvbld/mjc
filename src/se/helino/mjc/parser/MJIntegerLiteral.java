@@ -1,6 +1,6 @@
 package se.helino.mjc.parser;
 
-public class MJIntegerLiteral extends MJExpression implements Acceptable {
+public class MJIntegerLiteral implements MJExpression {
     private int value;
 
     public MJIntegerLiteral(int value) {

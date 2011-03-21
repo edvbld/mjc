@@ -1,6 +1,6 @@
 package se.helino.mjc.parser;
 
-public class MJNot extends MJExpression implements Acceptable {
+public class MJNot implements MJExpression {
     private MJExpression exp;
 
     public MJNot(MJExpression exp) {

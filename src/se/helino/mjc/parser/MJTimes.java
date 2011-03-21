@@ -1,6 +1,6 @@
 package se.helino.mjc.parser;
 
-public class MJTimes extends MJBinaryExpression implements Acceptable {
+public class MJTimes extends MJBinaryExpression {
 
     public MJTimes(MJExpression left, MJExpression right) {
         super(left, right);

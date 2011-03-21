@@ -1,6 +1,6 @@
 package se.helino.mjc.parser;
 
-public class MJArrayLookup extends MJBinaryExpression implements Acceptable {
+public class MJArrayLookup extends MJBinaryExpression {
     
     public MJArrayLookup(MJExpression left, MJExpression right) {
         super(left, right);

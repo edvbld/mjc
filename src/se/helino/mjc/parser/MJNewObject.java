@@ -1,6 +1,6 @@
 package se.helino.mjc.parser;
 
-public class MJNewObject extends MJExpression implements Acceptable {
+public class MJNewObject implements MJExpression {
     private MJIdentifier id;
 
     public MJNewObject(MJIdentifier id) {
