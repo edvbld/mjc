@@ -101,9 +101,13 @@ public class SyntaxPrinter implements Visitor {
         for(MJMethodArg a : n.getArguments()) {
             a.accept(this);
         }
-        for(MJVarDecl vd : n.getVariableDeclarations()) {
+        for(MJVarDecl vd : n.getBody().getMJVariableDeclarations()) {
             vd.accept(this);
         }
+        for(MJStatement s : n.getBody().getMJStatements()) {
+            s.accept(this);
+        }
+        n.getReturnExpression().accept(this);
         indentation--;
         println(")");
     }
@@ -113,6 +117,25 @@ public class SyntaxPrinter implements Visitor {
         indentation++;
         n.getMJType().accept(this);
         n.getId().accept(this);
+        indentation--;
+        println(")");
+    }
+
+    public void visit(MJAssign n) {
+        println("(Assign");
+        indentation++;
+        n.getId().accept(this);
+        n.getExpression().accept(this);
+        indentation--;
+        println(")");
+    }
+    
+    public void visit(MJArrayAssign n) {
+        println("(ArrayAssign");
+        indentation++;
+        n.getId().accept(this);
+        n.getBracketExpression().accept(this);
+        n.getExpression().accept(this);
         indentation--;
         println(")");
     }

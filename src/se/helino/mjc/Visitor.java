@@ -12,4 +12,6 @@ public interface Visitor {
     public void visit(MJIdentifierType n);
     public void visit(MJMethodDecl n);
     public void visit(MJMethodArg n);
+    public void visit(MJAssign n);
+    public void visit(MJArrayAssign n);
 }

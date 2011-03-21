@@ -118,7 +118,16 @@ MJVarDecl VarDeclProd():
 MJType TypeProd():
 {
     Token t;
+    MJType type;
 }
+{
+    t = <IDENTIFIER>
+    { return new MJIdentifierType(t.image); }
+|   type = BasicTypeProd()
+    { return type; }
+}
+
+MJType BasicTypeProd(): {}
 {
     <BOOLEAN>
     { return new MJBooleanType(); }
@@ -129,8 +138,6 @@ MJType TypeProd():
         |
         { return new MJIntType(); }
     )
-|   t = <IDENTIFIER>
-    { return new MJIdentifierType(t.image); }
 }
 
 MJIdentifier IdentifierProd():
@@ -149,6 +156,8 @@ MJMethodDecl MethodDeclProd():
     MJMethodArg arg = null;
     MJVarDecl vd;
     MJMethodDecl method;
+    MJMethodBody body = null;
+    MJExpression retExp;
 }
 {
     <PUBLIC> t = TypeProd() id = IdentifierProd() <LPAREN>
@@ -160,12 +169,37 @@ MJMethodDecl MethodDeclProd():
         { method.addMJMethodArg(arg); }
     )*
     <RPAREN> <LCURLY>
-    (
-        vd = VarDeclProd()
-        { method.addMJVarDecl(vd); }
-    )*
+    (body = MethodBodyProd())?
+    { method.addMJMethodBody(body); }
+    <RETURN> retExp = ExpressionProd() <SEMICOLON>
+    { method.setReturnExpression(retExp); }
     <RCURLY>
     { return method; }
+}
+
+MJMethodBody MethodBodyProd():
+{
+    MJVarDecl vd;
+    MJStatement s;
+    MJMethodBody body = new MJMethodBody();
+}
+{
+    LOOKAHEAD(2)
+    (
+        LOOKAHEAD(2)
+        vd = VarDeclProd()
+        { body.addMJVarDecl(vd); }
+        |
+        s = StatementProd()
+        { body.addMJStatement(s); }
+    )+
+    {return body; }
+    |
+    (
+        s = StatementProd()
+        { body.addMJStatement(s); }
+    )+
+    {return body; }
 }
 
 MJMethodArg MethodArgProd():
@@ -176,4 +210,32 @@ MJMethodArg MethodArgProd():
 {
     t = TypeProd() id = IdentifierProd()
     { return new MJMethodArg(t, id); }
+}
+
+MJStatement StatementProd():
+{
+    MJIdentifier id;
+    MJExpression e1, e2;
+    MJStatement stmt;
+}
+{
+    id = IdentifierProd()
+    (
+        <LSQUARE> e1 = ExpressionProd() <RSQUARE> <EQUALS> e2 = ExpressionProd()
+        <SEMICOLON>
+        { stmt = new MJArrayAssign(id, e1, e2); }
+        |
+        <EQUALS> e1 = ExpressionProd() <SEMICOLON>
+        { stmt = new MJAssign(id, e1); }
+    )
+    { return stmt; }
+}
+
+MJExpression ExpressionProd():
+{
+    MJExpression exp;
+}
+{
+    exp = IdentifierProd() 
+    { return exp; }
 }

@@ -1,6 +1,6 @@
 package se.helino.mjc;
 
-public class MJIdentifier implements Acceptable {
+public class MJIdentifier extends MJExpression implements Acceptable {
     private String name;
 
     public MJIdentifier(String name) {
