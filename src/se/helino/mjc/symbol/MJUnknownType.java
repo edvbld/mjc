@@ -6,6 +6,6 @@ import se.helino.mjc.parser.Visitor;
 public class MJUnknownType implements MJType {
     public void accept(Visitor v) { }
     public String toString() {
-        return "MJUnknownType";
+        return "unknown";
     }
 }

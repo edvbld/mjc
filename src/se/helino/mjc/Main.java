@@ -7,6 +7,7 @@ import se.helino.mjc.parser.SyntaxPrinter;
 import se.helino.mjc.parser.MJProgram;
 
 import se.helino.mjc.symbol.SymbolTableBuilder;
+import se.helino.mjc.symbol.SymbolTableChecker;
 import se.helino.mjc.symbol.ProgramTable;
 import se.helino.mjc.symbol.SymbolTablePrinter;
 
@@ -32,6 +33,15 @@ public class Main {
             }
             else {
                 new SymbolTablePrinter().print(pt);
+                SymbolTableChecker checker = new SymbolTableChecker(pt);
+                checker.check(p);
+                if(checker.hasErrors()) {
+                    for(String error : checker.getErrors()) {
+                        System.out.println("Error: " + error);
+                    }
+                } else {
+                    System.out.println("Compilation done!");
+                }
             }
         } catch(ParseException e) {
             System.out.println("Syntax error:");

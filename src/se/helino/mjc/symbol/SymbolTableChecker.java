@@ -17,10 +17,18 @@ public class SymbolTableChecker implements TypeVisitor {
         return errors;
     }
 
+    public SymbolTableChecker(ProgramTable table) {
+       this.table = table; 
+    }
+
+    public void check(MJProgram n) {
+        n.accept(this);
+    }
+
     public void visit(MJProgram n) { 
         n.getMJMainClass().accept(this);
         for(MJClass c : n.getMJClasses()) {
-            n.accept(this);
+            c.accept(this);
         }
     }
 
@@ -39,7 +47,7 @@ public class SymbolTableChecker implements TypeVisitor {
 
     private boolean isAKnownType(MJType t) {
         String name = t.toString();
-        if(name == "int" || name == "boolean" || name == "int[]")
+        if(name.equals("int") || name.equals("boolean") || name.equals("int[]"))
             return true;
         MJIdentifierType id = (MJIdentifierType) t;
         return table.isNameOfClass(id.getName());
@@ -61,9 +69,10 @@ public class SymbolTableChecker implements TypeVisitor {
                 errors.add("Return type of method " + methodName +
                            " is unknown");
         MJType retExpType = n.getReturnExpression().accept(this);
-        if(retType.toString() != retExpType.toString())
-            errors.add("Declared type and returned type of method " + 
-                       methodName + "differ");
+        if(!retType.toString().equals(retExpType.toString()))
+            errors.add("Declared type " + retType.toString() + 
+                       " differ from returned type " + retExpType.toString() +
+                       " for method " + methodName);
     }
     
     public void visit(MJPrint n) {
@@ -81,8 +90,10 @@ public class SymbolTableChecker implements TypeVisitor {
     public void visit(MJAssign n) {
         MJType lhs = n.getId().accept(this);
         MJType rhs = n.getExpression().accept(this);
-        if(rhs.toString() != lhs.toString())
-            errors.add("Left and right side in assignment differed");
+        if(!rhs.toString().equals(lhs.toString()))
+            errors.add("Variable " + n.getId().getName() + " has type " +
+                        lhs.toString() + ", but tried to assign it type " +
+                        rhs.toString());
     }
 
     public void visit(MJArrayAssign n) {
@@ -113,12 +124,17 @@ public class SymbolTableChecker implements TypeVisitor {
     }
 
     private MJType getType(String name) {
-        MJType type = currentMethod.getType(name);
-        if(type != null)
-            return type;
-        type = currentClass.getType(name);
-        if(type != null)
-            return type;
+        MJType type;
+        if(currentMethod != null) {
+            type = currentMethod.getType(name);
+            if(type != null)
+                return type;
+        }
+        if(currentClass != null) {
+            type = currentClass.getType(name);
+            if(type != null)
+                return type;
+        }
         type = table.getType(name);
         if(type != null)
             return type;
@@ -128,7 +144,7 @@ public class SymbolTableChecker implements TypeVisitor {
     public MJType visit(MJIdentifier n) {
         MJType type = getType(n.getName());
         if(type == null) {
-            errors.add("Identifier " + n.getName() + " has unknown type");
+            errors.add("Variable " + n.getName() + " has unknown type");
             return new MJUnknownType();
         }
         return type;
@@ -137,15 +153,56 @@ public class SymbolTableChecker implements TypeVisitor {
     public MJType visit(MJIdentifierExp n) { 
         MJType type = getType(n.getName());
         if(type == null) {
-            errors.add("Identifier " + n.getName() + " has unknown type");
+            errors.add("Variable " + n.getName() + " has unknown type");
             return new MJUnknownType();
         }
         return type;
     }
     
     public MJType visit(MJCall n) { 
-        // TODO: look it up
-        return null;
+        String methodName = n.getMethodId().getName();
+        MJType ret = n.getExpression().accept(this);
+        if(!(ret instanceof MJIdentifierType)) {
+            errors.add("Can only invoke methods on objects");
+            return new MJUnknownType();
+        }
+
+        MJIdentifierType obj = (MJIdentifierType) ret;
+
+        ClassTable ct = table.getClassTable(obj.getName());
+        if(ct == null) {
+            errors.add("Could not find class of object to invoke method " +
+                       methodName + " on");
+            return new MJUnknownType();
+        }
+
+        MethodTable mt = ct.getMethodTable(methodName);
+        if(mt == null) {
+            errors.add("Could not find method " + methodName + " on class " 
+                       + ct.getName());
+            return new MJUnknownType();
+        }
+
+        ArrayList<TypeNamePair> declaredParams = mt.getParams();
+        ArrayList<MJExpression> passedParams = n.getParameters();
+        if(declaredParams.size() < passedParams.size()) {
+            errors.add("Called " + methodName + " with too few parameters");
+            return mt.getReturnType();
+        }
+        else if(declaredParams.size() > passedParams.size()) {
+            errors.add("Called " + methodName + " with too many parameters");
+            return mt.getReturnType();
+        }
+
+        for(int i = 0; i < passedParams.size(); i++) {
+            MJType type = passedParams.get(i).accept(this);
+            MJType decType = declaredParams.get(i).getType();
+            if(!type.toString().equals(decType.toString()))
+                errors.add("Supplied wrong type for parameter " + 
+                            declaredParams.get(i).getName() + " for method " 
+                            + methodName); 
+        }
+        return mt.getReturnType();
     }
 
     public MJType visit(MJAnd n) { 
