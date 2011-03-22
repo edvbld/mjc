@@ -1,11 +1,16 @@
 package se.helino.mjc.symbol;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import se.helino.mjc.parser.MJType;
 
 public class MethodTable {
     private ArrayList<TypeNamePair> params = new ArrayList<TypeNamePair>();
     private ArrayList<TypeNamePair> locals = new ArrayList<TypeNamePair>();
+    private HashMap<String, MJType> paramsMap = 
+        new HashMap<String, MJType>();
+    private HashMap<String, MJType> localsMap =
+        new HashMap<String, MJType>();
     private MJType returnType;
     private String name;
 
@@ -16,6 +21,11 @@ public class MethodTable {
 
     public void addParam(TypeNamePair p) {
         params.add(p);
+        paramsMap.put(p.getName(), p.getType());
+    }
+
+    public boolean hasParamWithName(String name) {
+        return paramsMap.containsKey(name);
     }
 
     public void addLocal(TypeNamePair l) {
@@ -37,5 +47,4 @@ public class MethodTable {
     public MJType getReturnType() {
         return returnType;
     }
-
 }

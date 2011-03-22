@@ -1,17 +1,27 @@
 package se.helino.mjc.symbol;
 
+import java.util.ArrayList;
 import se.helino.mjc.parser.*;
 
 public class SymbolTableBuilder implements Visitor {
     
     private ProgramTable table;
     private ClassTable current;
+    private ArrayList<String> errors = new ArrayList<String>();
 
     public ProgramTable build(MJProgram program) {
         String mcName = program.getMJMainClass().getClassId().getName();
         table = new ProgramTable(mcName);
         program.accept(this);
         return table;
+    }
+    
+    public boolean hasErrors() {
+        return errors.size() != 0;
+    }
+
+    public ArrayList<String> getErrors() {
+        return errors;
     }
 
     public void visit(MJProgram n) {
@@ -40,8 +50,13 @@ public class SymbolTableBuilder implements Visitor {
                                          a.getId().getName()));
         }
         for(MJVarDecl vd : n.getBody().getMJVariableDeclarations()) {
-            mt.addLocal(new TypeNamePair(vd.getMJType(),
-                                         vd.getId().getName()));
+            String name = vd.getId().getName();
+            if(mt.hasParamWithName(name))
+                errors.add("Local " + name + 
+                           " is already defined as a parameter");
+            else
+                mt.addLocal(new TypeNamePair(vd.getMJType(),
+                                             name));
         }
         current.addMethod(mt);
     }

@@ -31,16 +31,14 @@ public class SymbolTableChecker implements TypeVisitor {
     }
 
     public void visit(MJClass n) {
-        // TODO: Look up current class table in program table
-        //currentClass = n;
+        currentClass = table.getClassTable(n.getId().getName());
         for(MJMethodDecl m : n.getMethods()) {
             m.accept(this);
         }
     }
 
     public void visit(MJMethodDecl n) {
-        // TODO: Look up current method table in currnentClass
-        //currentMethod = n;
+        currentMethod = currentClass.getMethodTable(n.getId().getName());
         for(MJStatement s : n.getBody().getMJStatements()) {
             s.accept(this);
         }
@@ -61,8 +59,8 @@ public class SymbolTableChecker implements TypeVisitor {
     public void visit(MJAssign n) {
         MJType lhs = n.getId().accept(this);
         MJType rhs = n.getExpression().accept(this);
-        // TODO: Override equals on all four MJTypes to be able to compare
-            //errors.add("Left and right side in assignment differed");
+        if(rhs.getClass() != lhs.getClass())
+            errors.add("Left and right side in assignment differed");
     }
 
     public void visit(MJArrayAssign n) {
@@ -98,6 +96,11 @@ public class SymbolTableChecker implements TypeVisitor {
     }
 
     public MJType visit(MJIdentifierExp n) { 
+        // TODO: look it up
+        return null;
+    }
+    
+    public MJType visit(MJCall n) { 
         // TODO: look it up
         return null;
     }
@@ -189,10 +192,6 @@ public class SymbolTableChecker implements TypeVisitor {
         return new MJIntType();
     }
 
-    public MJType visit(MJCall n) { 
-        // TODO: look it up
-        return null;
-    }
 
     public MJType visit(MJNewObject n) { 
         MJType mjClass = n.getId().accept(this);

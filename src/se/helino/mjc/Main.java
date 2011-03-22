@@ -23,8 +23,16 @@ public class Main {
             SyntaxPrinter sp = new SyntaxPrinter();
             MJProgram p = parser.ProgramProd();
             p.accept(sp);
-            ProgramTable pt = new SymbolTableBuilder().build(p);
-            new SymbolTablePrinter().print(pt);
+            SymbolTableBuilder builder = new SymbolTableBuilder();
+            ProgramTable pt = builder.build(p);
+            if(builder.hasErrors()) {
+                for(String error : builder.getErrors()) {
+                    System.out.println("Error: " + error);
+                }
+            }
+            else {
+                new SymbolTablePrinter().print(pt);
+            }
         } catch(ParseException e) {
             System.out.println("Syntax error:");
             System.out.println(e.toString());
