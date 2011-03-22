@@ -1,6 +1,7 @@
 package se.helino.mjc.symbol;
 
 import java.util.ArrayList;
+import java.util.Set;
 import se.helino.mjc.parser.*;
 
 public class SymbolTableBuilder implements Visitor {

@@ -37,11 +37,33 @@ public class SymbolTableChecker implements TypeVisitor {
         }
     }
 
+    private boolean isAKnownType(MJType t) {
+        String name = t.toString();
+        if(name == "int" || name == "boolean" || name == "int[]")
+            return true;
+        MJIdentifierType id = (MJIdentifierType) t;
+        return table.isNameOfClass(id.getName());
+    }
+
     public void visit(MJMethodDecl n) {
-        currentMethod = currentClass.getMethodTable(n.getId().getName());
+        String methodName = n.getId().getName();
+        currentMethod = currentClass.getMethodTable(methodName);
+        for(TypeNamePair param : currentMethod.getParams()) {
+            if(!isAKnownType(param.getType()))
+                errors.add("Parameter " + param.getName() + " of method " + 
+                           methodName + " has unknown type");
+        }
         for(MJStatement s : n.getBody().getMJStatements()) {
             s.accept(this);
         }
+        MJType retType = currentMethod.getReturnType();
+        if(!isAKnownType(retType))
+                errors.add("Return type of method " + methodName +
+                           " is unknown");
+        MJType retExpType = n.getReturnExpression().accept(this);
+        if(retType.toString() != retExpType.toString())
+            errors.add("Declared type and returned type of method " + 
+                       methodName + "differ");
     }
     
     public void visit(MJPrint n) {
@@ -59,7 +81,7 @@ public class SymbolTableChecker implements TypeVisitor {
     public void visit(MJAssign n) {
         MJType lhs = n.getId().accept(this);
         MJType rhs = n.getExpression().accept(this);
-        if(rhs.getClass() != lhs.getClass())
+        if(rhs.toString() != lhs.toString())
             errors.add("Left and right side in assignment differed");
     }
 
@@ -89,15 +111,36 @@ public class SymbolTableChecker implements TypeVisitor {
             errors.add("Condition in while loop must be of type boolean");
         n.getStatement().accept(this);
     }
+
+    private MJType getType(String name) {
+        MJType type = currentMethod.getType(name);
+        if(type != null)
+            return type;
+        type = currentClass.getType(name);
+        if(type != null)
+            return type;
+        type = table.getType(name);
+        if(type != null)
+            return type;
+        return null;
+    }
     
     public MJType visit(MJIdentifier n) {
-        // TODO: look it up
-        return null;
+        MJType type = getType(n.getName());
+        if(type == null) {
+            errors.add("Identifier " + n.getName() + " has unknown type");
+            return new MJUnknownType();
+        }
+        return type;
     }
 
     public MJType visit(MJIdentifierExp n) { 
-        // TODO: look it up
-        return null;
+        MJType type = getType(n.getName());
+        if(type == null) {
+            errors.add("Identifier " + n.getName() + " has unknown type");
+            return new MJUnknownType();
+        }
+        return type;
     }
     
     public MJType visit(MJCall n) { 

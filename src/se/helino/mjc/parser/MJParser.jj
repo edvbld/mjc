@@ -17,8 +17,11 @@ SKIP:
 
 TOKEN:
 {
-  <MAIN: <PUBLIC>(<WS>)+"static"(<WS>)+"void"(<WS>)+"main">
-| <PRINT: "System"(<WS>)*<DOT>(<WS>)*"out"(<WS>)*<DOT>(<WS>)*"println">
+  <MAIN: <PUBLIC>(<WS>)+<STATIC>(<WS>)+<VOID>(<WS>)+"main">
+| <STATIC: "static">
+| <VOID: "void">
+| <SYSTEM: "System">
+| <PRINT: <DOT>(<WS>)*"out"(<WS>)*<DOT>(<WS>)*"println">
 | <DOT: ".">
 | <PUBLIC: "public">
 | <CLASS: "class">
@@ -54,7 +57,7 @@ TOKEN:
 | <#LETTER: ["a"-"z", "A"-"Z"]>
 | <#DIGIT: ["0"-"9"]>
 | <#UNDERSCORE: "_">
-|  <#WS: (" "|"\t"|"\n"|"\r\n")>
+| <#WS: (" "|"\t"|"\n"|"\r\n")>
 }
 
 MJProgram ProgramProd():
@@ -81,8 +84,8 @@ MJMainClass MainClassProd():
 }
 {
     <CLASS> classId = IdentifierProd() <LCURLY>
-    <MAIN> <LPAREN> <STRING> <LSQUARE> <RSQUARE> argId = IdentifierProd()
-    <RPAREN> 
+    <MAIN> <LPAREN> <STRING> <LSQUARE> <RSQUARE> 
+    argId = IdentifierProd() <RPAREN> 
     { mc = new MJMainClass(classId, argId); }
     <LCURLY> 
     (
@@ -252,7 +255,7 @@ MJStatement PrintStatementProd():
     MJExpression e;
 }
 {
-    <PRINT> <LPAREN> e = ExpressionProd() <RPAREN> <SEMICOLON>
+    <SYSTEM> <PRINT> <LPAREN> e = ExpressionProd() <RPAREN> <SEMICOLON>
     { return new MJPrint(e); }
 }
 

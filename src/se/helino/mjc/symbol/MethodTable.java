@@ -30,6 +30,7 @@ public class MethodTable {
 
     public void addLocal(TypeNamePair l) {
         locals.add(l);
+        localsMap.put(l.getName(), l.getType());
     }
 
     public ArrayList<TypeNamePair> getLocals() {
@@ -46,5 +47,12 @@ public class MethodTable {
 
     public MJType getReturnType() {
         return returnType;
+    }
+
+    public MJType getType(String name) {
+        if(localsMap.containsKey(name)) {
+            return localsMap.get(name);
+        }
+        return paramsMap.get(name);
     }
 }

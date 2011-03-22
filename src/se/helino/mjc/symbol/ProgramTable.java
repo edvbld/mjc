@@ -2,6 +2,8 @@ package se.helino.mjc.symbol;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import se.helino.mjc.parser.MJType;
+import se.helino.mjc.parser.MJIdentifierType;
 
 public class ProgramTable {
     private ArrayList<ClassTable> classes = new ArrayList<ClassTable>();
@@ -29,5 +31,16 @@ public class ProgramTable {
 
     public ClassTable getClassTable(String name) {
         return classMap.get(name);
+    }
+
+    public boolean isNameOfClass(String name) {
+        return classMap.containsKey(name);
+    }
+
+    public MJType getType(String name) {
+        if(classMap.containsKey(name)) {
+            return new MJIdentifierType(name);
+        }
+        return null;
     }
 }

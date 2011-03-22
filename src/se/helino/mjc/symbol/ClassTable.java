@@ -2,9 +2,12 @@ package se.helino.mjc.symbol;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import se.helino.mjc.parser.MJType;
 
 public class ClassTable {
     private ArrayList<TypeNamePair> fields = new ArrayList<TypeNamePair>();
+    private HashMap<String, MJType> fieldsMap =
+        new HashMap<String, MJType>();
     private ArrayList<MethodTable> methods = new ArrayList<MethodTable>();
     private HashMap<String, MethodTable> methodMap = 
         new HashMap<String, MethodTable>();
@@ -16,6 +19,7 @@ public class ClassTable {
 
     public void addField(TypeNamePair f) {
         fields.add(f);
+        fieldsMap.put(f.getName(), f.getType());
     }
 
     public void addMethod(MethodTable m) {
@@ -37,5 +41,9 @@ public class ClassTable {
     
     public MethodTable getMethodTable(String name) {
         return methodMap.get(name);
+    }
+
+    public MJType getType(String name) {
+        return fieldsMap.get(name);
     }
 }
