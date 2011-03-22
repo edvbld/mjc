@@ -10,4 +10,8 @@ public class MJLess extends MJBinaryExpression implements Acceptable {
         v.visit(this);
     }
 
+    public MJType accept(TypeVisitor v) {
+        return v.visit(this);
+    }
+
 }

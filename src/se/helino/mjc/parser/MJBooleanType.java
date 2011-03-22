@@ -8,4 +8,5 @@ public class MJBooleanType implements MJType {
     public String toString() {
         return "boolean";
     }
+
 }

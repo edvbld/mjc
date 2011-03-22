@@ -27,4 +27,8 @@ public class MJIf implements MJStatement {
     public void accept(Visitor v) {
         v.visit(this);
     }
+
+    public void accept(TypeVisitor v) {
+        v.visit(this);
+    }
 }

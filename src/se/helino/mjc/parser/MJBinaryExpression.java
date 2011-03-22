@@ -18,4 +18,6 @@ public abstract class MJBinaryExpression implements MJExpression {
     }
 
     public abstract void accept(Visitor v);
+
+    public abstract MJType accept(TypeVisitor v);
 }

@@ -52,4 +52,8 @@ public class MJMethodDecl implements Acceptable {
     public void accept(Visitor v) {
         v.visit(this);
     }
+
+    public void accept(TypeVisitor v) {
+        v.visit(this);
+    }
 }

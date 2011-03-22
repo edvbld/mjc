@@ -14,4 +14,8 @@ public class MJIdentifier implements Acceptable {
     public void accept(Visitor v) {
         v.visit(this);
     }
+
+    public MJType accept(TypeVisitor v) {
+        return v.visit(this);
+    }
 }
