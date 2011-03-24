@@ -8,13 +8,13 @@ import java.io.File;
 import se.helino.mjc.frame.vm.*;
 import se.helino.mjc.parser.*;
 
-public class Formatter implements Visitor {
+public class JasminFormatter implements Visitor {
 
     PrintWriter out;
-    ProgramData data;
-    Record currentRecord;
-    Frame currentFrame;
     String basePath;
+    VMProgram program; 
+    VMRecord currentRecord;
+    VMFrame currentFrame;
 
     private String path(String name) {
         return basePath + File.separator + name;
@@ -27,42 +27,53 @@ public class Formatter implements Visitor {
                     new BufferedWriter(
                         new FileWriter(path(name))));
             return ret;
-        } catch (java.io.IOException e) {
-            // TODO: Handle this!
-            
-        }
+        } catch (java.io.IOException e) { }
         return null;
     }
 
-    private Access getAccess(String var) {
-        Access a;
-        if(currentFrame != null) { 
-            a = currentFrame.getAccess(var);
-            if(a != null) 
-                return a;
-        }
-        if(currentRecord != null) {
-            a = currentRecord.getAccess(var);
+    private VMAccess getAccess(String name) {
+        VMAccess a;
+        if(currentFrame != null) {
+            a = currentFrame.getAccess(name);
             if(a != null)
                 return a;
         }
-        throw new IllegalStateException("Could not find variable with name " 
-                                        + var);
+        if(currentRecord != null) {
+            a = currentRecord.getAccess(name);
+            if(a != null)
+                return a;
+        }
+        throw new IllegalStateException();
+    }
+
+    private void beginClass(String name) {
+        out = newFile(name);
+        currentRecord = program.getRecord(name);
+        out.println(".class " + name);
+        out.println(".super java/lang/Object");
+        out.println(".method public <init>()V");
+        out.println("aload_0");
+        out.println("invokespecial java/lang/Object/<init>()V");
+        out.println("return");
+        out.println(".end method");
     }
 
     public void visit(MJProgram n) { 
         n.getMJMainClass().accept(this);
+        for(MJClass c : n.getMJClasses()) {
+            c.accept(this);
+        }
     }
 
     public void visit(MJMainClass n) {
         String name = n.getClassId().getName();
-        out = newFile(name);
-        out.println(".class " + name);
-        out.println(".super java/lang/Object");
+        beginClass(name);
+
+        // Main method
+        currentFrame = currentRecord.getFrame("main");
         out.println(".method public static main([Ljava/lang/String;)V");
         out.println(".limit locals 1");
-        currentFrame = data.getRecord(name).getFrame("main");
-        out.println(".limit stack " + currentFrame.getStackSize());
+        out.println(".limit stack " + currentFrame.getStackLimit());
         for(MJStatement s : n.getStatements()) {
             s.accept(this);
         }
@@ -72,10 +83,9 @@ public class Formatter implements Visitor {
 
     public void visit(MJClass n) {
         String name = n.getId().getName();
-        out = newFile(name);
-        out.println(".class " + name);
-        out.println(".super java/lang/Object");
-        currentRecord = data.getRecord(name);
+        beginClass(name);
+
+        currentRecord = program.getRecord(name);
         for(MJVarDecl vd : n.getVariableDeclarations()) {
             vd.accept(this);
         }
@@ -85,13 +95,22 @@ public class Formatter implements Visitor {
         out.close();
     }
 
-    public void visit(MJVarDecl n) {
+    public void visit(MJVarDecl n) { 
         out.println(getAccess(n.getId().getName()).declare());
     }
-    
-    public void visit(MJMethodDecl n) {
-        out.println(".method public "); 
 
+    public void visit(MJMethodDecl n) {
+        String name = n.getId().getName();
+        currentFrame = currentRecord.getFrame(name);
+        out.print(".method public " + name + "("); 
+        out.print(".limit locals " + currentFrame.getLocalLimit());
+        out.print(".limit stack " + currentFrame.getStackLimit());
+        for(MJMethodArg arg : n.getArguments()) {
+        }
+        for(MJVarDecl vd : n.getBody().getMJVariableDeclarations()) {
+        }
+        for(MJStatement s : n.getBody().getMJStatements()) {
+        }
     }
     
     public void visit(MJCall n) {

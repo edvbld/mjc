@@ -4,42 +4,18 @@ import se.helino.mjc.parser.*;
 import se.helino.mjc.symbol.*;
 import se.helino.mjc.frame.vm.*;
 
-public class FrameBuilder implements Visitor {
-    private ProgramTable table;
-    private ProgramData data;
-    private Frame currentFrame;
-    private Record currentRecord;
+public class JVMInfoBuilder implements Visitor {
 
     public void visit(MJProgram n) { 
-        n.getMJMainClass().accept(this);
-        for(MJClass c : n.getMJClasses()) {
-            c.accept(this);
-        }
     }
 
     public void visit(MJMainClass n) {
-        currentFrame = data.newRecord(
-                n.getClassId().getName()).newFrame("main");
-        for(MJStatement s : n.getStatements()) {
-            s.accept(this);
-        }
     }
 
     public void visit(MJClass n) {
-        currentRecord = data.newRecord(n.getId().getName());
-        for(MJVarDecl vd : n.getVariableDeclarations()) {
-            currentRecord.addField(vd.getId().getName(), vd.getMJType());
-        }
-        for(MJMethodDecl m : n.getMethods()) {
-            m.accept(this);
-        }
     }
     
     public void visit(MJMethodDecl n) {
-        currentFrame = currentRecord.newFrame(n.getId().getName());
-        for(MJMethodArg a : n.getArguments()) {
-            currentFrame.addArgument(a.getId().getName(), a.getMJType());
-        }
     }
 
     public void visit(MJIdentifier n) { 
