@@ -81,6 +81,7 @@ public class JasminFormatter implements Visitor {
         for(MJStatement s : n.getStatements()) {
             s.accept(this);
         }
+        out.println("return");
         out.println(".end method");
         out.close();
     }
