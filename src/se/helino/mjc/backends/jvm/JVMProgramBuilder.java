@@ -4,15 +4,40 @@ import se.helino.mjc.parser.*;
 import se.helino.mjc.symbol.*;
 import se.helino.mjc.frame.vm.*;
 
-public class JVMInfoBuilder implements Visitor {
+public class JVMProgramBuilder implements Visitor {
+    private ProgramTable symbolTable;
+    private JVMRecord currentRecord;
+    private JVMFrame currentFrame;
+    private int stackLimit;
+
+    public JVMProgramBuilder(ProgramTable symbolTable) {
+        this.symbolTable = symbolTable;
+    }
 
     public void visit(MJProgram n) { 
+        n.getMJMainClass().accept(this);
+        for(MJClass c : n.getMJClasses()) {
+            c.accept(this);
+        }
     }
 
     public void visit(MJMainClass n) {
+        for(MJStatement s : n.getStatements()) {
+            n.accept(this);
+        }
+        symbolTable.setMainStackLimit(stackLimit);
     }
 
     public void visit(MJClass n) {
+        JVMRecord rec = new JVMRecord();
+        for(MJVarDecl vd : n.getVariableDeclarations()) {
+            String name = vd.getId().getName();
+            rec.addAccess(name, new JVMField(name, vd.getMJType()));
+        }
+        for(MJMethodDecl m : n.getMethods()) {
+            m.accept(this);
+        }
+
     }
     
     public void visit(MJMethodDecl n) {

@@ -3,6 +3,7 @@ package se.helino.mjc.symbol;
 import java.util.ArrayList;
 import java.util.HashMap;
 import se.helino.mjc.parser.MJType;
+import se.helino.mjc.frame.vm.VMRecord;
 
 public class ClassTable {
     private ArrayList<TypeNamePair> fields = new ArrayList<TypeNamePair>();
@@ -45,5 +46,9 @@ public class ClassTable {
 
     public MJType getType(String name) {
         return fieldsMap.get(name);
+    }
+
+    public VMRecord getVMRecord() {
+        return null;
     }
 }

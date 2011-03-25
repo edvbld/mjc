@@ -7,14 +7,15 @@ import java.io.File;
 
 import se.helino.mjc.frame.vm.*;
 import se.helino.mjc.parser.*;
+import se.helino.mjc.symbol.*;
 
 public class JasminFormatter implements Visitor {
 
     PrintWriter out;
     String basePath;
-    VMProgram program; 
-    VMRecord currentRecord;
-    VMFrame currentFrame;
+    ProgramTable symbolTable;
+    ClassTable currentClass;
+    MethodTable currentMethod;
 
     private String path(String name) {
         return basePath + File.separator + name;
@@ -33,13 +34,13 @@ public class JasminFormatter implements Visitor {
 
     private VMAccess getAccess(String name) {
         VMAccess a;
-        if(currentFrame != null) {
-            a = currentFrame.getAccess(name);
+        if(currentMethod != null) {
+            a = currentMethod.getVMFrame().getAccess(name);
             if(a != null)
                 return a;
         }
-        if(currentRecord != null) {
-            a = currentRecord.getAccess(name);
+        if(currentClass != null) {
+            a = currentClass.getVMRecord().getAccess(name);
             if(a != null)
                 return a;
         }
@@ -48,7 +49,6 @@ public class JasminFormatter implements Visitor {
 
     private void beginClass(String name) {
         out = newFile(name);
-        currentRecord = program.getRecord(name);
         out.println(".class " + name);
         out.println(".super java/lang/Object");
         out.println(".method public <init>()V");
@@ -70,10 +70,9 @@ public class JasminFormatter implements Visitor {
         beginClass(name);
 
         // Main method
-        currentFrame = currentRecord.getFrame("main");
         out.println(".method public static main([Ljava/lang/String;)V");
         out.println(".limit locals 1");
-        out.println(".limit stack " + currentFrame.getStackLimit());
+        out.println(".limit stack " + symbolTable.getMainStackLimit());
         for(MJStatement s : n.getStatements()) {
             s.accept(this);
         }
@@ -85,7 +84,7 @@ public class JasminFormatter implements Visitor {
         String name = n.getId().getName();
         beginClass(name);
 
-        currentRecord = program.getRecord(name);
+        currentClass = symbolTable.getClassTable(name);
         for(MJVarDecl vd : n.getVariableDeclarations()) {
             vd.accept(this);
         }
@@ -101,10 +100,11 @@ public class JasminFormatter implements Visitor {
 
     public void visit(MJMethodDecl n) {
         String name = n.getId().getName();
-        currentFrame = currentRecord.getFrame(name);
+        currentMethod = currentClass.getMethodTable(name);
+        VMFrame frame = currentMethod.getVMFrame();
         out.print(".method public " + name + "("); 
-        out.print(".limit locals " + currentFrame.getLocalLimit());
-        out.print(".limit stack " + currentFrame.getStackLimit());
+        out.print(".limit locals " + frame.getLocalLimit());
+        out.print(".limit stack " + frame.getStackLimit());
         for(MJMethodArg arg : n.getArguments()) {
         }
         for(MJVarDecl vd : n.getBody().getMJVariableDeclarations()) {
@@ -114,7 +114,6 @@ public class JasminFormatter implements Visitor {
     }
     
     public void visit(MJCall n) {
-        // FIND OUT CLASS OF n.getExpression()!
     }
 
     public void visit(MJIdentifier n) { 

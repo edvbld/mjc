@@ -168,6 +168,7 @@ public class SymbolTableChecker implements TypeVisitor {
         }
 
         MJIdentifierType obj = (MJIdentifierType) ret;
+        table.addCalleeType(n, obj);
 
         ClassTable ct = table.getClassTable(obj.getName());
         if(ct == null) {

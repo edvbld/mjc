@@ -3,6 +3,7 @@ package se.helino.mjc.symbol;
 import java.util.ArrayList;
 import java.util.HashMap;
 import se.helino.mjc.parser.MJType;
+import se.helino.mjc.frame.vm.VMFrame;
 
 public class MethodTable {
     private ArrayList<TypeNamePair> params = new ArrayList<TypeNamePair>();
@@ -54,5 +55,9 @@ public class MethodTable {
             return localsMap.get(name);
         }
         return paramsMap.get(name);
+    }
+
+    public VMFrame getVMFrame() {
+        return null;
     }
 }
