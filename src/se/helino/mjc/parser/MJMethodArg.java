@@ -20,4 +20,8 @@ public class MJMethodArg implements Acceptable {
     public void accept(Visitor v) {
         v.visit(this);
     }
+    
+    public int accept(IntVisitor v) {
+        return v.visit(this);
+    }
 }

@@ -18,4 +18,8 @@ public class MJIdentifierType implements MJType {
     public String toString() {
         return name;
     }
+    
+    public int accept(IntVisitor v) {
+        return v.visit(this);
+    }
 }

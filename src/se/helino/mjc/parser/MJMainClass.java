@@ -35,4 +35,8 @@ public class MJMainClass implements Acceptable {
     public void accept(TypeVisitor v) {
         v.visit(this);
     }
+
+    public int accept(IntVisitor v) {
+        return v.visit(this);
+    }
 }

@@ -13,4 +13,8 @@ public class MJMinus extends MJBinaryExpression {
     public MJType accept(TypeVisitor v) {
         return v.visit(this);
     }
+    
+    public int accept(IntVisitor v) {
+        return v.visit(this);
+    }
 }

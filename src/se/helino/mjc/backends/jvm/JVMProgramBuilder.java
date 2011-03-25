@@ -4,30 +4,33 @@ import se.helino.mjc.parser.*;
 import se.helino.mjc.symbol.*;
 import se.helino.mjc.frame.vm.*;
 
-public class JVMProgramBuilder implements Visitor {
+public class JVMProgramBuilder implements IntVisitor {
     private ProgramTable symbolTable;
     private ClassTable currentClass;
-    private int stackLimit;
+    private int maxStackLimit;
+
 
     public JVMProgramBuilder(ProgramTable symbolTable) {
         this.symbolTable = symbolTable;
     }
 
-    public void visit(MJProgram n) { 
+    public int visit(MJProgram n) { 
         n.getMJMainClass().accept(this);
         for(MJClass c : n.getMJClasses()) {
             c.accept(this);
         }
+        return 0;
     }
 
-    public void visit(MJMainClass n) {
+    public int visit(MJMainClass n) {
         for(MJStatement s : n.getStatements()) {
             s.accept(this);
         }
-        symbolTable.setMainStackLimit(stackLimit);
+        symbolTable.setMainStackLimit(maxStackLimit);
+        return 0;
     }
 
-    public void visit(MJClass n) {
+    public int visit(MJClass n) {
         JVMRecord rec = new JVMRecord();
         for(MJVarDecl vd : n.getVariableDeclarations()) {
             String name = vd.getId().getName();
@@ -38,10 +41,10 @@ public class JVMProgramBuilder implements Visitor {
             m.accept(this);
         }
         currentClass.setVMRecord(rec);
-
+        return 0;
     }
     
-    public void visit(MJMethodDecl n) {
+    public int visit(MJMethodDecl n) {
         JVMFrame frame = new JVMFrame();
         frame.addParameter("this", 
                 new JVMLocal(new MJIdentifierType(currentClass.getName())));
@@ -59,38 +62,92 @@ public class JVMProgramBuilder implements Visitor {
         for(MJStatement s : n.getBody().getMJStatements()) {
             s.accept(this);
         }
-        frame.setStackLimit(stackLimit);
+        frame.setStackLimit(maxStackLimit);
         currentClass.getMethodTable(n.getId().getName()).setVMFrame(frame);
+        return 0;
     }
 
-    public void visit(MJIdentifier n) { 
+    public int visit(MJIdentifier n) { 
+        return 1;
     }
-    public void visit(MJVarDecl n){}
-    public void visit(MJIntType n){}
-    public void visit(MJIntArrayType n){}
-    public void visit(MJBooleanType n){}
-    public void visit(MJIdentifierType n){}
-    public void visit(MJMethodArg n){}
-    public void visit(MJAssign n){}
-    public void visit(MJArrayAssign n){}
-    public void visit(MJIf n){}
-    public void visit(MJBlock n){}
-    public void visit(MJWhile n){}
-    public void visit(MJPrint n){}
-    public void visit(MJIdentifierExp n){}
-    public void visit(MJAnd n){}
-    public void visit(MJLess n){}
-    public void visit(MJPlus n){}
-    public void visit(MJMinus n){}
-    public void visit(MJTimes n){}
-    public void visit(MJNot n){}
-    public void visit(MJArrayLength n){}
-    public void visit(MJArrayLookup n){}
-    public void visit(MJCall n){}
-    public void visit(MJNewObject n){}
-    public void visit(MJNewArray n){}
-    public void visit(MJTrue n){}
-    public void visit(MJFalse n){}
-    public void visit(MJIntegerLiteral n){}
-    public void visit(MJThis n){}
+    public int visit(MJVarDecl n) { return 0; }
+    public int visit(MJIntType n){ return 0; }
+    public int visit(MJIntArrayType n){ return 0; }
+    public int visit(MJBooleanType n){ return 0; }
+    public int visit(MJIdentifierType n){ return 0; }
+    public int visit(MJMethodArg n){ return 0; }
+    public int visit(MJAssign n) {
+        int exp = n.getExpression().accept(this);
+        return exp + 1;
+    }
+
+    public int visit(MJArrayAssign n) {
+        return 0;
+    }
+    public int visit(MJIf n) {
+        int cond = n.getCondition().accept(this);
+        int t = n.getIfStatement().accept(this);
+        int f = n.getElseStatement().accept(this);
+        return cond;
+    }
+    public int visit(MJBlock n) {
+        return 0;
+    }
+    public int visit(MJWhile n) {
+        return 0;
+    }
+    public int visit(MJPrint n) { 
+        int exp = n.getExpression().accept(this);
+        return exp + 1;
+    }
+
+    public int visit(MJIdentifierExp n) {
+        return 1;
+    }
+
+    private int binaryExp(MJBinaryExpression n) {
+        int left = n.getLeft().accept(this);
+        int right = n.getRight().accept(this);
+        if(left > right)
+            return left;
+        else
+            return right + 1;
+    }
+
+    public int visit(MJAnd n){
+        return binaryExp(n);
+    }
+    public int visit(MJLess n) {
+        return binaryExp(n);
+    }
+    public int visit(MJPlus n) {
+        return binaryExp(n);
+    }
+    public int visit(MJMinus n) {
+        return binaryExp(n);
+    }
+    public int visit(MJTimes n) {
+        return binaryExp(n);
+    }
+    public int visit(MJNot n) {
+        int limit = n.getExpression().accept(this);
+        return limit + 1;
+    }
+    public int visit(MJArrayLength n){ return 0; }
+    public int visit(MJArrayLookup n){ return 0; }
+    public int visit(MJCall n){ return 0; }
+    public int visit(MJNewObject n){ return 0; }
+    public int visit(MJNewArray n){ return 0; }
+    public int visit(MJTrue n) {
+        return 1;
+    }
+    public int visit(MJFalse n) {
+        return 1;
+    }
+    public int visit(MJIntegerLiteral n) { 
+        return 1;
+    }
+    public int visit(MJThis n) {
+        return 1;
+    }
 }
