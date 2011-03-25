@@ -76,7 +76,8 @@ public class SymbolTableChecker implements TypeVisitor {
     }
     
     public void visit(MJPrint n) {
-        n.getExpression().accept(this);
+        MJType type = n.getExpression().accept(this);
+        table.addPrintParameterType(n, type);
     }
     
     public void visit(MJIf n) {

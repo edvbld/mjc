@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import se.helino.mjc.parser.MJType;
 import se.helino.mjc.parser.MJCall;
+import se.helino.mjc.parser.MJPrint;
 import se.helino.mjc.parser.MJIdentifierType;
 
 public class ProgramTable {
@@ -12,6 +13,8 @@ public class ProgramTable {
         new HashMap<String, ClassTable>();
     private HashMap<MJCall, MJIdentifierType> calleeTypes = 
         new HashMap<MJCall, MJIdentifierType>();
+    private HashMap<MJPrint, MJType> printParams = 
+        new HashMap<MJPrint, MJType>();
     private String mainClassName;
     private int mainStackLimit;
 
@@ -53,6 +56,14 @@ public class ProgramTable {
 
     public MJIdentifierType getCalleeType(MJCall n) {
         return calleeTypes.get(n);
+    }
+
+    public void addPrintParameterType(MJPrint n, MJType t) {
+        printParams.put(n, t);
+    }
+
+    public MJType getPrintParameterType(MJPrint n) {
+        return printParams.get(n);
     }
 
     public void setMainStackLimit(int n) {

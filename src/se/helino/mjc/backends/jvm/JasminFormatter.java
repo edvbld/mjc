@@ -127,9 +127,29 @@ public class JasminFormatter implements Visitor {
         for(MJStatement s : n.getBody().getMJStatements()) {
             s.accept(this);
         }
+        out.println(".end method");
     }
     
     public void visit(MJCall n) {
+        n.getExpression().accept(this); 
+        for(MJExpression e : n.getParameters()) {
+            e.accept(this);
+        }
+        MJIdentifierType callee = symbolTable.getCalleeType(n);
+        MethodTable mt = symbolTable.getClassTable(callee.getName()).
+                                     getMethodTable(n.getMethodId().getName());
+        StringBuffer sb = new StringBuffer();
+        sb.append("invokevirtual ").
+           append(callee.toString()).
+           append("/").
+           append(mt.getName()).
+           append("(");
+        for(TypeNamePair tp : mt.getParams()) {
+            sb.append(Utils.convertType(tp.getType()));
+        }
+        sb.append(")");
+        sb.append(Utils.convertType(mt.getReturnType()));
+        out.println(sb.toString());
     }
 
     public void visit(MJIdentifier n) { 
@@ -144,7 +164,13 @@ public class JasminFormatter implements Visitor {
     public void visit(MJIf n) { }
     public void visit(MJBlock n) { }
     public void visit(MJWhile n) { }
-    public void visit(MJPrint n) { }
+    public void visit(MJPrint n) {
+        out.println("getstatic java/lang/System/out L/java/io/PrintStream;");
+        n.getExpression().accept(this);
+        MJType param = symbolTable.getPrintParameterType(n);
+        out.println("invokevirtual java/io/PrintStream/println(" + 
+                    Utils.convertType(param) + ")V");
+    }
     public void visit(MJIdentifierExp n) { }
     public void visit(MJAnd n) { }
     public void visit(MJLess n) { }
@@ -154,10 +180,20 @@ public class JasminFormatter implements Visitor {
     public void visit(MJNot n) { }
     public void visit(MJArrayLength n){}
     public void visit(MJArrayLookup n){}
-    public void visit(MJNewObject n){}
+    public void visit(MJNewObject n) { 
+        String name = n.getId().getName();
+        out.println("new " + name);
+        out.println("dup");
+        out.println("invokespecial " + name + "/<init>()V");
+    }
     public void visit(MJNewArray n){}
     public void visit(MJTrue n){}
     public void visit(MJFalse n){}
-    public void visit(MJIntegerLiteral n){}
+    public void visit(MJIntegerLiteral n) { 
+        if(n.getValue() <= 5)
+            out.println("iconst_" + n.getValue());
+        else
+            out.println("sipush " + n.getValue());
+    }
     public void visit(MJThis n){}
 }
