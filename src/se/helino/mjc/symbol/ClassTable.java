@@ -13,6 +13,7 @@ public class ClassTable {
     private HashMap<String, MethodTable> methodMap = 
         new HashMap<String, MethodTable>();
     private String name;
+    private VMRecord vmRec;
     
     public ClassTable(String name) {
         this.name = name;
@@ -49,6 +50,10 @@ public class ClassTable {
     }
 
     public VMRecord getVMRecord() {
-        return null;
+        return vmRec;
+    }
+
+    public void setVMRecord(VMRecord r) {
+        vmRec = r;
     }
 }

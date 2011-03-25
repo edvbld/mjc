@@ -8,12 +8,20 @@ public class JVMLocal implements VMAccess {
     private int num;
     private MJType type;
     private boolean isThis;
+   
+    // For the this variable
+    public JVMLocal(MJType type) {
+        this.type = type;
+        isThis = true;
+        num = 0;
+    }
 
-    public JVMLocal(String name, MJType type, int num, boolean isThis) {
+    // For all other variables
+    public JVMLocal(String name, MJType type, int num) {
         this.name = name;
         this.type = type;
         this.num = num;
-        this.isThis = isThis;
+        this.isThis = false;
     }
 
     public String load() {
@@ -26,9 +34,11 @@ public class JVMLocal implements VMAccess {
 
     public String declare() {
         StringBuffer sb = new StringBuffer();
-        sb.append(".var ").append(num).append(" is ").append(name).append(" ");
+        sb.append(".var ").append(num).append(" is ");
         if(isThis)
             sb.append("<this> ");
+        else
+            sb.append(name).append(" ");
         sb.append(Utils.convertType(type));
         sb.append(";");
         return sb.toString();

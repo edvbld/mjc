@@ -14,6 +14,7 @@ public class MethodTable {
         new HashMap<String, MJType>();
     private MJType returnType;
     private String name;
+    private VMFrame vmFrame;
 
     public MethodTable(MJType returnType, String name) {
         this.returnType = returnType;
@@ -58,6 +59,10 @@ public class MethodTable {
     }
 
     public VMFrame getVMFrame() {
-        return null;
+        return vmFrame;
+    }
+
+    public void setVMFrame(VMFrame f) {
+        vmFrame = f;
     }
 }

@@ -6,8 +6,7 @@ import se.helino.mjc.frame.vm.*;
 
 public class JVMProgramBuilder implements Visitor {
     private ProgramTable symbolTable;
-    private JVMRecord currentRecord;
-    private JVMFrame currentFrame;
+    private ClassTable currentClass;
     private int stackLimit;
 
     public JVMProgramBuilder(ProgramTable symbolTable) {
@@ -23,7 +22,7 @@ public class JVMProgramBuilder implements Visitor {
 
     public void visit(MJMainClass n) {
         for(MJStatement s : n.getStatements()) {
-            n.accept(this);
+            s.accept(this);
         }
         symbolTable.setMainStackLimit(stackLimit);
     }
@@ -34,13 +33,34 @@ public class JVMProgramBuilder implements Visitor {
             String name = vd.getId().getName();
             rec.addAccess(name, new JVMField(name, vd.getMJType()));
         }
+        currentClass = symbolTable.getClassTable(n.getId().getName());
         for(MJMethodDecl m : n.getMethods()) {
             m.accept(this);
         }
+        currentClass.setVMRecord(rec);
 
     }
     
     public void visit(MJMethodDecl n) {
+        JVMFrame frame = new JVMFrame();
+        frame.addParameter("this", 
+                new JVMLocal(new MJIdentifierType(currentClass.getName())));
+        int num = 1;
+        for(MJMethodArg arg : n.getArguments()) {
+            String name = arg.getId().getName();
+            frame.addParameter(name, new JVMLocal(name, arg.getMJType(), num));
+            num++;
+        }
+        for(MJVarDecl vd : n.getBody().getMJVariableDeclarations()) {
+            String name = vd.getId().getName();
+            frame.addParameter(name, new JVMLocal(name, vd.getMJType(), num));
+            num++;
+        }
+        for(MJStatement s : n.getBody().getMJStatements()) {
+            s.accept(this);
+        }
+        frame.setStackLimit(stackLimit);
+        currentClass.getMethodTable(n.getId().getName()).setVMFrame(frame);
     }
 
     public void visit(MJIdentifier n) { 

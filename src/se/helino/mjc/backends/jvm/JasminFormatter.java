@@ -17,8 +17,13 @@ public class JasminFormatter implements Visitor {
     ClassTable currentClass;
     MethodTable currentMethod;
 
+    public JasminFormatter(ProgramTable symbolTable) {
+        this.symbolTable = symbolTable;
+        basePath = ".";
+    }
+
     private String path(String name) {
-        return basePath + File.separator + name;
+        return basePath + File.separator + name + ".j";
     }
 
     private PrintWriter newFile(String name) {
@@ -52,9 +57,9 @@ public class JasminFormatter implements Visitor {
         out.println(".class " + name);
         out.println(".super java/lang/Object");
         out.println(".method public <init>()V");
-        out.println("aload_0");
-        out.println("invokespecial java/lang/Object/<init>()V");
-        out.println("return");
+        out.println("\taload_0");
+        out.println("\tinvokespecial java/lang/Object/<init>()V");
+        out.println("\treturn");
         out.println(".end method");
     }
 
@@ -89,7 +94,7 @@ public class JasminFormatter implements Visitor {
             vd.accept(this);
         }
         for(MJMethodDecl m : n.getMethods()) {
-            n.accept(this);
+            m.accept(this);
         }
         out.close();
     }
@@ -103,13 +108,23 @@ public class JasminFormatter implements Visitor {
         currentMethod = currentClass.getMethodTable(name);
         VMFrame frame = currentMethod.getVMFrame();
         out.print(".method public " + name + "("); 
-        out.print(".limit locals " + frame.getLocalLimit());
-        out.print(".limit stack " + frame.getStackLimit());
-        for(MJMethodArg arg : n.getArguments()) {
+        for(TypeNamePair p : currentMethod.getParams()) {
+            out.print(Utils.convertType(p.getType()));
+            out.print(";");
         }
-        for(MJVarDecl vd : n.getBody().getMJVariableDeclarations()) {
+        out.print(")");
+        out.println(Utils.convertType(currentMethod.getReturnType()));
+        out.println(".limit locals " + frame.getLocalLimit());
+        out.println(".limit stack " + frame.getStackLimit());
+        out.println(getAccess("this").declare());
+        for(TypeNamePair p : currentMethod.getParams()) {
+            out.println(getAccess(p.getName()).declare());
+        }
+        for(TypeNamePair p : currentMethod.getLocals()) {
+            out.println(getAccess(p.getName()).declare());
         }
         for(MJStatement s : n.getBody().getMJStatements()) {
+            s.accept(this);
         }
     }
     

@@ -11,6 +11,9 @@ import se.helino.mjc.symbol.SymbolTableChecker;
 import se.helino.mjc.symbol.ProgramTable;
 import se.helino.mjc.symbol.SymbolTablePrinter;
 
+import se.helino.mjc.backends.jvm.JVMProgramBuilder;
+import se.helino.mjc.backends.jvm.JasminFormatter;
+
 public class Main {
     public static void main(String[] args) {
         if(args.length == 0 || args.length > 1) {
@@ -40,6 +43,8 @@ public class Main {
                         System.out.println("Error: " + error);
                     }
                 } else {
+                    new JVMProgramBuilder(pt).visit(p);
+                    new JasminFormatter(pt).visit(p);
                     System.out.println("Compilation done!");
                 }
             }
