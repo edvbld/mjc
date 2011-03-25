@@ -6,18 +6,19 @@
     <property name="manifest" value="${build}/MANIFEST.MF" />
 
     <target name="setup">
-        <delete dir="${build}" />
-        <delete dir="${dist}" />
         <mkdir dir="${build}" />
         <mkdir dir="${build}/src" />
         <mkdir dir="${dist}" />
     </target>
 
     <target name="javacc" depends="setup">
-        <javacc target="${src}/se/helino/mjc/parser/MJParser.jj" 
+        <copy file="${src}/se/helino/mjc/parser/MJParser.jj" 
+              todir="${build}/src/" />
+        <javacc target="${build}/src/MJParser.jj" 
                 outputdirectory="${build}/src/" 
                 javacchome="${javacc.home}" />
     </target>
+
     <target name="compile" depends="javacc">
         <javac srcdir="${src};${build}/src" destdir="${build}" />
     </target>
