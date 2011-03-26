@@ -16,6 +16,7 @@ public class JasminFormatter implements Visitor {
     ProgramTable symbolTable;
     ClassTable currentClass;
     MethodTable currentMethod;
+    String activeIfLabel;
 
     public JasminFormatter(ProgramTable symbolTable) {
         this.symbolTable = symbolTable;
@@ -127,6 +128,9 @@ public class JasminFormatter implements Visitor {
         for(MJStatement s : n.getBody().getMJStatements()) {
             s.accept(this);
         }
+        n.getReturnExpression().accept(this);
+        out.println(Utils.toTypePrefix(currentMethod.getReturnType()) + 
+                    "return");
         out.println(".end method");
     }
     
@@ -159,9 +163,33 @@ public class JasminFormatter implements Visitor {
     public void visit(MJBooleanType n) { }
     public void visit(MJIdentifierType n) { }
     public void visit(MJMethodArg n) { }
-    public void visit(MJAssign n) { }
+    public void visit(MJAssign n) {
+        n.getExpression().accept(this);
+        out.println(getAccess(n.getId().getName()).store());
+    }
     public void visit(MJArrayAssign n) { }
-    public void visit(MJIf n) { }
+    public void visit(MJIf n) { 
+        if(n.getCondition() instanceof MJTrue) {
+            n.getIfStatement().accept(this);
+        } else if(n.getCondition() instanceof MJFalse) {
+            n.getElseStatement().accept(this);
+        } else {
+            String ifLabel = Utils.createLabel();
+            String uniteLabel = Utils.createLabel();
+            activeIfLabel = ifLabel;
+            
+            MJExpression cond = n.getCondition();
+            cond.accept(this);
+            n.getElseStatement().accept(this);
+            out.println("goto " + uniteLabel);
+            
+            out.println(ifLabel + ":");
+            n.getIfStatement().accept(this);
+           
+            out.println(uniteLabel + ":");
+        }
+    }
+
     public void visit(MJBlock n) { }
     public void visit(MJWhile n) { }
     public void visit(MJPrint n) {
@@ -171,9 +199,28 @@ public class JasminFormatter implements Visitor {
         out.println("invokevirtual java/io/PrintStream/println(" + 
                     Utils.convertType(param) + ")V");
     }
-    public void visit(MJIdentifierExp n) { }
+    public void visit(MJIdentifierExp n) { 
+        out.println(getAccess(n.getName()).load());
+    }
     public void visit(MJAnd n) { }
-    public void visit(MJLess n) { }
+    public void visit(MJLess n) {
+        String label = activeIfLabel;
+        activeIfLabel = null;
+        n.getLeft().accept(this);
+        n.getRight().accept(this);
+        if(label != null)
+            out.println("if_icmplt " + label);
+        else {
+            label = Utils.createLabel();
+            String unite = Utils.createLabel();
+            out.println("if_icmplt " + label);
+            out.println("iconst_0");
+            out.println("goto " + unite);
+            out.println(label + ":");
+            out.println("iconst_1");
+            out.println(unite + ":");
+        }
+    }
     public void visit(MJPlus n) { }
     public void visit(MJMinus n) { }
     public void visit(MJTimes n) { }
