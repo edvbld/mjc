@@ -16,7 +16,7 @@ public class JasminFormatter implements Visitor {
     ProgramTable symbolTable;
     ClassTable currentClass;
     MethodTable currentMethod;
-    String activeIfLabel;
+    String activeConditionLabel;
 
     public JasminFormatter(ProgramTable symbolTable) {
         this.symbolTable = symbolTable;
@@ -159,13 +159,6 @@ public class JasminFormatter implements Visitor {
         out.println(sb.toString());
     }
 
-    public void visit(MJIdentifier n) { 
-    }
-    public void visit(MJIntType n) { }
-    public void visit(MJIntArrayType n) { }
-    public void visit(MJBooleanType n) { }
-    public void visit(MJIdentifierType n) { }
-    public void visit(MJMethodArg n) { }
     public void visit(MJAssign n) {
         n.getExpression().accept(this);
         out.println(getAccess(n.getId().getName()).store());
@@ -179,7 +172,7 @@ public class JasminFormatter implements Visitor {
         } else {
             String ifLabel = Utils.createLabel();
             String uniteLabel = Utils.createLabel();
-            activeIfLabel = ifLabel;
+            activeConditionLabel = ifLabel;
             
             MJExpression cond = n.getCondition();
             cond.accept(this);
@@ -193,8 +186,17 @@ public class JasminFormatter implements Visitor {
         }
     }
 
-    public void visit(MJBlock n) { }
-    public void visit(MJWhile n) { }
+    public void visit(MJBlock n) {
+        for(MJStatement s : n.getStatements()) {
+            s.accept(this);
+        }
+    }
+
+    public void visit(MJWhile n) { 
+        if(n.getCondition() instanceof MJFalse)
+            return;
+    }
+
     public void visit(MJPrint n) {
         out.println("getstatic java/lang/System/out Ljava/io/PrintStream;");
         n.getExpression().accept(this);
@@ -202,13 +204,35 @@ public class JasminFormatter implements Visitor {
         out.println("invokevirtual java/io/PrintStream/println(" + 
                     Utils.convertType(param) + ")V");
     }
+
     public void visit(MJIdentifierExp n) { 
         out.println(getAccess(n.getName()).load());
     }
-    public void visit(MJAnd n) { }
+
+    public void visit(MJAnd n) { 
+        String label = activeConditionLabel;
+        activeConditionLabel = null;
+        n.getLeft().accept(this);
+        n.getRight().accept(this);
+        out.println("imul");
+        out.println("iconst_1");
+        if(label != null)
+            out.println("if_icmpeq " + label);
+        else {
+            label = Utils.createLabel();
+            String unite = Utils.createLabel();
+            out.println("if_icmpeq " + label);
+            out.println("iconst_0");
+            out.println("goto " + unite);
+            out.println(label + ":");
+            out.println("iconst_1");
+            out.println(unite + ":");
+        }
+    }
+
     public void visit(MJLess n) {
-        String label = activeIfLabel;
-        activeIfLabel = null;
+        String label = activeConditionLabel;
+        activeConditionLabel = null;
         n.getLeft().accept(this);
         n.getRight().accept(this);
         if(label != null)
@@ -224,7 +248,11 @@ public class JasminFormatter implements Visitor {
             out.println(unite + ":");
         }
     }
-    public void visit(MJPlus n) { }
+    public void visit(MJPlus n) {
+        n.getLeft().accept(this);
+        n.getRight().accept(this);
+        out.println("iadd");
+    }
     public void visit(MJMinus n) {
         n.getLeft().accept(this);
         n.getRight().accept(this);
@@ -235,25 +263,72 @@ public class JasminFormatter implements Visitor {
         n.getRight().accept(this);
         out.println("imul");
     }
-    public void visit(MJNot n) { }
-    public void visit(MJArrayLength n){}
-    public void visit(MJArrayLookup n){}
+
+    public void visit(MJNot n) {
+        String label = activeConditionLabel;
+        activeConditionLabel = null;
+        n.getExpression().accept(this);
+        out.println("iconst_0");
+        if(label != null)
+            out.println("if_icmpeq " + label);
+        else {
+            label = Utils.createLabel();
+            String unite = Utils.createLabel();
+            out.println("if_icmpeq " + label);
+            out.println("iconst_0");
+            out.println("goto " + unite);
+            out.println(label + ":");
+            out.println("iconst_1");
+            out.println(unite + ":");
+        }
+    }
+
+    public void visit(MJArrayLength n) {
+        n.getExpression().accept(this);
+        out.println("arraylength");
+    }
+
+    public void visit(MJArrayLookup n) {
+        n.getLeft().accept(this);
+        n.getRight().accept(this);
+        out.println("iaload");
+    }
+
     public void visit(MJNewObject n) { 
         String name = n.getId().getName();
         out.println("new " + name);
         out.println("dup");
         out.println("invokespecial " + name + "/<init>()V");
     }
-    public void visit(MJNewArray n){}
-    public void visit(MJTrue n){}
-    public void visit(MJFalse n){}
+
+    public void visit(MJNewArray n) {
+        n.getExpression().accept(this);
+        out.println("newarray int");
+    }
+
+    public void visit(MJTrue n) {
+        out.println("iconst_1");
+    }
+
+    public void visit(MJFalse n) {
+        out.println("iconst_0");
+    }
+
     public void visit(MJIntegerLiteral n) { 
         if(n.getValue() <= 5)
             out.println("iconst_" + n.getValue());
         else
             out.println("sipush " + n.getValue());
     }
+
     public void visit(MJThis n) {
         out.println("aload 0");
     }
+    
+    public void visit(MJIdentifier n) { }
+    public void visit(MJIntType n) { }
+    public void visit(MJIntArrayType n) { }
+    public void visit(MJBooleanType n) { }
+    public void visit(MJIdentifierType n) { }
+    public void visit(MJMethodArg n) { }
 }
