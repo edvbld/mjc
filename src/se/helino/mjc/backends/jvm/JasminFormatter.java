@@ -196,6 +196,15 @@ public class JasminFormatter implements Visitor {
     public void visit(MJWhile n) { 
         if(n.getCondition() instanceof MJFalse)
             return;
+        String condLabel = Utils.createLabel();
+        String uniteLabel = Utils.createLabel();
+        activeConditionLabel = uniteLabel;
+        negateActiveCondition = true;
+        out.println(condLabel + ":");
+        n.getCondition().accept(this);
+        n.getStatement().accept(this);
+        out.println("goto " + condLabel);
+        out.println(uniteLabel + ":");
     }
 
     public void visit(MJPrint n) {
