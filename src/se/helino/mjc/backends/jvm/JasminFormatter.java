@@ -110,9 +110,12 @@ public class JasminFormatter implements Visitor {
         currentMethod = currentClass.getMethodTable(name);
         VMFrame frame = currentMethod.getVMFrame();
         out.print(".method public " + name + "("); 
+        boolean moreThanOneParameter = false;
         for(TypeNamePair p : currentMethod.getParams()) {
             out.print(Utils.convertType(p.getType()));
-            out.print(";");
+            if(moreThanOneParameter)
+                out.print(";");
+            moreThanOneParameter = true;
         }
         out.print(")");
         out.println(Utils.convertType(currentMethod.getReturnType()));
@@ -193,7 +196,7 @@ public class JasminFormatter implements Visitor {
     public void visit(MJBlock n) { }
     public void visit(MJWhile n) { }
     public void visit(MJPrint n) {
-        out.println("getstatic java/lang/System/out L/java/io/PrintStream;");
+        out.println("getstatic java/lang/System/out Ljava/io/PrintStream;");
         n.getExpression().accept(this);
         MJType param = symbolTable.getPrintParameterType(n);
         out.println("invokevirtual java/io/PrintStream/println(" + 
@@ -222,8 +225,16 @@ public class JasminFormatter implements Visitor {
         }
     }
     public void visit(MJPlus n) { }
-    public void visit(MJMinus n) { }
-    public void visit(MJTimes n) { }
+    public void visit(MJMinus n) {
+        n.getLeft().accept(this);
+        n.getRight().accept(this);
+        out.println("isub");
+    }
+    public void visit(MJTimes n) {
+        n.getLeft().accept(this);
+        n.getRight().accept(this);
+        out.println("imul");
+    }
     public void visit(MJNot n) { }
     public void visit(MJArrayLength n){}
     public void visit(MJArrayLookup n){}
@@ -242,5 +253,7 @@ public class JasminFormatter implements Visitor {
         else
             out.println("sipush " + n.getValue());
     }
-    public void visit(MJThis n){}
+    public void visit(MJThis n) {
+        out.println("aload 0");
+    }
 }

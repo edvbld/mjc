@@ -2,6 +2,7 @@ package se.helino.mjc.backends.jvm;
 
 import se.helino.mjc.frame.vm.*;
 import se.helino.mjc.parser.MJType;
+import se.helino.mjc.parser.MJIdentifierType;
 
 public class JVMLocal implements VMAccess {
     private String name;
@@ -40,7 +41,8 @@ public class JVMLocal implements VMAccess {
         else
             sb.append(name).append(" ");
         sb.append(Utils.convertType(type));
-        sb.append(";");
+        if(type instanceof MJIdentifierType)
+            sb.append(";");
         return sb.toString();
     }
 }
