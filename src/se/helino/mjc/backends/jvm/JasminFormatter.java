@@ -17,6 +17,7 @@ public class JasminFormatter implements Visitor {
     ClassTable currentClass;
     MethodTable currentMethod;
     String activeConditionLabel;
+    boolean negateActiveCondition;
 
     public JasminFormatter(ProgramTable symbolTable) {
         this.symbolTable = symbolTable;
@@ -217,7 +218,12 @@ public class JasminFormatter implements Visitor {
         out.println("imul");
         out.println("iconst_1");
         if(label != null)
-            out.println("if_icmpeq " + label);
+            if(negateActiveCondition) {
+                out.println("if_icmpne " + label);
+                negateActiveCondition = false;
+            } else {
+                out.println("if_icmpeq " + label);
+            }
         else {
             label = Utils.createLabel();
             String unite = Utils.createLabel();
@@ -235,8 +241,13 @@ public class JasminFormatter implements Visitor {
         activeConditionLabel = null;
         n.getLeft().accept(this);
         n.getRight().accept(this);
-        if(label != null)
-            out.println("if_icmplt " + label);
+        if(label != null) {
+            if(negateActiveCondition) {
+                out.println("if_icmpge " + label);
+            } else {
+                out.println("if_icmplt " + label);
+            }
+        }
         else {
             label = Utils.createLabel();
             String unite = Utils.createLabel();
@@ -270,7 +281,12 @@ public class JasminFormatter implements Visitor {
         n.getExpression().accept(this);
         out.println("iconst_0");
         if(label != null)
-            out.println("if_icmpeq " + label);
+            if(negateActiveCondition) {
+                out.println("if_icmpne " + label);
+                negateActiveCondition = false;
+            } else {
+                out.println("if_icmpeq " + label);
+            }
         else {
             label = Utils.createLabel();
             String unite = Utils.createLabel();
