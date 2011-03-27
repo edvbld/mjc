@@ -10,19 +10,13 @@ public class SymbolTableBuilder implements Visitor {
     private ClassTable current;
     private ArrayList<String> errors = new ArrayList<String>();
 
-    public ProgramTable build(MJProgram program) {
+    public ProgramTable build(MJProgram program) throws MJTypeException {
         String mcName = program.getMJMainClass().getClassId().getName();
         table = new ProgramTable(mcName);
         program.accept(this);
+        if(errors.size() != 0)
+            throw new MJTypeException(errors);
         return table;
-    }
-    
-    public boolean hasErrors() {
-        return errors.size() != 0;
-    }
-
-    public ArrayList<String> getErrors() {
-        return errors;
     }
 
     public void visit(MJProgram n) {

@@ -9,20 +9,14 @@ public class SymbolTableChecker implements TypeVisitor {
     private MethodTable currentMethod;
     private ArrayList<String> errors = new ArrayList<String>();
 
-    public boolean hasErrors() {
-        return errors.size() != 0;
-    }
-
-    public ArrayList<String> getErrors() {
-        return errors;
-    }
-
     public SymbolTableChecker(ProgramTable table) {
        this.table = table; 
     }
 
-    public void check(MJProgram n) {
+    public void check(MJProgram n) throws MJTypeException {
         n.accept(this);
+        if(errors.size() != 0)
+            throw new MJTypeException(errors);
     }
 
     public void visit(MJProgram n) { 

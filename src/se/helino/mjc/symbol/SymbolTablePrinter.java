@@ -1,7 +1,14 @@
 package se.helino.mjc.symbol;
 
+import java.io.PrintWriter;
+
 public class SymbolTablePrinter {
     private int indentation = 0;
+    private PrintWriter out;
+
+    public SymbolTablePrinter(PrintWriter out) {
+        this.out = out;
+    }
 
     private String indent() {
         StringBuilder sb = new StringBuilder();
@@ -15,16 +22,16 @@ public class SymbolTablePrinter {
     }
 
     private void indentPrintLn(String s) {
-        System.out.println(indent() + s);
+        out.println(indent() + s);
     }
     
     private void indentPrint(String s) {
-        System.out.print(indent() + s);
+        out.print(indent() + s);
     }
 
     public void print(ProgramTable table) {
-        System.out.println("Main class: " + table.getMainClassName());
-        System.out.println();
+        out.println("Main class: " + table.getMainClassName());
+        out.println();
         indentation++;
         for(ClassTable ct : table.getClasses()) {
             printClassTable(ct);
@@ -39,7 +46,7 @@ public class SymbolTablePrinter {
         indentation++;
         for(TypeNamePair tp : ct.getFields()) {
             indentPrint(tp.getType().toString());
-            System.out.println(" " + tp.getName());
+            out.println(" " + tp.getName());
         }
         indentation--;
         indentPrintLn("Methods:");
@@ -53,20 +60,20 @@ public class SymbolTablePrinter {
 
     private void printMethodTable(MethodTable mt) { 
         indentPrint(mt.getReturnType().toString());
-        System.out.println(" " + mt.getName());
+        out.println(" " + mt.getName());
         indentation++;
         indentPrintLn("Parameters:");
         indentation++;
         for(TypeNamePair tp : mt.getParams()) {
             indentPrint(tp.getType().toString());
-            System.out.println(" " + tp.getName());
+            out.println(" " + tp.getName());
         }
         indentation--;
         indentPrintLn("Locals:");
         indentation++;
         for(TypeNamePair tp : mt.getLocals()) {
             indentPrint(tp.getType().toString());
-            System.out.println(" " + tp.getName());
+            out.println(" " + tp.getName());
         }
         indentation--;
         indentation--;

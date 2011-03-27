@@ -1,9 +1,22 @@
 package se.helino.mjc.parser;
 
 import java.lang.StringBuilder;
+import java.io.PrintWriter;
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.File;
 
 public class SyntaxPrinter implements Visitor {
     private int indentation = 0;
+    private PrintWriter out;
+
+    public SyntaxPrinter(PrintWriter out) {
+        this.out = out;
+    }
+
+    public void print(MJProgram p) {
+        p.accept(this);
+    }
     
     private String indent() {
         StringBuilder sb = new StringBuilder();
@@ -14,11 +27,11 @@ public class SyntaxPrinter implements Visitor {
     }
 
     private void println(String s) {
-        System.out.println(indent() + s);
+        out.println(indent() + s);
     }
 
     private void print(String s) {
-        System.out.print(indent() + s);
+        out.print(indent() + s);
     }
 
     public void visit(MJProgram n) {
@@ -60,8 +73,8 @@ public class SyntaxPrinter implements Visitor {
 
     public void visit(MJIdentifier n) {
         print("(Identifier [ ");
-        System.out.print(n.getName());
-        System.out.println(" ]");
+        out.print(n.getName());
+        out.println(" ]");
         println(")");
     }
     
@@ -91,8 +104,8 @@ public class SyntaxPrinter implements Visitor {
 
     public void visit(MJIdentifierType n) {
         print("(IdentifierType [ ");
-        System.out.print(n.getName());
-        System.out.println(" ]");
+        out.print(n.getName());
+        out.println(" ]");
         println(")");
     }
 
@@ -181,8 +194,8 @@ public class SyntaxPrinter implements Visitor {
     
     public void visit(MJIdentifierExp n) {
         print("(IdentifierExp [ ");
-        System.out.print(n.getName());
-        System.out.println(" ]");
+        out.print(n.getName());
+        out.println(" ]");
         println(")");
     }
     
@@ -237,8 +250,8 @@ public class SyntaxPrinter implements Visitor {
 
     public void visit(MJCall n) {
         print("(Call [ ");
-        System.out.print(n.getMethodId().getName());
-        System.out.println(" ]");
+        out.print(n.getMethodId().getName());
+        out.println(" ]");
         indentation++;
         n.getExpression().accept(this);
         n.getMethodId().accept(this);
@@ -277,8 +290,8 @@ public class SyntaxPrinter implements Visitor {
 
     public void visit(MJIntegerLiteral n) {
         print("(IntegerLiteral [ ");
-        System.out.print(n.getValue());
-        System.out.println(" ]");
+        out.print(n.getValue());
+        out.println(" ]");
         println(")");
     }
 

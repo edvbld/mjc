@@ -5,6 +5,8 @@ import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.File;
 
+import java.util.ArrayList;
+
 import se.helino.mjc.frame.vm.*;
 import se.helino.mjc.parser.*;
 import se.helino.mjc.symbol.*;
@@ -18,10 +20,11 @@ public class JasminFormatter implements Visitor {
     MethodTable currentMethod;
     String activeConditionLabel;
     boolean negateActiveCondition;
+    ArrayList<String> filenames = new ArrayList<String>();
 
-    public JasminFormatter(ProgramTable symbolTable) {
+    public JasminFormatter(String basePath, ProgramTable symbolTable) {
         this.symbolTable = symbolTable;
-        basePath = ".";
+        this.basePath = basePath;
     }
 
     private String path(String name) {
@@ -31,11 +34,16 @@ public class JasminFormatter implements Visitor {
     private PrintWriter newFile(String name) {
         PrintWriter ret;
         try{
+            String fname = path(name);
+            filenames.add(fname);
             ret = new PrintWriter(
                     new BufferedWriter(
-                        new FileWriter(path(name))));
+                        new FileWriter(fname)));
             return ret;
-        } catch (java.io.IOException e) { }
+        } catch (java.io.IOException e) { 
+            System.out.println("IOException in JasminFormatter!");
+            System.out.println(e.toString());
+        }
         return null;
     }
 
@@ -63,6 +71,11 @@ public class JasminFormatter implements Visitor {
         out.println("\tinvokespecial java/lang/Object/<init>()V");
         out.println("\treturn");
         out.println(".end method");
+    }
+
+    public ArrayList<String> generate(MJProgram p) {
+        p.accept(this);
+        return filenames;
     }
 
     public void visit(MJProgram n) { 

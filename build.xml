@@ -4,10 +4,15 @@
     <property name="build" value="build" />
     <property name="dist" value="dist" />
     <property name="manifest" value="${build}/MANIFEST.MF" />
+    <path id="classpath">
+        <pathelement location="lib/jasmin.jar" />
+    </path>
 
     <target name="setup">
         <mkdir dir="${build}" />
         <mkdir dir="${build}/src" />
+        <mkdir dir="${build}/lib" />
+        <mkdir dir="${build}/classes" />
         <mkdir dir="${dist}" />
     </target>
 
@@ -20,18 +25,23 @@
     </target>
 
     <target name="compile" depends="javacc">
-        <javac srcdir="${src};${build}/src" destdir="${build}" />
+        <javac srcdir="${src};${build}/src" destdir="${build}/classes" 
+               classpathref="classpath" />
     </target>
 
     <target name="manifest" depends="setup">
         <manifest file="${manifest}">
             <attribute name="Main-Class" value="se.helino.mjc.Main"/>
+            <attribute name="Class-Path" value="." />
         </manifest>
     </target>
 
     <target name="dist" depends="compile, manifest">
-        <jar jarfile="${dist}/mjc.jar" basedir="${build}" 
-             manifest="${manifest}" />
+        <jar jarfile="${dist}/mjc.jar" 
+            manifest="${manifest}">
+            <fileset dir="${build}/classes" />
+            <zipfileset src="lib/jasmin.jar" />
+        </jar>
     </target>
 
     <target name="clean">
