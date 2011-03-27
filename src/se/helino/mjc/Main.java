@@ -93,7 +93,7 @@ public class Main {
         throws IOException
     {
         for(String fname : jasminFiles) {
-            jasmin.Main.assemble(name, fname, false);
+            jasmin.Main.assemble(name, fname, true);
         }
     }
 

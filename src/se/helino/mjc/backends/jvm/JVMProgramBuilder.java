@@ -34,7 +34,8 @@ public class JVMProgramBuilder implements IntVisitor {
         JVMRecord rec = new JVMRecord();
         for(MJVarDecl vd : n.getVariableDeclarations()) {
             String name = vd.getId().getName();
-            rec.addAccess(name, new JVMField(name, vd.getMJType()));
+            rec.addAccess(name, new JVMField(name, n.getId().getName(),
+                                             vd.getMJType()));
         }
         currentClass = symbolTable.getClassTable(n.getId().getName());
         for(MJMethodDecl m : n.getMethods()) {
@@ -144,7 +145,11 @@ public class JVMProgramBuilder implements IntVisitor {
         return Math.max(limit, callee);
     }
 
-    public int visit(MJIdentifierExp n) { return 1; }
+    public int visit(MJIdentifierExp n) { 
+        if(currentClass.getType(n.getName()) != null) // It is a field
+            return 2;
+        return 1; 
+    }
     public int visit(MJArrayLength n){ return 1; }
     public int visit(MJNewArray n){ return 1; }
     public int visit(MJTrue n) { return 1; }

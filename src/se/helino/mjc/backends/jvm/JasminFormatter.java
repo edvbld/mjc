@@ -66,6 +66,9 @@ public class JasminFormatter implements Visitor {
         out = newFile(name);
         out.println(".class " + name);
         out.println(".super java/lang/Object");
+    }
+
+    private void printConstructor() {
         out.println(".method public <init>()V");
         out.println("\taload_0");
         out.println("\tinvokespecial java/lang/Object/<init>()V");
@@ -88,6 +91,7 @@ public class JasminFormatter implements Visitor {
     public void visit(MJMainClass n) {
         String name = n.getClassId().getName();
         beginClass(name);
+        printConstructor();
 
         // Main method
         out.println(".method public static main([Ljava/lang/String;)V");
@@ -109,6 +113,9 @@ public class JasminFormatter implements Visitor {
         for(MJVarDecl vd : n.getVariableDeclarations()) {
             vd.accept(this);
         }
+
+        printConstructor();
+
         for(MJMethodDecl m : n.getMethods()) {
             m.accept(this);
         }
@@ -174,8 +181,11 @@ public class JasminFormatter implements Visitor {
     }
 
     public void visit(MJAssign n) {
+        VMAccess a = getAccess(n.getId().getName());
+        if(a instanceof JVMField)
+            out.println("aload 0");
         n.getExpression().accept(this);
-        out.println(getAccess(n.getId().getName()).store());
+        out.println(a.store());
     }
     public void visit(MJArrayAssign n) { }
     public void visit(MJIf n) { 
@@ -229,7 +239,19 @@ public class JasminFormatter implements Visitor {
     }
 
     public void visit(MJIdentifierExp n) { 
+        String label = activeConditionLabel;
+        activeConditionLabel = null;
         out.println(getAccess(n.getName()).load());
+        if(label != null) {
+            if(negateActiveCondition) {
+                out.println("iconst_0");
+                negateActiveCondition = false;
+            }
+            else {
+                out.println("iconst_1");
+            }
+            out.println("if_icmpeq " + label);
+        }
     }
 
     public void visit(MJAnd n) { 
