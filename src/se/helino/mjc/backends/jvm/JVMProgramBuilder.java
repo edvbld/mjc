@@ -65,7 +65,8 @@ public class JVMProgramBuilder implements IntVisitor {
             int tmp = s.accept(this);
             limit = Math.max(tmp, limit);
         }
-        frame.setStackLimit(limit);
+        int ret = n.getReturnExpression().accept(this);
+        frame.setStackLimit(Math.max(ret, limit));
         currentClass.getMethodTable(n.getId().getName()).setVMFrame(frame);
         return 0;
     }

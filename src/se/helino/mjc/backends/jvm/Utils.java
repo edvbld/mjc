@@ -17,7 +17,7 @@ public class Utils {
         if(t instanceof MJBooleanType)
             return "B";
         if(t instanceof MJIdentifierType)
-            return "L" + t.toString();
+            return "L" + t.toString() + ";";
         throw new IllegalStateException("Can't convert type " + t.toString());
     }
 

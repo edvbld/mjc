@@ -1,6 +1,6 @@
 class Main {
     public static void main(String[] s) { 
-        System.out.println(new A().C().B().Br()[3]);
+        System.out.println(new A().C().B().D());
     }
 }
 
@@ -9,9 +9,7 @@ class A {
 }
 
 class B {
-    int[] br;
-
-    public int[] Br() { return br; }
+    public int D() { return 5; }
 }
 
 class C {

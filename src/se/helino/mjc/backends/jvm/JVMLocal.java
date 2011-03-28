@@ -41,8 +41,6 @@ public class JVMLocal implements VMAccess {
         else
             sb.append(name).append(" ");
         sb.append(Utils.convertType(type));
-        if(type instanceof MJIdentifierType)
-            sb.append(";");
         return sb.toString();
     }
 }
