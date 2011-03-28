@@ -80,7 +80,9 @@ public class JVMProgramBuilder implements IntVisitor {
     }
 
     public int visit(MJArrayAssign n) {
-        return 0;
+        int exp = n.getExpression().accept(this);
+        int bracket = n.getBracketExpression().accept(this);
+        return Math.max(bracket + 1, exp + 2);
     }
     public int visit(MJIf n) {
         int cond = n.getCondition().accept(this);

@@ -26,11 +26,11 @@ public class JVMLocal implements VMAccess {
     }
 
     public String load() {
-        return Utils.toTypePrefix(type).toLowerCase() + "load " + num;
+        return Utils.toStoreLoadPrefix(type) + "load " + num;
     }
 
     public String store() {
-        return Utils.toTypePrefix(type) + "store " + num;
+        return Utils.toStoreLoadPrefix(type) + "store " + num;
     }
 
     public String declare() {

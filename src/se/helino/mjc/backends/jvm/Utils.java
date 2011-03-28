@@ -21,6 +21,18 @@ public class Utils {
         throw new IllegalStateException("Can't convert type " + t.toString());
     }
 
+    public static String toStoreLoadPrefix(MJType t) {
+        if(t instanceof MJIntType)
+            return "i";
+        if(t instanceof MJIntArrayType)
+            return "ia";
+        if(t instanceof MJBooleanType)
+            return "i";
+        if(t instanceof MJIdentifierType)
+            return "a";
+        throw new IllegalStateException("Can't convert type " + t.toString());
+    }
+
     public static String toTypePrefix(MJType t) {
         if(t instanceof MJIntType)
             return "i";

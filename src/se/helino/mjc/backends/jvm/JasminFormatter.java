@@ -131,12 +131,8 @@ public class JasminFormatter implements Visitor {
         currentMethod = currentClass.getMethodTable(name);
         VMFrame frame = currentMethod.getVMFrame();
         out.print(".method public " + name + "("); 
-        boolean moreThanOneParameter = false;
         for(TypeNamePair p : currentMethod.getParams()) {
             out.print(Utils.convertType(p.getType()));
-            if(moreThanOneParameter)
-                out.print(";");
-            moreThanOneParameter = true;
         }
         out.print(")");
         out.println(Utils.convertType(currentMethod.getReturnType()));
@@ -159,6 +155,9 @@ public class JasminFormatter implements Visitor {
     }
     
     public void visit(MJCall n) {
+        String label = activeConditionLabel;
+        activeConditionLabel = null;
+
         n.getExpression().accept(this); 
         for(MJExpression e : n.getParameters()) {
             e.accept(this);
@@ -178,6 +177,16 @@ public class JasminFormatter implements Visitor {
         sb.append(")");
         sb.append(Utils.convertType(mt.getReturnType()));
         out.println(sb.toString());
+
+        if(label != null) {
+            if(negateActiveCondition) {
+                out.println("iconst_0");
+                negateActiveCondition = false;
+            }
+            else
+                out.println("iconst_1");
+            out.println("if_icmpeq " + label);
+        }
     }
 
     public void visit(MJAssign n) {
@@ -187,7 +196,15 @@ public class JasminFormatter implements Visitor {
         n.getExpression().accept(this);
         out.println(a.store());
     }
-    public void visit(MJArrayAssign n) { }
+
+    public void visit(MJArrayAssign n) {
+        VMAccess a = getAccess(n.getId().getName());
+        out.println(a.load());
+        n.getBracketExpression().accept(this);
+        n.getExpression().accept(this);
+        out.println("iastore");
+    }
+
     public void visit(MJIf n) { 
         if(n.getCondition() instanceof MJTrue) {
             n.getIfStatement().accept(this);
