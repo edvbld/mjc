@@ -6,7 +6,6 @@ import java.io.FileWriter;
 import java.io.File;
 
 import java.util.ArrayList;
-
 import se.helino.mjc.frame.vm.*;
 import se.helino.mjc.parser.*;
 import se.helino.mjc.symbol.*;
@@ -305,6 +304,7 @@ public class JasminFormatter implements Visitor {
         if(label != null) {
             if(negateActiveCondition) {
                 out.println("if_icmpge " + label);
+                negateActiveCondition = false;
             } else {
                 out.println("if_icmplt " + label);
             }
@@ -394,8 +394,10 @@ public class JasminFormatter implements Visitor {
     public void visit(MJIntegerLiteral n) { 
         if(n.getValue() <= 5)
             out.println("iconst_" + n.getValue());
-        else
+        else if(Math.abs(n.getValue()) < 32767) // max short value
             out.println("sipush " + n.getValue());
+        else
+            out.println("ldc " + n.getValue());
     }
 
     public void visit(MJThis n) {
