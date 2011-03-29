@@ -11,6 +11,10 @@
     <target name="setup">
         <mkdir dir="${build}" />
         <mkdir dir="${build}/src" />
+        <mkdir dir="${build}/src/se" />
+        <mkdir dir="${build}/src/se/helino" />
+        <mkdir dir="${build}/src/se/helino/mjc" />
+        <mkdir dir="${build}/src/se/helino/mjc/parser" />
         <mkdir dir="${build}/lib" />
         <mkdir dir="${build}/classes" />
         <mkdir dir="${dist}" />
@@ -18,15 +22,16 @@
 
     <target name="javacc" depends="setup">
         <copy file="${src}/se/helino/mjc/parser/MJParser.jj" 
-              todir="${build}/src/" />
+              todir="${build}/src" />
         <javacc target="${build}/src/MJParser.jj" 
-                outputdirectory="${build}/src/" 
+                outputdirectory="${build}/src/se/helino/mjc/parser" 
                 javacchome="${javacc.home}" />
     </target>
 
     <target name="compile" depends="javacc">
         <javac srcdir="${src};${build}/src" destdir="${build}/classes" 
-               classpathref="classpath" />
+               classpathref="classpath"
+               includeantruntime="false"/>
     </target>
 
     <target name="manifest" depends="setup">
