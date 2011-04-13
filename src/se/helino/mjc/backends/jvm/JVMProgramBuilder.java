@@ -153,7 +153,9 @@ public class JVMProgramBuilder implements IntVisitor {
             return 2;
         return 1; 
     }
-    public int visit(MJArrayLength n){ return 1; }
+    public int visit(MJArrayLength n){ 
+        return n.getExpression().accept(this);
+    }
     public int visit(MJNewArray n){ return 1; }
     public int visit(MJTrue n) { return 1; }
     public int visit(MJFalse n) { return 1; }
