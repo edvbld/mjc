@@ -1,6 +1,6 @@
 class Main {
     public static void main(String[] args) {
-        System.out.println(new B().C().array()[0][1]); // should equal 5 
+        System.out.println(new B().C().array()[0][1]); // should be type error 
     }
 }
 
