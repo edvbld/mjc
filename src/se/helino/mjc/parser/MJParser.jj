@@ -348,13 +348,32 @@ MJExpression AdditiveExpProd():
 {
     e1 = MultiplicativeExpProd()
     (
-        <PLUS> e2 = AdditiveExpProd()
-        { return new MJPlus(e1, e2); }
-        |
-        <MINUS> e2 = AdditiveExpProd()
-        { return new MJMinus(e1, e2); }
+        e2 = AdditiveRestProd(e1)
+        { return e2; }
     )?
     { return e1; }
+}
+
+MJExpression AdditiveRestProd(MJExpression e1):
+{
+    MJExpression e2, e3, e4;
+}
+{
+    <PLUS> e2 = MultiplicativeExpProd()
+    { e3 = new MJPlus(e1, e2); }
+    (
+       e4 = AdditiveRestProd(e3)
+       { return e4; }
+    )?
+    { return e3; }
+    |
+    <MINUS> e2 = MultiplicativeExpProd()
+    { e3 = new MJMinus(e1, e2); }
+    (
+        e4 = AdditiveRestProd(e3)
+        { return e4; }
+    )?
+    { return e3; }
 }
 
 MJExpression MultiplicativeExpProd():
