@@ -25,7 +25,7 @@ public class Utils {
         if(t instanceof MJIntType)
             return "i";
         if(t instanceof MJIntArrayType)
-            return "ia";
+            return "a";
         if(t instanceof MJBooleanType)
             return "i";
         if(t instanceof MJIdentifierType)
