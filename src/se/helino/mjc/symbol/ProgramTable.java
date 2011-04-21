@@ -6,6 +6,7 @@ import se.helino.mjc.parser.MJType;
 import se.helino.mjc.parser.MJCall;
 import se.helino.mjc.parser.MJPrint;
 import se.helino.mjc.parser.MJIdentifierType;
+import se.helino.mjc.frame.cpu.Frame;
 
 public class ProgramTable {
     private ArrayList<ClassTable> classes = new ArrayList<ClassTable>();
@@ -72,5 +73,9 @@ public class ProgramTable {
 
     public int getMainStackLimit() {
         return mainStackLimit;
+    }
+
+    public Frame getMainFrame() {
+        return null;
     }
 }

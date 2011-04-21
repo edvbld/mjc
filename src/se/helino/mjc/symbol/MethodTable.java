@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import se.helino.mjc.parser.MJType;
 import se.helino.mjc.frame.vm.VMFrame;
+import se.helino.mjc.frame.cpu.Frame;
 
 public class MethodTable {
     private ArrayList<TypeNamePair> params = new ArrayList<TypeNamePair>();
@@ -64,5 +65,9 @@ public class MethodTable {
 
     public void setVMFrame(VMFrame f) {
         vmFrame = f;
+    }
+
+    public Frame getFrame() {
+        return null;
     }
 }

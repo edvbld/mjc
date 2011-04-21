@@ -1,23 +1,83 @@
 package se.helino.mjc.ir;
 
+import java.util.List;
+import java.util.ArrayList;
+
 import se.helino.mjc.parser.*;
+import se.helino.mjc.symbol.*;
+import se.helino.mjc.frame.cpu.*;
 
 public class IRBuilder implements Visitor {
+    private ProgramTable symbolTable;
+    private List<Fragment> fragments; 
+    private Frame currentFrame;
+    private ClassTable currentClass;
+
+    public IRBuilder(ProgramTable symTable) {
+        symbolTable = symTable;
+    }
+
+    private Frame getFrame(String methodName) {
+        return null;
+    }
+
+    public List<Fragment> build(MJProgram p) {
+        fragments = new ArrayList<Fragment>();
+        return fragments;
+    }
+
     public void visit(MJProgram n) {
         n.getMJMainClass().accept(this);
         for(MJClass c : n.getMJClasses()) {
             c.accept(this);
         }
     }
-    public void visit(MJMainClass n){}
-    public void visit(MJClass n){}
+
+    public void visit(MJMainClass n) {
+        //currentFrame = symbolTable.getMainFrame();
+        
+        //boolean moreThanOneStatement = false;
+        //IRStatement body = null;
+        //for(MJStatement s : n.getStatements()) {
+            //IRStatement stm = s.accept(this);
+            //if(moreThanOneStatement)
+                //body = new IRSequence(body, stm); 
+            //else
+                //body = stm;
+            //moreThanOneStatement = true;
+        //}
+        //fragments.add(new Fragment(currentFrame, body));
+    }
+
+    public void visit(MJClass n) {
+        currentClass = symbolTable.getClassTable(n.getId().getName());
+        for(MJMethodDecl md : n.getMethods()) {
+            md.accept(this);
+        }
+    }
+    
+    public void visit(MJMethodDecl n) {
+        //currentFrame = currentClass.getMethodTable(n.getId().getName()).
+                                     //getFrame();
+        //boolean moreThanOneStatement = false;
+        //IRStatement body = null;
+        //for(MJStatement s : n.getBody().getMJStatements()) {
+            //IRStatement stm = s.accept(this);
+            //if(moreThanOneStatement)
+                //body = new IRSequence(body, stm);
+            //else
+                //body = stm;
+            //moreThanOneStatement = true;
+        //}
+        //fragments.add(new Fragment(currentFrame, body));
+    }
+
     public void visit(MJIdentifier n){}
     public void visit(MJVarDecl n){}
     public void visit(MJIntType n){}
     public void visit(MJIntArrayType n){}
     public void visit(MJBooleanType n){}
     public void visit(MJIdentifierType n){}
-    public void visit(MJMethodDecl n){}
     public void visit(MJMethodArg n){}
     public void visit(MJAssign n){}
     public void visit(MJArrayAssign n){}
