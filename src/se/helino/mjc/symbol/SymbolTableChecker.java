@@ -315,6 +315,9 @@ public class SymbolTableChecker implements TypeVisitor {
     }
 
     public MJType visit(MJThis n) { 
+        if(currentClass == null) {
+            return new MJUnknownType();
+        }
         return new MJIdentifierType(currentClass.getName());
     }
 }
