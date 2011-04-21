@@ -1,4 +1,4 @@
-class Main
+class OperatorsTest
 {
     public static void main(String[] s) 
     {

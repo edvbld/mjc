@@ -1,4 +1,4 @@
-class Main
+class SyntaxTest
 {
     public static void main(String[] s) 
     {

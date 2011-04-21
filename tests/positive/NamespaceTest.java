@@ -1,4 +1,4 @@
-class Main
+class NamespaceTest
 {
     public static void main(String[] s) 
     {
