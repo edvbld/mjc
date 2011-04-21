@@ -1,4 +1,4 @@
-class Main {
+class Error1 {
     public static void main(String[] args) {
         System.out.println(new B().C().array()[0][1]); // should be type error 
     }

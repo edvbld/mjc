@@ -1,0 +1,3 @@
+Variable b has type B, but tried to assign it type A
+Supplied wrong type for parameter a for method f1
+Variable a has type A, but tried to assign it type B

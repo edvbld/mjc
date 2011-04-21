@@ -1,0 +1,2 @@
+Left hand side of && must have type boolean
+Can only apply ! operator to boolean types
