@@ -97,34 +97,47 @@ public class Main {
         }
     }
 
+    private static boolean quiet = false;
+    private static void println(String s) {
+        if(!quiet)
+            System.out.println(s);
+    }
+
     public static void main(String[] args) {
-        if(args.length == 0 || args.length > 1) {
-            System.err.println("Usage: java -jar mjc.jar <file>");
+        if(args.length == 0) {
+            System.err.println("Usage: java -jar mjc.jar [-q] <file>");
             System.exit(1);
         }
         try {
-            System.out.println(System.getProperty("java.class.path"));
-            String fname = args[0];
+            String fname = "";
+            for(int i = 0; i < args.length; i++) {
+                if(args[i].equals("-q")) {
+                    quiet = true;
+                }
+                else {
+                    fname = args[i];
+                }
+            }
             String name = strip(fname);
             new File(name).mkdir();
-            System.out.println("Compiling input file " + fname + 
-                               " into directory " + name + "/"); 
+            println("Compiling input file " + fname + 
+                    " into directory " + name + "/"); 
             MJProgram p = parse(fname);
-            System.out.println("- Syntax analysis");
-            System.out.println("  ...abstract syntax tree: " + 
-                               name + "/" + name + ".syntax");
+            println("- Syntax analysis");
+            println("  ...abstract syntax tree: " + 
+                     name + "/" + name + ".syntax");
             printSyntax(p, name);
             ProgramTable pt = typeCheck(p);
-            System.out.println("- Semantic analysis");
-            System.out.println("  ...symbol table: " + 
-                               name + "/" + name + ".symtab");
+            println("- Semantic analysis");
+            println("  ...symbol table: " + 
+                     name + "/" + name + ".symtab");
             printSymbolTable(pt, name);
-            System.out.println("- Generating Jasmin assembler");
+            println("- Generating Jasmin assembler");
             ArrayList<String> jasminAssemblies = 
                 generateJasminAssembler(pt, p, name);
             for(String s : jasminAssemblies)
-                System.out.println("  ... " + s);
-            System.out.println("- Assembling Jasmin assembler to class files");
+                println("  ... " + s);
+            println("- Assembling Jasmin assembler to class files");
             generateClassFiles(name, jasminAssemblies);
         } catch(ParseException e) {
             System.out.println("Syntax error:");
