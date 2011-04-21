@@ -28,8 +28,14 @@ public class SymbolTableBuilder implements Visitor {
     public void visit(MJClass n) {
         current = new ClassTable(n.getId().getName());
         for(MJVarDecl vd : n.getVariableDeclarations()) {
-            current.addField(new TypeNamePair(vd.getMJType(), 
-                                              vd.getId().getName()));
+            String name = vd.getId().getName();
+            if(current.hasFieldWithName(name)) {
+                errors.add("Field " + name + " has already been declared");
+            }
+            else {
+                current.addField(new TypeNamePair(vd.getMJType(), 
+                                                  vd.getId().getName()));
+            }
         }
         for(MJMethodDecl m : n.getMethods()) {
             m.accept(this);
@@ -46,12 +52,16 @@ public class SymbolTableBuilder implements Visitor {
         }
         for(MJVarDecl vd : n.getBody().getMJVariableDeclarations()) {
             String name = vd.getId().getName();
-            if(mt.hasParamWithName(name))
+            if(mt.hasParamWithName(name)) {
                 errors.add("Local " + name + 
                            " is already defined as a parameter");
-            else
+            } else if(mt.hasLocalWithName(name)) {
+                errors.add("Local " + name + " has already been declared");
+            }
+            else {
                 mt.addLocal(new TypeNamePair(vd.getMJType(),
                                              name));
+            }
         }
         current.addMethod(mt);
     }

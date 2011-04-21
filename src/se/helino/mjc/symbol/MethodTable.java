@@ -36,6 +36,10 @@ public class MethodTable {
         localsMap.put(l.getName(), l.getType());
     }
 
+    public boolean hasLocalWithName(String name) {
+        return localsMap.containsKey(name);
+    }
+
     public ArrayList<TypeNamePair> getLocals() {
         return locals;
     }

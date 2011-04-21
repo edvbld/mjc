@@ -29,6 +29,10 @@ public class ClassTable {
         methodMap.put(m.getName(), m);
     }
 
+    public boolean hasFieldWithName(String name) {
+        return fieldsMap.containsKey(name);
+    }
+
     public ArrayList<TypeNamePair> getFields() {
         return fields;
     }

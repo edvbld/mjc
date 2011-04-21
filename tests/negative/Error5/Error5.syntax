@@ -1,0 +1,44 @@
+(Program
+ (MainClass
+  (Identifier [ Error5 ]
+  )
+  (Identifier [ args ]
+  )
+ )
+ (Class
+  (Identifier [ A ]
+  )
+  (VarDecl
+   (IntegerType
+   )
+   (Identifier [ b ]
+   )
+  )
+  (VarDecl
+   (BooleanType
+   )
+   (Identifier [ b ]
+   )
+  )
+  (MethodDecl
+   (IntegerType
+   )
+   (Identifier [ a ]
+   )
+   (VarDecl
+    (IntegerType
+    )
+    (Identifier [ b ]
+    )
+   )
+   (VarDecl
+    (BooleanType
+    )
+    (Identifier [ b ]
+    )
+   )
+   (IntegerLiteral [ 0 ]
+   )
+  )
+ )
+)
