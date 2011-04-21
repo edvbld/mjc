@@ -1,4 +1,4 @@
-class Main {
+class Chaining {
     public static void main(String[] s) { 
         System.out.println(new A().C().B().D());
     }
