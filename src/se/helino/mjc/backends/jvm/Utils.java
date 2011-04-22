@@ -15,7 +15,7 @@ public class Utils {
         if(t instanceof MJIntArrayType)
             return "[I";
         if(t instanceof MJBooleanType)
-            return "B";
+            return "Z";
         if(t instanceof MJIdentifierType)
             return "L" + t.toString() + ";";
         throw new IllegalStateException("Can't convert type " + t.toString());
