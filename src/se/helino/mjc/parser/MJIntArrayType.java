@@ -8,4 +8,15 @@ public class MJIntArrayType implements MJType {
     public String toString() {
         return "int[]"; 
     }
+
+    public boolean equals(Object o) {
+        if(o instanceof MJIntArrayType) {
+            return true;
+        }
+        return false;
+    }
+    
+    public int hashCode() {
+        return toString().hashCode();
+    }
 }

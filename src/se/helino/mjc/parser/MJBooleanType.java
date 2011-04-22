@@ -8,6 +8,17 @@ public class MJBooleanType implements MJType {
     public String toString() {
         return "boolean";
     }
+
+    public boolean equals(Object o) {
+        if(o instanceof MJBooleanType) {
+            return true;
+        }
+        return false;
+    }
+    
+    public int hashCode() {
+        return toString().hashCode();
+    }
     
     public int accept(IntVisitor v) {
         return v.visit(this);
