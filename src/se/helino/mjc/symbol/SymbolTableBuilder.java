@@ -26,6 +26,12 @@ public class SymbolTableBuilder implements Visitor {
     }
 
     public void visit(MJClass n) {
+        String className = n.getId().getName();
+        if(table.isNameOfClass(className)) {
+            errors.add("A class with name " + className +
+                       " is already defined");
+            return;
+        } 
         current = new ClassTable(n.getId().getName());
         for(MJVarDecl vd : n.getVariableDeclarations()) {
             String name = vd.getId().getName();
@@ -62,6 +68,10 @@ public class SymbolTableBuilder implements Visitor {
                 mt.addLocal(new TypeNamePair(vd.getMJType(),
                                              name));
             }
+        }
+        if(current.getMethodTable(mt.getName()) != null) {
+            errors.add("A method with name " + mt.getName() + 
+                       " is already defined");
         }
         current.addMethod(mt);
     }
