@@ -15,16 +15,16 @@ public class JVMField implements VMAccess {
     }
 
     public String load() {
-        return "aload 0\n" + "getfield " + className + "/" + name + " " +
+        return "aload 0\n" + "getfield " + className + "/!" + name + " " +
                Utils.convertType(type);
     }
 
     public String store() {
-        return "putfield " + className + "/" + name + " " + 
+        return "putfield " + className + "/!" + name + " " + 
                Utils.convertType(type);
     }
 
     public String declare() {
-        return ".field private " + name + " " + Utils.convertType(type);
+        return ".field private !" + name + " " + Utils.convertType(type);
     }
 }

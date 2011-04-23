@@ -136,14 +136,14 @@ public class JasminFormatter implements Visitor {
         out.println(Utils.convertType(currentMethod.getReturnType()));
         out.println(".limit locals " + frame.getLocalLimit());
         out.println(".limit stack " + frame.getStackLimit());
+        out.print(";");
         out.println(getAccess("this").declare());
         for(TypeNamePair p : currentMethod.getParams()) {
+            out.print(";");
             out.println(getAccess(p.getName()).declare());
         }
         for(TypeNamePair p : currentMethod.getLocals()) {
-            if(p.getType() instanceof MJIntArrayType) {
-                out.print(";");
-            }
+            out.print(";");
             out.println(getAccess(p.getName()).declare());
         }
         for(MJStatement s : n.getBody().getMJStatements()) {
