@@ -39,7 +39,7 @@ public class JVMLocal implements VMAccess {
         if(isThis)
             sb.append("<this> ");
         else
-            sb.append(name).append(" ");
+            sb.append("'").append(name).append("' ");
         sb.append(Utils.convertType(type));
         return sb.toString();
     }

@@ -92,8 +92,7 @@ public class Main {
         throws IOException, jas.jasError, Exception
     {
         jasmin.ClassFile cf = new jasmin.ClassFile();
-        BufferedInputStream in = 
-            new BufferedInputStream(new FileInputStream(fname));
+        Reader in = in(fname);
         cf.readJasmin(in, fname, true);
         in.close();
         

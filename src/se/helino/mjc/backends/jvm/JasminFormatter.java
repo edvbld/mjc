@@ -62,7 +62,7 @@ public class JasminFormatter implements Visitor {
 
     private void beginClass(String name) {
         out = newFile(name);
-        out.println(".class " + name);
+        out.println(".class '" + name + "'");
         out.println(".super java/lang/Object");
     }
 
@@ -136,14 +136,11 @@ public class JasminFormatter implements Visitor {
         out.println(Utils.convertType(currentMethod.getReturnType()));
         out.println(".limit locals " + frame.getLocalLimit());
         out.println(".limit stack " + frame.getStackLimit());
-        out.print(";");
         out.println(getAccess("this").declare());
         for(TypeNamePair p : currentMethod.getParams()) {
-            out.print(";");
             out.println(getAccess(p.getName()).declare());
         }
         for(TypeNamePair p : currentMethod.getLocals()) {
-            out.print(";");
             out.println(getAccess(p.getName()).declare());
         }
         for(MJStatement s : n.getBody().getMJStatements()) {
@@ -348,7 +345,7 @@ public class JasminFormatter implements Visitor {
 
     public void visit(MJNewObject n) { 
         String name = n.getId().getName();
-        out.println("new " + name);
+        out.println("new '" + name + "'");
         out.println("dup");
         out.println("invokespecial " + name + "/<init>()V");
     }
