@@ -88,25 +88,13 @@ public class Main {
         return files;
     }
 
-    private static void generateClassFile(String dir, String fname)
-        throws IOException, jas.jasError, Exception
+    private static void generateClassFiles(
+            String name, ArrayList<String> jasminFiles) 
+        throws IOException
     {
-        jasmin.ClassFile cf = new jasmin.ClassFile();
-        BufferedInputStream in = 
-            new BufferedInputStream(new FileInputStream(fname));
-        cf.readJasmin(in, fname, true);
-        in.close();
-        
-        if(cf.errorCount() > 0) {
-            System.err.println(fname + ": Found " + cf.errorCount() + 
-                               " errors");
-            return;
+        for(String fname : jasminFiles) {
+            jasmin.Main.assemble(name, fname, true);
         }
-
-        FileOutputStream out = new FileOutputStream(
-                new File(fname.substring(0, fname.length() - 2) + ".class"));
-        cf.write(out);
-        out.close();
     }
 
     private static boolean quiet = false;
@@ -144,32 +132,24 @@ public class Main {
             println("  ...symbol table: " + 
                      name + "/" + name + ".symtab");
             printSymbolTable(pt, name);
-            println("- Jasmin assembler");
+            println("- Generating Jasmin assembler");
             ArrayList<String> jasminAssemblies = 
                 generateJasminAssembler(pt, p, name);
             for(String s : jasminAssemblies)
                 println("  ... " + s);
-            println("- Class files");
-            for(String s : jasminAssemblies) {
-                generateClassFile(name, s);
-                println("  ... " + s.substring(0, s.length() - 2) + ".class");
-            }
+            println("- Assembling Jasmin assembler to class files");
+            generateClassFiles(name, jasminAssemblies);
         } catch(ParseException e) {
             System.out.println("Syntax error:");
             System.out.println(e.toString());
         } catch(MJTypeException e) {
             for(String error : e.getErrors())
                 System.out.println(error);
-        } catch(FileNotFoundException e) {
+        }
+        catch(FileNotFoundException e) {
             System.out.println("Could not find file " + e.toString());
         } catch(IOException e) {
             System.out.println("Could not open file " + e.toString());
-        } catch(jas.jasError e) {
-            System.err.println("JAS Error: " + e.getMessage());
-        } catch(Exception e) {
-            System.err.println("Exception in " + 
-                               e.getClass().getName() + ": " +
-                               e.getMessage());
         }
     }
 }
