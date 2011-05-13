@@ -86,10 +86,10 @@ first stage, the symbol table is built. In the second stage, the symbol table
 is used to type check the MiniJava program. The symbol table consisted of three
 different kinds of tables:
 \begin{description}
-\item{\emph{Program table}} Relates names to their corresponding class table
-\item{\emph{Class table}} Relates names to fields or their corresponding method
+\item{\emph{Program table}} relates names to their corresponding class table
+\item{\emph{Class table}} relates names to fields or their corresponding method
 table
-\item{\emph{Method table}} Relates names to parameters or local variables. Also
+\item{\emph{Method table}} relates names to parameters or local variables. Also
 contains the return type of the method.
 \end{description}
 This data structure turned out to be successful, since when traversing the
@@ -116,9 +116,44 @@ also implemented with the help of a visitor.
 The Jasmin assembler was used to generate the actual bytecode for the Java
 Virtual Machine (JVM). So instead of generating bytecode for the JVM,
 Jasmin assembly was generated. The Jasmin assembly was generated with the help
-of the abstract syntax tree and the symbol table.
+of the abstract syntax tree and the symbol table. 
+
+The Jasmin assembly generator was implemented as a visitor for the abstract
+syntax tree. The biggest challenge in the implementation was how to deal with
+boolean expressions. An boolean expression can either be used as condition for
+jumping to a label, or assigning a variable. In the first case, a jump
+instruction a label should be omitted, and in the second, a instruction for
+pushing the result onto the stack.
+
+Appel solves this in the MiniJava compiler book by using the interface
+\texttt{Exp}. The \texttt{Exp} class then exposes three methods for converting
+expressions according to their uses. 
+I did not choose to implement it this way, instead I used instance variables
+for keeping track of the state of the generator. Afterwards, when comparing my
+solution to Apples, Apples is the better one, because it was easy to forget to
+read and update the instance variables controlling the state. Apples solution
+separates the concerns much more, which leads to cleaner code.
+
+This pattern could also be noticed when dealing with boolean expressions and
+the not (!) operator. There is no bytecode instruction for the JVM to negate a
+value on the stack, hence this has to be omitted. A simple extension to Appels
+solution would be to require every class implementing the \texttt{Exp}
+interface to also provide the method \texttt{negate}. This way, omitting the
+not operation and how it is implemented would be separated.
+
+Another problem that occurred was when variables, classes or methods had the
+same names as an Jasmin assembly instruction. The Jasmin parser would then
+raise due to a reserved word being used as a class, variable or method name. The
+solution to this specific problem was to escape all class, variable and method
+names.
 \section{Architecture of the code}
-\section{Comparison of C and Java}
+The following sections will briefly describe each package in the compiler. The
+code is separated into multiple packages, with the class \texttt{Main.java}
+tying them all together.
+\subsection{\texttt{se.helino.mjc.parser}}
+\subsection{\texttt{se.helino.mjc.symbol}}
+\subsection{\texttt{se.helino.mjc.backends.jvm}}
+\section{Discussion}
 \label{sec:discussion}
 \appendix
 \section{Feedback}
