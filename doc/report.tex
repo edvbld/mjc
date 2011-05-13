@@ -107,7 +107,11 @@ symbol table. The symbol table checker will then check the type of each
 expression according to the Java specification (adjusted for MiniJava). This is
 also implemented with the help of a visitor.
 
-\subsection{JVM bytecode generation}
+\subsection{Java Virtual Machine bytecode generation}
+The Jasmin assembler was used to generate the actual bytecode for the Java
+Virtual Machine (JVM). So instead of generating bytecode for the JVM,
+Jasmin assembly was generated. The Jasmin assembly was generated with the help
+of the abstract syntax tree and the symbol table.
 \section{Architecture of the code}
 \section{Comparison of C and Java}
 \label{sec:discussion}
