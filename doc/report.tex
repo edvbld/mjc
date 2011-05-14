@@ -311,6 +311,29 @@ method and accesses for each variable.
 
 \section{Discussion}
 \label{sec:discussion}
+The main reason for aborting C as the implementation language of the compiler
+and move to Java was due to lack of time. Implementing the compiler in C took 
+an order of magnitude more time than implementing it in Java. This due to a 
+couple of reasons:
+\begin{itemize}
+\item
+    My knowledge of C was rudimentary, which means that I had to learn a lot of
+    C at the same time as I implemented the compiler.
+\item
+    Managing the memory to avoid unnecessary memory leaks took a great deal of
+    time. Even though I used tools such as Valgrind to find memory leaks,
+    solving them took some effort.
+\item
+    The lack of data structures meant that I had to reimplement data structures
+    such as a string, a list and so on. This was not hard work, but it still
+    took time, and that time was better spent at implementing the actual 
+    program. 
+\end{itemize}
+I don't regret trying to use C as the implementation language, as I learned a
+lot about how C is used in larger applications. I also learned the effect of
+choosing the right language for the task. Note that this doesn't mean that Java 
+is the best programming language for writing a compiler, 
+only that in my case, it was superior to C.
 
 \appendix
 \section{Feedback}
