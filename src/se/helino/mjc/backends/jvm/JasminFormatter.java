@@ -364,12 +364,20 @@ public class JasminFormatter implements Visitor {
     }
 
     public void visit(MJIntegerLiteral n) { 
-        if(n.getValue() <= 5)
-            out.println("iconst_" + n.getValue());
-        else if(Math.abs(n.getValue()) < 32767) // max short value
-            out.println("sipush " + n.getValue());
-        else
-            out.println("ldc " + n.getValue());
+        int val = n.getValue();
+        if (val == -1) {
+            out.println("iconst_m1");
+        } else if(val >=0 && val <= 5) {
+            out.println("iconst_" + val); 
+        } else if(val >= Byte.MIN_VALUE && val <= Byte.MAX_VALUE) {
+            out.println("bipush " + val);
+        }
+        else if(val >= Short.MIN_VALUE && val <= Short.MAX_VALUE) {
+            out.println("sipush " + val);
+        }
+        else {
+            out.println("ldc " + val);
+        }
     }
 
     public void visit(MJThis n) {

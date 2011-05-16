@@ -510,6 +510,9 @@ MJExpression IntegerLiteralProd():
 {
     t = <NUMBER>
     { return new MJIntegerLiteral(Integer.parseInt(t.image)); }
+    |
+    <MINUS> t = <NUMBER>
+    { return new MJIntegerLiteral(Integer.parseInt("-"+t.image)); }
 }
 
 MJExpression TrueExpProd(): {}
