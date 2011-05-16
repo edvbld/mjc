@@ -75,7 +75,7 @@ The abstract syntax tree was represented by using a struct for each kind of
 node. Each struct had an enum as the first member that represented 
 the type of the node. To simplify the traversal of the syntax tree, 
 function pointers was used for callbacks. An function was then provided that 
-checked type of the node and called the corresponding callback with the node
+checked the type of the node and called the corresponding callback with the node
 casted to the correct type as parameter.
 
 The second parser was implemented using JavaCC to create a LL-parser. The lexer
@@ -126,7 +126,7 @@ also contains the return type of the method.
 \end{description}
 This data structure turned out to be successful, since when traversing the
 abstract syntax tree, the current class and program table can be kept as
-instance variables and the algorithm for looking up a type for a variable
+instance variables and the algorithm for looking up the type of a variable
 becomes:
 \begin{enumerate}
 \item Check for the name in the current method table
@@ -134,16 +134,17 @@ becomes:
 \item Check for the name if the program table
 \end{enumerate}
 
-When the symbol table is being built, the MiniJava programs is also partly type
+When the symbol table is being built, the MiniJava program is also partly type
 checked. Specifically, if there already exists a definition for a class, field,
 or method (including locals and parameters), the symbol table builder will 
-return an error. The symbol table builder was implemented with the help of a 
-visitor.
+return an error. 
 
 In the second phase, the symbol table checker is given the newly constructed 
 symbol table. The symbol table checker will then check the type of each
-expression according to the Java specification (adjusted for MiniJava). This
-was also implemented with the help of a visitor.
+expression according to the Java specification (adjusted for MiniJava). 
+
+Both the symbol table builder and the symbol table checker was implemented by
+using the visitor pattern.
 
 \subsection{Java Virtual Machine bytecode generation}
 The Jasmin assembler was used to generate the actual bytecode for the Java
@@ -159,7 +160,7 @@ instruction to a label should be omitted, and in the second, an instruction for
 pushing the result onto the stack.
 
 Appel solves this in the MiniJava compiler book by using the interface
-\code{Exp}. The \code{Exp} class then exposes three methods for converting
+\code{Exp}. The \code{Exp} interface contains three methods for converting
 expressions according to their uses. 
 I did not choose to implement it this way, instead I used instance variables
 for keeping track of the state of the generator. Afterwards, when comparing this
@@ -168,8 +169,9 @@ read and update the instance variables controlling the state. Apples solution
 separates these concerns much more, which leads to simpler code.
 
 This pattern could also be noticed when dealing with boolean expressions and
-the not (!) operator. There is no bytecode instruction for the JVM to negate a
-value on the stack, hence this has to be omitted. A simple extension to Appels
+the not (!) operator. There is no bytecode instruction for the JVM for the
+boolean negation of a value on the stack,
+hence this has to be omitted. A simple extension to Appels
 solution would be to require every class implementing the \code{Exp}
 interface to also provide the method \code{negate}. This way, omitting the
 not operation and how it is implemented would be separated.
@@ -216,7 +218,7 @@ syntax tree.
 
 \paragraph{\class{MJParser.jj}} \hfill \\
 This is the parser description that is compiled with the help of JavaCC. The
-lexer is written at the beginning of the file.
+lexer is written in the beginning of the file.
 \begin{description}
     \item{\code{public MJParser(InputStream stream)}} \hfill \\
         The constructor for the parser. The parameter is an input stream to the
@@ -230,7 +232,7 @@ lexer is written at the beginning of the file.
 
 \paragraph{\class{Acceptable.java}} \hfill \\
 This is the interface that all abstract syntax tree nodes has to implement in
-order to be visitable by a visitor not returning anything.
+order to be visitable by a visitor returning \code{void}.
 \begin{description}
     \item{\code{public void accept(Visitor v)}} \hfill \\
         The method for accepting a visitor. The implementation of this method 
@@ -245,7 +247,7 @@ This is the interface that all visitors that don't require any return type
 must implement to be able to visit all the nodes in the abstract syntax tree.
 \begin{description}
     \item{\code{public void visit(MJ* v)}} \hfill \\
-        Represents the action for the corresponding the abstract
+        Represents the action for the corresponding abstract
         syntax tree node, and must be implemented for all different types of 
         nodes.  \code{MJ*} means any node, for example \code{MJClass} or
         \code{MJAssign}.
@@ -340,5 +342,6 @@ is the best programming language for writing a compiler,
 only that in my case, it was superior to C.
 
 \appendix
-\section{Feedback}
+\section{Feedback given}
+\section{Feedback received}
 \end{document}
