@@ -1,2 +1,8 @@
 build
 dist
+report.log
+report.aux
+report.pdf
+report.out
+report.toc
+
