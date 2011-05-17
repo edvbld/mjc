@@ -1,0 +1,80 @@
+(Program
+ (MainClass
+  (Identifier [ Test4 ]
+  )
+  (Identifier [ id ]
+  )
+ )
+ (Class
+  (Identifier [ Test4A ]
+  )
+  (VarDecl
+   (IntegerType
+   )
+   (Identifier [ a ]
+   )
+  )
+  (VarDecl
+   (IntegerType
+   )
+   (Identifier [ a ]
+   )
+  )
+  (VarDecl
+   (IntegerType
+   )
+   (Identifier [ b ]
+   )
+  )
+  (VarDecl
+   (BooleanType
+   )
+   (Identifier [ b ]
+   )
+  )
+  (VarDecl
+   (IntArrayType
+   )
+   (Identifier [ b ]
+   )
+  )
+  (MethodDecl
+   (IdentifierType [ Test4B ]
+   )
+   (Identifier [ getTest4B ]
+   )
+   (VarDecl
+    (IntegerType
+    )
+    (Identifier [ a ]
+    )
+   )
+   (VarDecl
+    (IntegerType
+    )
+    (Identifier [ b ]
+    )
+   )
+   (VarDecl
+    (BooleanType
+    )
+    (Identifier [ b ]
+    )
+   )
+   (VarDecl
+    (IntArrayType
+    )
+    (Identifier [ b ]
+    )
+   )
+   (NewObject
+    (Identifier [ Test4B ]
+    )
+   )
+  )
+ )
+ (Class
+  (Identifier [ Test4B ]
+  )
+ )
+)

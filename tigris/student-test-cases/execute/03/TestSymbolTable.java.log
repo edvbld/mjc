@@ -1,0 +1,13 @@
+Compiling input file TestSymbolTable.java into directory TestSymbolTable/
+- Syntax analysis
+  ...abstract syntax tree: TestSymbolTable/TestSymbolTable.syntax
+- Semantic analysis
+  ...symbol table: TestSymbolTable/TestSymbolTable.symtab
+- Jasmin assembler
+  ... TestSymbolTable/TestSymbolTable.j
+  ... TestSymbolTable/TestSymbolTableMain.j
+  ... TestSymbolTable/TestSymbolTableHelper.j
+- Class files
+  ... TestSymbolTable/TestSymbolTable.class
+  ... TestSymbolTable/TestSymbolTableMain.class
+  ... TestSymbolTable/TestSymbolTableHelper.class

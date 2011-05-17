@@ -1,0 +1,11 @@
+Compiling input file bogus1.java into directory bogus1/
+- Syntax analysis
+  ...abstract syntax tree: bogus1/bogus1.syntax
+- Semantic analysis
+  ...symbol table: bogus1/bogus1.symtab
+- Jasmin assembler
+  ... bogus1/Bogus1.j
+  ... bogus1/Test.j
+- Class files
+  ... bogus1/Bogus1.class
+  ... bogus1/Test.class

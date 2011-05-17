@@ -1,0 +1,11 @@
+Compiling input file SortMain.java into directory SortMain/
+- Syntax analysis
+  ...abstract syntax tree: SortMain/SortMain.syntax
+- Semantic analysis
+  ...symbol table: SortMain/SortMain.symtab
+- Jasmin assembler
+  ... SortMain/SortMain.j
+  ... SortMain/Sort.j
+- Class files
+  ... SortMain/SortMain.class
+  ... SortMain/Sort.class

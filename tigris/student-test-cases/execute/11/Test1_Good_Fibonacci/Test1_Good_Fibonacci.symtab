@@ -1,0 +1,10 @@
+Main class: Test3
+
+    Class: Fibonacci
+        Fields:
+        Methods:
+            int fibonacci
+                Parameters:
+                    int n
+                Locals:
+                    int f

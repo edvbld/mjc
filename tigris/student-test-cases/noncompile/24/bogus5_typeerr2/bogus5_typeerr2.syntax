@@ -1,0 +1,198 @@
+(Program
+ (MainClass
+  (Identifier [ Main ]
+  )
+  (Identifier [ a ]
+  )
+  (Print
+   (Call [ doit ]
+    (NewObject
+     (Identifier [ Modulo ]
+     )
+    )
+    (Identifier [ doit ]
+    )
+   )
+  )
+ )
+ (Class
+  (Identifier [ Modulo ]
+  )
+  (VarDecl
+   (BooleanType
+   )
+   (Identifier [ b1 ]
+   )
+  )
+  (VarDecl
+   (BooleanType
+   )
+   (Identifier [ b2 ]
+   )
+  )
+  (VarDecl
+   (BooleanType
+   )
+   (Identifier [ c1 ]
+   )
+  )
+  (MethodDecl
+   (IntegerType
+   )
+   (Identifier [ doit ]
+   )
+   (VarDecl
+    (IntegerType
+    )
+    (Identifier [ a ]
+    )
+   )
+   (VarDecl
+    (IntArrayType
+    )
+    (Identifier [ b ]
+    )
+   )
+   (VarDecl
+    (IntArrayType
+    )
+    (Identifier [ arr ]
+    )
+   )
+   (Assign
+    (Identifier [ b ]
+    )
+    (NewArray
+     (Plus
+      (Minus
+       (Times
+        (IdentifierExp [ a ]
+        )
+        (IntegerLiteral [ 3 ]
+        )
+       )
+       (Times
+        (IntegerLiteral [ 3 ]
+        )
+        (IdentifierExp [ a ]
+        )
+       )
+      )
+      (IntegerLiteral [ 5 ]
+      )
+     )
+    )
+   )
+   (Assign
+    (Identifier [ arr ]
+    )
+    (NewArray
+     (IntegerLiteral [ 5 ]
+     )
+    )
+   )
+   (Assign
+    (Identifier [ b1 ]
+    )
+    (True
+    )
+   )
+   (Assign
+    (Identifier [ b2 ]
+    )
+    (False
+    )
+   )
+   (Assign
+    (Identifier [ c1 ]
+    )
+    (True
+    )
+   )
+   (If
+    (Less
+     (ArrayLookup
+      (IdentifierExp [ arr ]
+      )
+      (Plus
+       (ArrayLookup
+        (IdentifierExp [ b ]
+        )
+        (IntegerLiteral [ 0 ]
+        )
+       )
+       (Times
+        (IntegerLiteral [ 3023 ]
+        )
+        (IntegerLiteral [ 32 ]
+        )
+       )
+      )
+     )
+     (ArrayLookup
+      (IdentifierExp [ arr ]
+      )
+      (Plus
+       (IntegerLiteral [ 30 ]
+       )
+       (Call [ getint ]
+        (NewObject
+         (Identifier [ A ]
+         )
+        )
+        (Identifier [ getint ]
+        )
+       )
+      )
+     )
+    )
+    (Block
+     (Print
+      (And
+       (IdentifierExp [ b1 ]
+       )
+       (Less
+        (Not
+         (IdentifierExp [ b2 ]
+         )
+        )
+        (Plus
+         (Not
+          (Not
+           (IdentifierExp [ c1 ]
+           )
+          )
+         )
+         (IntegerLiteral [ 3 ]
+         )
+        )
+       )
+      )
+     )
+    (Block
+     (Print
+      (IntegerLiteral [ 2 ]
+      )
+     )
+   )
+   (Plus
+    (IdentifierExp [ a ]
+    )
+    (IntegerLiteral [ 3 ]
+    )
+   )
+  )
+ )
+ (Class
+  (Identifier [ A ]
+  )
+  (MethodDecl
+   (IntegerType
+   )
+   (Identifier [ getint ]
+   )
+   (IntegerLiteral [ 30 ]
+   )
+  )
+ )
+)

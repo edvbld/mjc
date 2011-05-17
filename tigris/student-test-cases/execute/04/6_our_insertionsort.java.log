@@ -1,0 +1,11 @@
+Compiling input file 6_our_insertionsort.java into directory 6_our_insertionsort/
+- Syntax analysis
+  ...abstract syntax tree: 6_our_insertionsort/6_our_insertionsort.syntax
+- Semantic analysis
+  ...symbol table: 6_our_insertionsort/6_our_insertionsort.symtab
+- Jasmin assembler
+  ... 6_our_insertionsort/Main.j
+  ... 6_our_insertionsort/our_insertionsort.j
+- Class files
+  ... 6_our_insertionsort/Main.class
+  ... 6_our_insertionsort/our_insertionsort.class

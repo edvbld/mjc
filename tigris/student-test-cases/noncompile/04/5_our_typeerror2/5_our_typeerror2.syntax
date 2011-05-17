@@ -1,0 +1,180 @@
+(Program
+ (MainClass
+  (Identifier [ Main ]
+  )
+  (Identifier [ args ]
+  )
+  (Print
+   (Call [ run ]
+    (NewObject
+     (Identifier [ our_syntaxerror ]
+     )
+    )
+    (Identifier [ run ]
+    )
+   )
+  )
+ )
+ (Class
+  (Identifier [ our_syntaxerror ]
+  )
+  (MethodDecl
+   (IntegerType
+   )
+   (Identifier [ run ]
+   )
+   (VarDecl
+    (IdentifierType [ A ]
+    )
+    (Identifier [ a ]
+    )
+   )
+   (VarDecl
+    (IdentifierType [ A ]
+    )
+    (Identifier [ c ]
+    )
+   )
+   (VarDecl
+    (IdentifierType [ B ]
+    )
+    (Identifier [ b ]
+    )
+   )
+   (VarDecl
+    (IdentifierType [ B ]
+    )
+    (Identifier [ d ]
+    )
+   )
+   (VarDecl
+    (IntegerType
+    )
+    (Identifier [ i ]
+    )
+   )
+   (Assign
+    (Identifier [ a ]
+    )
+    (NewObject
+     (Identifier [ A ]
+     )
+    )
+   )
+   (Assign
+    (Identifier [ b ]
+    )
+    (NewObject
+     (Identifier [ B ]
+     )
+    )
+   )
+   (Assign
+    (Identifier [ c ]
+    )
+    (NewObject
+     (Identifier [ A ]
+     )
+    )
+   )
+   (Assign
+    (Identifier [ d ]
+    )
+    (NewObject
+     (Identifier [ B ]
+     )
+    )
+   )
+   (Assign
+    (Identifier [ d ]
+    )
+    (NewArray
+     (This
+     )
+    )
+   )
+   (Assign
+    (Identifier [ i ]
+    )
+    (ArrayLength
+     (This
+     )
+    )
+   )
+   (Assign
+    (Identifier [ c ]
+    )
+    (And
+     (This
+     )
+     (Less
+      (Plus
+       (This
+       )
+       (IntegerLiteral [ 1 ]
+       )
+      )
+      (Times
+       (This
+       )
+       (IntegerLiteral [ 5 ]
+       )
+      )
+     )
+    )
+   )
+   (IntegerLiteral [ 0 ]
+   )
+  )
+ )
+ (Class
+  (Identifier [ A ]
+  )
+  (VarDecl
+   (IntegerType
+   )
+   (Identifier [ a ]
+   )
+  )
+  (VarDecl
+   (IdentifierType [ B ]
+   )
+   (Identifier [ b ]
+   )
+  )
+  (VarDecl
+   (IntegerType
+   )
+   (Identifier [ c ]
+   )
+  )
+  (VarDecl
+   (IntArrayType
+   )
+   (Identifier [ d ]
+   )
+  )
+ )
+ (Class
+  (Identifier [ B ]
+  )
+  (VarDecl
+   (IntegerType
+   )
+   (Identifier [ a ]
+   )
+  )
+  (VarDecl
+   (IntegerType
+   )
+   (Identifier [ c ]
+   )
+  )
+  (VarDecl
+   (IntArrayType
+   )
+   (Identifier [ d ]
+   )
+  )
+ )
+)

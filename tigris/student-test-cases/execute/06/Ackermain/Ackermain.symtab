@@ -1,0 +1,20 @@
+Main class: Ackermain
+
+    Class: Ackermann
+        Fields:
+        Methods:
+            int calculate
+                Parameters:
+                    int m
+                    int n
+                Locals:
+                    int ret
+                    boolean unused
+    Class: Random
+        Fields:
+        Methods:
+            int[] getArray
+                Parameters:
+                    int value
+                Locals:
+                    int[] ret

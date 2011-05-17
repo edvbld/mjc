@@ -1,0 +1,178 @@
+(Program
+ (MainClass
+  (Identifier [ FieldTest ]
+  )
+  (Identifier [ args ]
+  )
+  (Print
+   (Call [ test ]
+    (NewObject
+     (Identifier [ Field ]
+     )
+    )
+    (Identifier [ test ]
+    )
+   )
+  )
+ )
+ (Class
+  (Identifier [ Field ]
+  )
+  (VarDecl
+   (IntegerType
+   )
+   (Identifier [ i ]
+   )
+  )
+  (VarDecl
+   (IdentifierType [ Field ]
+   )
+   (Identifier [ f ]
+   )
+  )
+  (VarDecl
+   (IntArrayType
+   )
+   (Identifier [ a ]
+   )
+  )
+  (MethodDecl
+   (IntegerType
+   )
+   (Identifier [ test ]
+   )
+   (VarDecl
+    (IdentifierType [ Field ]
+    )
+    (Identifier [ f ]
+    )
+   )
+   (VarDecl
+    (IntegerType
+    )
+    (Identifier [ r ]
+    )
+   )
+   (Assign
+    (Identifier [ f ]
+    )
+    (NewObject
+     (Identifier [ Field ]
+     )
+    )
+   )
+   (Assign
+    (Identifier [ r ]
+    )
+    (Call [ init ]
+     (IdentifierExp [ f ]
+     )
+     (Identifier [ init ]
+     )
+    )
+   )
+   (Assign
+    (Identifier [ r ]
+    )
+    (Call [ hej ]
+     (IdentifierExp [ f ]
+     )
+     (Identifier [ hej ]
+     )
+     (IntegerLiteral [ 2 ]
+     )
+    )
+   )
+   (IntegerLiteral [ 0 ]
+   )
+  )
+  (MethodDecl
+   (IntegerType
+   )
+   (Identifier [ getI ]
+   )
+   (IdentifierExp [ i ]
+   )
+  )
+  (MethodDecl
+   (IntegerType
+   )
+   (Identifier [ setI ]
+   )
+   (Formal
+    (IntegerType
+    )
+    (Identifier [ v ]
+    )
+   )
+   (Assign
+    (Identifier [ i ]
+    )
+    (IdentifierExp [ v ]
+    )
+   )
+   (IntegerLiteral [ 0 ]
+   )
+  )
+  (MethodDecl
+   (IntegerType
+   )
+   (Identifier [ init ]
+   )
+   (Assign
+    (Identifier [ f ]
+    )
+    (NewObject
+     (Identifier [ Field ]
+     )
+    )
+   )
+   (Assign
+    (Identifier [ a ]
+    )
+    (NewArray
+     (IntegerLiteral [ 10 ]
+     )
+    )
+   )
+   (IntegerLiteral [ 0 ]
+   )
+  )
+  (MethodDecl
+   (IntegerType
+   )
+   (Identifier [ hej ]
+   )
+   (Formal
+    (IntegerType
+    )
+    (Identifier [ j ]
+    )
+   )
+   (Assign
+    (Identifier [ j ]
+    )
+    (Call [ setI ]
+     (IdentifierExp [ f ]
+     )
+     (Identifier [ setI ]
+     )
+     (IntegerLiteral [ 101 ]
+     )
+    )
+   )
+   (Assign
+    (Identifier [ j ]
+    )
+    (Call [ getI ]
+     (IdentifierExp [ f ]
+     )
+     (Identifier [ getI ]
+     )
+    )
+   )
+   (IdentifierExp [ j ]
+   )
+  )
+ )
+)

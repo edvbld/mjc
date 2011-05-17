@@ -1,0 +1,80 @@
+(Program
+ (MainClass
+  (Identifier [ DuplicateDeclarationSample ]
+  )
+  (Identifier [ args ]
+  )
+ )
+ (Class
+  (Identifier [ DuplicateDeclarationSample ]
+  )
+ )
+ (Class
+  (Identifier [ DuplicateClass ]
+  )
+ )
+ (Class
+  (Identifier [ DuplicateClass ]
+  )
+  (MethodDecl
+   (IntegerType
+   )
+   (Identifier [ f ]
+   )
+   (IntegerLiteral [ 0 ]
+   )
+  )
+ )
+ (Class
+  (Identifier [ Duplicates ]
+  )
+  (MethodDecl
+   (IntegerType
+   )
+   (Identifier [ f ]
+   )
+   (IntegerLiteral [ 0 ]
+   )
+  )
+  (MethodDecl
+   (IntegerType
+   )
+   (Identifier [ f ]
+   )
+   (IntegerLiteral [ 1 ]
+   )
+  )
+  (MethodDecl
+   (IntegerType
+   )
+   (Identifier [ g ]
+   )
+   (VarDecl
+    (IntegerType
+    )
+    (Identifier [ x ]
+    )
+   )
+   (VarDecl
+    (IntegerType
+    )
+    (Identifier [ y ]
+    )
+   )
+   (VarDecl
+    (IdentifierType [ DuplicateClass ]
+    )
+    (Identifier [ z ]
+    )
+   )
+   (VarDecl
+    (IdentifierType [ Duplicates ]
+    )
+    (Identifier [ y ]
+    )
+   )
+   (IntegerLiteral [ 0 ]
+   )
+  )
+ )
+)

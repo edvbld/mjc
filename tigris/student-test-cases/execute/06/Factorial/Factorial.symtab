@@ -1,0 +1,10 @@
+Main class: Factorial
+
+    Class: Fac
+        Fields:
+        Methods:
+            int ComputeFac
+                Parameters:
+                    int num
+                Locals:
+                    int num_aux

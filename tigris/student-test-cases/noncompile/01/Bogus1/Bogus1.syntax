@@ -1,0 +1,573 @@
+(Program
+ (MainClass
+  (Identifier [ Bogus1 ]
+  )
+  (Identifier [ args ]
+  )
+  (Print
+   (Call [ fail ]
+    (Call [ end ]
+     (Call [ test7 ]
+      (Call [ foo ]
+       (Call [ test5 ]
+        (Call [ test4 ]
+         (Call [ test3 ]
+          (Call [ test2 ]
+           (Call [ test1 ]
+            (Call [ init ]
+             (NewObject
+              (Identifier [ Boguser ]
+              )
+             )
+             (Identifier [ init ]
+             )
+            )
+            (Identifier [ test1 ]
+            )
+            (IntegerLiteral [ 1 ]
+            )
+           )
+           (Identifier [ test2 ]
+           )
+           (IntegerLiteral [ 2 ]
+           )
+          )
+          (Identifier [ test3 ]
+          )
+          (IntegerLiteral [ 3 ]
+          )
+         )
+         (Identifier [ test4 ]
+         )
+         (IntegerLiteral [ 4 ]
+         )
+        )
+        (Identifier [ test5 ]
+        )
+        (IntegerLiteral [ 5 ]
+        )
+       )
+       (Identifier [ foo ]
+       )
+       (IntegerLiteral [ 6 ]
+       )
+      )
+      (Identifier [ test7 ]
+      )
+      (IntegerLiteral [ 7 ]
+      )
+      (IntegerLiteral [ 0 ]
+      )
+      (IntegerLiteral [ 1 ]
+      )
+      (IntegerLiteral [ 2 ]
+      )
+      (IntegerLiteral [ 3 ]
+      )
+      (IntegerLiteral [ 4 ]
+      )
+      (IntegerLiteral [ 5 ]
+      )
+      (IntegerLiteral [ 6 ]
+      )
+      (IntegerLiteral [ 7 ]
+      )
+     )
+     (Identifier [ end ]
+     )
+    )
+    (Identifier [ fail ]
+    )
+   )
+  )
+ )
+ (Class
+  (Identifier [ Boguser ]
+  )
+  (VarDecl
+   (IntegerType
+   )
+   (Identifier [ foo ]
+   )
+  )
+  (MethodDecl
+   (IdentifierType [ Boguser ]
+   )
+   (Identifier [ init ]
+   )
+   (Assign
+    (Identifier [ foo ]
+    )
+    (IntegerLiteral [ -1 ]
+    )
+   )
+   (This
+   )
+  )
+  (MethodDecl
+   (IntegerType
+   )
+   (Identifier [ increaseFoo ]
+   )
+   (Assign
+    (Identifier [ foo ]
+    )
+    (Plus
+     (IdentifierExp [ foo ]
+     )
+     (IntegerLiteral [ 1 ]
+     )
+    )
+   )
+   (IntegerLiteral [ 0 ]
+   )
+  )
+  (MethodDecl
+   (IdentifierType [ Boguser ]
+   )
+   (Identifier [ test1 ]
+   )
+   (Formal
+    (IntegerType
+    )
+    (Identifier [ foo ]
+    )
+   )
+   (VarDecl
+    (IdentifierType [ Boguser ]
+    )
+    (Identifier [ obj ]
+    )
+   )
+   (Assign
+    (Identifier [ foo ]
+    )
+    (IdentifierExp [ foo ]
+    )
+   )
+   (If
+    (Less
+     (IdentifierExp [ foo ]
+     )
+     (IntegerLiteral [ 0 ]
+     )
+    )
+    (Print
+     (IdentifierExp [ foo ]
+     )
+    )
+    (Block
+     (Assign
+      (Identifier [ foo ]
+      )
+      (Call [ increaseFoo ]
+       (This
+       )
+       (Identifier [ increaseFoo ]
+       )
+      )
+     )
+   )
+   (This
+   )
+  )
+  (MethodDecl
+   (IdentifierType [ Boguser ]
+   )
+   (Identifier [ test2 ]
+   )
+   (Formal
+    (IntegerType
+    )
+    (Identifier [ bar ]
+    )
+   )
+   (If
+    (Not
+     (And
+      (Not
+       (False
+       )
+      )
+      (And
+       (Not
+        (And
+         (True
+         )
+         (And
+          (True
+          )
+          (Not
+           (False
+           )
+          )
+         )
+        )
+       )
+       (Not
+        (And
+         (Less
+          (IntegerLiteral [ 1 ]
+          )
+          (IntegerLiteral [ 0 ]
+          )
+         )
+         (Less
+          (IntegerLiteral [ 5 ]
+          )
+          (IntegerLiteral [ 5 ]
+          )
+         )
+        )
+       )
+      )
+     )
+    )
+    (Assign
+     (Identifier [ foo ]
+     )
+     (Plus
+      (IdentifierExp [ foo ]
+      )
+      (IntegerLiteral [ 1 ]
+      )
+     )
+    )
+    (Print
+     (IntegerLiteral [ 0 ]
+     )
+    )
+   )
+   (This
+   )
+  )
+  (MethodDecl
+   (IdentifierType [ Boguser ]
+   )
+   (Identifier [ test3 ]
+   )
+   (Formal
+    (IntegerType
+    )
+    (Identifier [ a ]
+    )
+   )
+   (Assign
+    (Identifier [ foo ]
+    )
+    (Plus
+     (IdentifierExp [ foo ]
+     )
+     (IntegerLiteral [ 1 ]
+     )
+    )
+   )
+   (This
+   )
+  )
+  (MethodDecl
+   (IdentifierType [ Boguser ]
+   )
+   (Identifier [ test4 ]
+   )
+   (Formal
+    (IntegerType
+    )
+    (Identifier [ bar ]
+    )
+   )
+   (VarDecl
+    (IntArrayType
+    )
+    (Identifier [ array ]
+    )
+   )
+   (Assign
+    (Identifier [ array ]
+    )
+    (NewArray
+     (IntegerLiteral [ 1 ]
+     )
+    )
+   )
+   (ArrayAssign
+    (Identifier [ array ]
+    )
+    (IntegerLiteral [ 0 ]
+    )
+    (ArrayLookup
+     (IdentifierExp [ array ]
+     )
+     (IntegerLiteral [ 0 ]
+     )
+    )
+   )
+   (Assign
+    (Identifier [ foo ]
+    )
+    (Plus
+     (Minus
+      (Plus
+       (Plus
+        (IdentifierExp [ bar ]
+        )
+        (IdentifierExp [ foo ]
+        )
+       )
+       (ArrayLength
+        (IdentifierExp [ array ]
+        )
+       )
+      )
+      (Times
+       (ArrayLength
+        (IdentifierExp [ array ]
+        )
+       )
+       (IntegerLiteral [ 4 ]
+       )
+      )
+     )
+     (ArrayLookup
+      (IdentifierExp [ array ]
+      )
+      (IntegerLiteral [ 0 ]
+      )
+     )
+    )
+   )
+   (This
+   )
+  )
+  (MethodDecl
+   (IdentifierType [ Boguser ]
+   )
+   (Identifier [ test5 ]
+   )
+   (Formal
+    (IntegerType
+    )
+    (Identifier [ bar ]
+    )
+   )
+   (If
+    (Less
+     (IdentifierExp [ bar ]
+     )
+     (IdentifierExp [ bar ]
+     )
+    )
+    (Assign
+     (Identifier [ foo ]
+     )
+     (Minus
+      (IntegerLiteral [ 2 ]
+      )
+      (IntegerLiteral [ 1 ]
+      )
+     )
+    )
+    (Assign
+     (Identifier [ foo ]
+     )
+     (Plus
+      (IdentifierExp [ foo ]
+      )
+      (IntegerLiteral [ 1 ]
+      )
+     )
+    )
+   )
+   (This
+   )
+  )
+  (MethodDecl
+   (IdentifierType [ Boguser ]
+   )
+   (Identifier [ foo ]
+   )
+   (Formal
+    (IntegerType
+    )
+    (Identifier [ foo ]
+    )
+   )
+   (If
+    (Less
+     (IdentifierExp [ foo ]
+     )
+     (IdentifierExp [ foo ]
+     )
+    )
+    (Assign
+     (Identifier [ foo ]
+     )
+     (IdentifierExp [ foo ]
+     )
+    )
+    (If
+     (Less
+      (IntegerLiteral [ 0 ]
+      )
+      (IdentifierExp [ foo ]
+      )
+     )
+     (Assign
+      (Identifier [ foo ]
+      )
+      (Plus
+       (IdentifierExp [ foo ]
+       )
+       (IntegerLiteral [ 1 ]
+       )
+      )
+     )
+     (Assign
+      (Identifier [ foo ]
+      )
+      (Call [ increaseFoo ]
+       (This
+       )
+       (Identifier [ increaseFoo ]
+       )
+      )
+     )
+    )
+   )
+   (This
+   )
+  )
+  (MethodDecl
+   (IdentifierType [ Boguser ]
+   )
+   (Identifier [ test7 ]
+   )
+   (Formal
+    (IntegerType
+    )
+    (Identifier [ a1 ]
+    )
+   )
+   (Formal
+    (IntegerType
+    )
+    (Identifier [ a2 ]
+    )
+   )
+   (Formal
+    (IntegerType
+    )
+    (Identifier [ a3 ]
+    )
+   )
+   (Formal
+    (IntegerType
+    )
+    (Identifier [ a4 ]
+    )
+   )
+   (Formal
+    (IntegerType
+    )
+    (Identifier [ a5 ]
+    )
+   )
+   (Formal
+    (IntegerType
+    )
+    (Identifier [ a6 ]
+    )
+   )
+   (Formal
+    (IntegerType
+    )
+    (Identifier [ a7 ]
+    )
+   )
+   (Formal
+    (IntegerType
+    )
+    (Identifier [ a8 ]
+    )
+   )
+   (Formal
+    (IntegerType
+    )
+    (Identifier [ a9 ]
+    )
+   )
+   (VarDecl
+    (IntegerType
+    )
+    (Identifier [ q ]
+    )
+   )
+   (Assign
+    (Identifier [ q ]
+    )
+    (Plus
+     (Plus
+      (Plus
+       (Plus
+        (Plus
+         (Plus
+          (Plus
+           (Plus
+            (IdentifierExp [ a1 ]
+            )
+            (IdentifierExp [ a2 ]
+            )
+           )
+           (IdentifierExp [ a3 ]
+           )
+          )
+          (IdentifierExp [ a4 ]
+          )
+         )
+         (IdentifierExp [ a5 ]
+         )
+        )
+        (IdentifierExp [ a6 ]
+        )
+       )
+       (IdentifierExp [ a7 ]
+       )
+      )
+      (IdentifierExp [ a8 ]
+      )
+     )
+     (IdentifierExp [ a9 ]
+     )
+    )
+   )
+   (Assign
+    (Identifier [ foo ]
+    )
+    (Plus
+     (IdentifierExp [ foo ]
+     )
+     (IntegerLiteral [ 1 ]
+     )
+    )
+   )
+   (This
+   )
+  )
+  (MethodDecl
+   (IntegerType
+   )
+   (Identifier [ end ]
+   )
+   (IdentifierExp [ foo ]
+   )
+  )
+  (MethodDecl
+   (IntegerType
+   )
+   (Identifier [ fail ]
+   )
+   (IntegerLiteral [ 0 ]
+   )
+  )
+ )
+)

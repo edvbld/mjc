@@ -1,0 +1,21 @@
+Main class: Test7
+
+    Class: makeList
+        Fields:
+            int[] a
+            int k
+        Methods:
+            int f
+                Parameters:
+                    int x
+                Locals:
+            int sort
+                Parameters:
+                Locals:
+                    int x
+                    int y
+                    int t
+            int print
+                Parameters:
+                Locals:
+                    int counter

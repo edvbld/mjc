@@ -1,0 +1,44 @@
+(Program
+ (MainClass
+  (Identifier [ Test1_1 ]
+  )
+  (Identifier [ args ]
+  )
+ )
+ (Class
+  (Identifier [ Test ]
+  )
+  (VarDecl
+   (IntArrayType
+   )
+   (Identifier [ a ]
+   )
+  )
+  (MethodDecl
+   (BooleanType
+   )
+   (Identifier [ test ]
+   )
+   (Formal
+    (IntegerType
+    )
+    (Identifier [ i ]
+    )
+   )
+   (Assign
+    (Identifier [ a ]
+    )
+    (NewArray
+     (IdentifierExp [ i ]
+     )
+    )
+   )
+   (ArrayLookup
+    (IdentifierExp [ a ]
+    )
+    (IdentifierExp [ i ]
+    )
+   )
+  )
+ )
+)

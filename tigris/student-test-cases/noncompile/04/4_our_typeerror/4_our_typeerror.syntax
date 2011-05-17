@@ -1,0 +1,302 @@
+(Program
+ (MainClass
+  (Identifier [ Main ]
+  )
+  (Identifier [ args ]
+  )
+  (Print
+   (Call [ run ]
+    (NewObject
+     (Identifier [ our_typeerror ]
+     )
+    )
+    (Identifier [ run ]
+    )
+   )
+  )
+ )
+ (Class
+  (Identifier [ our_typeerror ]
+  )
+  (VarDecl
+   (IntegerType
+   )
+   (Identifier [ num_chars ]
+   )
+  )
+  (VarDecl
+   (IntArrayType
+   )
+   (Identifier [ chars ]
+   )
+  )
+  (MethodDecl
+   (IntegerType
+   )
+   (Identifier [ print ]
+   )
+   (VarDecl
+    (IntegerType
+    )
+    (Identifier [ i ]
+    )
+   )
+   (Assign
+    (Identifier [ i ]
+    )
+    (IntegerLiteral [ 0 ]
+    )
+   )
+   (While
+    (Less
+     (IdentifierExp [ i ]
+     )
+     (IdentifierExp [ num_chars ]
+     )
+    )
+    (Block
+     (If
+      (ArrayLookup
+       (IdentifierExp [ chars ]
+       )
+       (IdentifierExp [ i ]
+       )
+      )
+      (Block
+       (Print
+        (IdentifierExp [ i ]
+        )
+       )
+      (Block
+     )
+     (Assign
+      (Identifier [ i ]
+      )
+      (Plus
+       (IdentifierExp [ i ]
+       )
+       (IntegerLiteral [ 1 ]
+       )
+      )
+     )
+   )
+   (IntegerLiteral [ 0 ]
+   )
+  )
+  (MethodDecl
+   (IntegerType
+   )
+   (Identifier [ run ]
+   )
+   (VarDecl
+    (IntegerType
+    )
+    (Identifier [ i ]
+    )
+   )
+   (VarDecl
+    (IntegerType
+    )
+    (Identifier [ retv ]
+    )
+   )
+   (Assign
+    (Identifier [ num_chars ]
+    )
+    (IntegerLiteral [ 27 ]
+    )
+   )
+   (Assign
+    (Identifier [ chars ]
+    )
+    (NewArray
+     (IdentifierExp [ num_chars ]
+     )
+    )
+   )
+   (Assign
+    (Identifier [ i ]
+    )
+    (IntegerLiteral [ 0 ]
+    )
+   )
+   (While
+    (Less
+     (IdentifierExp [ i ]
+     )
+     (ArrayLength
+      (IdentifierExp [ s ]
+      )
+     )
+    )
+    (Block
+     (Assign
+      (Identifier [ retv ]
+      )
+      (Call [ check ]
+       (This
+       )
+       (Identifier [ check ]
+       )
+       (Call [ charAt ]
+        (IdentifierExp [ s ]
+        )
+        (Identifier [ charAt ]
+        )
+        (IdentifierExp [ i ]
+        )
+       )
+      )
+     )
+     (Assign
+      (Identifier [ i ]
+      )
+      (Plus
+       (IdentifierExp [ i ]
+       )
+       (IntegerLiteral [ 1 ]
+       )
+      )
+     )
+   )
+   (IntegerLiteral [ 0 ]
+   )
+  )
+  (MethodDecl
+   (IntegerType
+   )
+   (Identifier [ check ]
+   )
+   (Formal
+    (IntegerType
+    )
+    (Identifier [ c ]
+    )
+   )
+   (VarDecl
+    (IntegerType
+    )
+    (Identifier [ retv ]
+    )
+   )
+   (VarDecl
+    (IntegerType
+    )
+    (Identifier [ diff ]
+    )
+   )
+   (Assign
+    (Identifier [ diff ]
+    )
+    (Minus
+     (IdentifierExp [ c ]
+     )
+     (IntegerLiteral [ 1 ]
+     )
+    )
+   )
+   (If
+    (And
+     (Less
+      (IntegerLiteral [ 0 ]
+      )
+      (IdentifierExp [ diff ]
+      )
+     )
+     (Less
+      (IdentifierExp [ diff ]
+      )
+      (IdentifierExp [ num_chars ]
+      )
+     )
+    )
+    (Block
+     (Assign
+      (Identifier [ retv ]
+      )
+      (Call [ mark ]
+       (This
+       )
+       (Identifier [ mark ]
+       )
+       (Minus
+        (IdentifierExp [ c ]
+        )
+        (IntegerLiteral [ 2 ]
+        )
+       )
+      )
+     )
+    (Block
+   )
+   (Assign
+    (Identifier [ diff ]
+    )
+    (Minus
+     (IdentifierExp [ c ]
+     )
+     (IntegerLiteral [ 1 ]
+     )
+    )
+   )
+   (If
+    (And
+     (Less
+      (IntegerLiteral [ 0 ]
+      )
+      (IdentifierExp [ diff ]
+      )
+     )
+     (Less
+      (IdentifierExp [ diff ]
+      )
+      (IdentifierExp [ num_chars ]
+      )
+     )
+    )
+    (Block
+     (Assign
+      (Identifier [ retv ]
+      )
+      (Call [ mark ]
+       (This
+       )
+       (Identifier [ mark ]
+       )
+       (Minus
+        (IdentifierExp [ c ]
+        )
+        (IntegerLiteral [ 1 ]
+        )
+       )
+      )
+     )
+    (Block
+   )
+   (IntegerLiteral [ 0 ]
+   )
+  )
+  (MethodDecl
+   (IntegerType
+   )
+   (Identifier [ mark ]
+   )
+   (Formal
+    (IntegerType
+    )
+    (Identifier [ i ]
+    )
+   )
+   (ArrayAssign
+    (Identifier [ chars ]
+    )
+    (IdentifierExp [ i ]
+    )
+    (True
+    )
+   )
+   (IntegerLiteral [ 0 ]
+   )
+  )
+ )
+)

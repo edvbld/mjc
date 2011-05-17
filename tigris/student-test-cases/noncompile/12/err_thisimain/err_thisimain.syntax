@@ -1,0 +1,12 @@
+(Program
+ (MainClass
+  (Identifier [ MainClass ]
+  )
+  (Identifier [ args ]
+  )
+  (Print
+   (This
+   )
+  )
+ )
+)

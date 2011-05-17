@@ -1,0 +1,63 @@
+(Program
+ (MainClass
+  (Identifier [ Mainklassen ]
+  )
+  (Identifier [ args ]
+  )
+  (If
+   (Less
+    (Call [ trueMeth ]
+     (NewObject
+      (Identifier [ Klass ]
+      )
+     )
+     (Identifier [ trueMeth ]
+     )
+    )
+    (IntegerLiteral [ 20 ]
+    )
+   )
+   (Print
+    (Call [ trueMeth ]
+     (NewObject
+      (Identifier [ Klass ]
+      )
+     )
+     (Identifier [ trueMeth ]
+     )
+    )
+   )
+   (Block
+    (Block
+     (Block
+     (Block
+     (Block
+      (Block
+       (Print
+        (True
+        )
+       )
+     (Block
+  )
+ )
+ (Class
+  (Identifier [ Klass ]
+  )
+  (MethodDecl
+   (BooleanType
+   )
+   (Identifier [ trueMeth ]
+   )
+   (False
+   )
+  )
+  (MethodDecl
+   (IntegerType
+   )
+   (Identifier [ trueMeth ]
+   )
+   (IntegerLiteral [ 1 ]
+   )
+  )
+ )
+)

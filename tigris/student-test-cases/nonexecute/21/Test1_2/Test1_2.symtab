@@ -1,0 +1,9 @@
+Main class: Test1_2
+
+    Class: Test
+        Fields:
+        Methods:
+            int test
+                Parameters:
+                Locals:
+                    Test t

@@ -1,0 +1,50 @@
+(Program
+ (MainClass
+  (Identifier [ Error3 ]
+  )
+  (Identifier [ args ]
+  )
+  (Print
+   (Call [ a ]
+    (NewObject
+     (Identifier [ A ]
+     )
+    )
+    (Identifier [ a ]
+    )
+   )
+  )
+ )
+ (Class
+  (Identifier [ A ]
+  )
+  (VarDecl
+   (IdentifierType [ A ]
+   )
+   (Identifier [ a ]
+   )
+  )
+  (MethodDecl
+   (IdentifierType [ A ]
+   )
+   (Identifier [ a ]
+   )
+   (Formal
+    (IdentifierType [ A ]
+    )
+    (Identifier [ a ]
+    )
+   )
+   (VarDecl
+    (IdentifierType [ A ]
+    )
+    (Identifier [ a ]
+    )
+   )
+   (NewObject
+    (Identifier [ A ]
+    )
+   )
+  )
+ )
+)

@@ -1,0 +1,92 @@
+(Program
+ (MainClass
+  (Identifier [ MainClass ]
+  )
+  (Identifier [ args ]
+  )
+ )
+ (Class
+  (Identifier [ Klass1 ]
+  )
+  (VarDecl
+   (IntegerType
+   )
+   (Identifier [ a ]
+   )
+  )
+  (VarDecl
+   (IdentifierType [ Klass2 ]
+   )
+   (Identifier [ k ]
+   )
+  )
+  (VarDecl
+   (IntArrayType
+   )
+   (Identifier [ k2 ]
+   )
+  )
+  (MethodDecl
+   (IntegerType
+   )
+   (Identifier [ intMetod ]
+   )
+   (Formal
+    (IdentifierType [ Klass1 ]
+    )
+    (Identifier [ f ]
+    )
+   )
+   (Formal
+    (IdentifierType [ Klass2 ]
+    )
+    (Identifier [ f2 ]
+    )
+   )
+   (Assign
+    (Identifier [ a ]
+    )
+    (ArrayLength
+     (IdentifierExp [ k2 ]
+     )
+    )
+   )
+   (IdentifierExp [ a ]
+   )
+  )
+ )
+ (Class
+  (Identifier [ Klass2 ]
+  )
+  (VarDecl
+   (IdentifierType [ Klass1 ]
+   )
+   (Identifier [ k2 ]
+   )
+  )
+  (MethodDecl
+   (IntArrayType
+   )
+   (Identifier [ getInt ]
+   )
+   (VarDecl
+    (IntArrayType
+    )
+    (Identifier [ a ]
+    )
+   )
+   (Assign
+    (Identifier [ a ]
+    )
+    (NewArray
+     (IntegerLiteral [ 20 ]
+     )
+    )
+   )
+   (NewArray
+    (IntegerLiteral [ 37281 ]
+    )
+   )
+  )
+ )
+)

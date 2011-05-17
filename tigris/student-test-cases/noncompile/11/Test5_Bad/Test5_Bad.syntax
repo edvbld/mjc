@@ -1,0 +1,153 @@
+(Program
+ (MainClass
+  (Identifier [ Test5 ]
+  )
+  (Identifier [ a ]
+  )
+  (Print
+   (Call [ init ]
+    (NewObject
+     (Identifier [ AddArray ]
+     )
+    )
+    (Identifier [ init ]
+    )
+   )
+  )
+ )
+ (Class
+  (Identifier [ AddArray ]
+  )
+  (VarDecl
+   (IntArrayType
+   )
+   (Identifier [ array_1 ]
+   )
+  )
+  (VarDecl
+   (IntArrayType
+   )
+   (Identifier [ array_2 ]
+   )
+  )
+  (VarDecl
+   (IntegerType
+   )
+   (Identifier [ integer ]
+   )
+  )
+  (MethodDecl
+   (IntegerType
+   )
+   (Identifier [ init ]
+   )
+   (VarDecl
+    (IntegerType
+    )
+    (Identifier [ a ]
+    )
+   )
+   (ArrayAssign
+    (Identifier [ array_1 ]
+    )
+    (IntegerLiteral [ 0 ]
+    )
+    (IntegerLiteral [ 0 ]
+    )
+   )
+   (ArrayAssign
+    (Identifier [ array_2 ]
+    )
+    (IntegerLiteral [ 1 ]
+    )
+    (IntegerLiteral [ 1 ]
+    )
+   )
+   (ArrayAssign
+    (Identifier [ array_2 ]
+    )
+    (IntegerLiteral [ 0 ]
+    )
+    (IntegerLiteral [ 2 ]
+    )
+   )
+   (ArrayAssign
+    (Identifier [ array_2 ]
+    )
+    (IntegerLiteral [ 1 ]
+    )
+    (IntegerLiteral [ 3 ]
+    )
+   )
+   (Assign
+    (Identifier [ a ]
+    )
+    (Call [ add ]
+     (This
+     )
+     (Identifier [ add ]
+     )
+    )
+   )
+   (IntegerLiteral [ 0 ]
+   )
+  )
+  (MethodDecl
+   (IntegerType
+   )
+   (Identifier [ add ]
+   )
+   (VarDecl
+    (IntegerType
+    )
+    (Identifier [ i ]
+    )
+   )
+   (Assign
+    (Identifier [ i ]
+    )
+    (IntegerLiteral [ 0 ]
+    )
+   )
+   (While
+    (Less
+     (IdentifierExp [ i ]
+     )
+     (IntegerLiteral [ 1 ]
+     )
+    )
+    (Block
+     (Assign
+      (Identifier [ integer ]
+      )
+      (Plus
+       (ArrayLookup
+        (IdentifierExp [ array_1 ]
+        )
+        (IdentifierExp [ i ]
+        )
+       )
+       (ArrayLookup
+        (IdentifierExp [ array ]
+        )
+        (IdentifierExp [ i ]
+        )
+       )
+      )
+     )
+     (Assign
+      (Identifier [ i ]
+      )
+      (Plus
+       (IdentifierExp [ i ]
+       )
+       (IntegerLiteral [ 1 ]
+       )
+      )
+     )
+   )
+   (IdentifierExp [ integer ]
+   )
+  )
+ )
+)

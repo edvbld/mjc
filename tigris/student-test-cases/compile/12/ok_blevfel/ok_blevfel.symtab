@@ -1,0 +1,21 @@
+Main class: MainClass
+
+    Class: Klass1
+        Fields:
+            int a
+            Klass2 k
+            int[] k2
+        Methods:
+            int intMetod
+                Parameters:
+                    Klass1 f
+                    Klass2 f2
+                Locals:
+    Class: Klass2
+        Fields:
+            Klass1 k2
+        Methods:
+            int[] getInt
+                Parameters:
+                Locals:
+                    int[] a

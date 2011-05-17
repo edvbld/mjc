@@ -1,0 +1,13 @@
+Compiling input file Fiske.java into directory Fiske/
+- Syntax analysis
+  ...abstract syntax tree: Fiske/Fiske.syntax
+- Semantic analysis
+  ...symbol table: Fiske/Fiske.symtab
+- Jasmin assembler
+  ... Fiske/Fiske.j
+  ... Fiske/Fisk.j
+  ... Fiske/Matrix.j
+- Class files
+  ... Fiske/Fiske.class
+  ... Fiske/Fisk.class
+  ... Fiske/Matrix.class

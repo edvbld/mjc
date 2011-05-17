@@ -1,0 +1,104 @@
+(Program
+ (MainClass
+  (Identifier [ Bogus4 ]
+  )
+  (Identifier [ args ]
+  )
+  (Print
+   (Call [ testing ]
+    (NewObject
+     (Identifier [ Test ]
+     )
+    )
+    (Identifier [ testing ]
+    )
+   )
+  )
+ )
+ (Class
+  (Identifier [ Test ]
+  )
+  (VarDecl
+   (BooleanType
+   )
+   (Identifier [ b ]
+   )
+  )
+  (MethodDecl
+   (IntegerType
+   )
+   (Identifier [ testing ]
+   )
+   (VarDecl
+    (IntegerType
+    )
+    (Identifier [ c ]
+    )
+   )
+   (Assign
+    (Identifier [ c ]
+    )
+    (Call [ input ]
+     (This
+     )
+     (Identifier [ input ]
+     )
+     (IntegerLiteral [ 0 ]
+     )
+    )
+   )
+   (Assign
+    (Identifier [ c ]
+    )
+    (Call [ set ]
+     (This
+     )
+     (Identifier [ set ]
+     )
+     (True
+     )
+    )
+   )
+   (IdentifierExp [ c ]
+   )
+  )
+  (MethodDecl
+   (IntegerType
+   )
+   (Identifier [ set ]
+   )
+   (Formal
+    (BooleanType
+    )
+    (Identifier [ a ]
+    )
+   )
+   (Assign
+    (Identifier [ b ]
+    )
+    (IdentifierExp [ a ]
+    )
+   )
+   (IntegerLiteral [ 1 ]
+   )
+  )
+  (MethodDecl
+   (IntegerType
+   )
+   (Identifier [ output ]
+   )
+   (Formal
+    (IntegerType
+    )
+    (Identifier [ i ]
+    )
+   )
+   (Print
+    (IdentifierExp [ b ]
+    )
+   )
+   (IntegerLiteral [ 1 ]
+   )
+  )
+ )
+)

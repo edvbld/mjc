@@ -1,0 +1,146 @@
+(Program
+ (MainClass
+  (Identifier [ TestSymbolTable ]
+  )
+  (Identifier [ args ]
+  )
+  (If
+   (Call [ runTest ]
+    (NewObject
+     (Identifier [ TestSymbolTableMain ]
+     )
+    )
+    (Identifier [ runTest ]
+    )
+   )
+   (Block
+   (Block
+  )
+ )
+ (Class
+  (Identifier [ TestSymbolTableMain ]
+  )
+  (MethodDecl
+   (BooleanType
+   )
+   (Identifier [ runTest ]
+   )
+   (VarDecl
+    (IdentifierType [ TestSymbolTableHelper ]
+    )
+    (Identifier [ tester ]
+    )
+   )
+   (Assign
+    (Identifier [ tester ]
+    )
+    (NewObject
+     (Identifier [ TestSymbolTableHelper ]
+     )
+    )
+   )
+   (Print
+    (Call [ testLocal ]
+     (IdentifierExp [ tester ]
+     )
+     (Identifier [ testLocal ]
+     )
+    )
+   )
+   (Print
+    (Call [ setField ]
+     (IdentifierExp [ tester ]
+     )
+     (Identifier [ setField ]
+     )
+    )
+   )
+   (Print
+    (Call [ testField ]
+     (IdentifierExp [ tester ]
+     )
+     (Identifier [ testField ]
+     )
+    )
+   )
+   (True
+   )
+  )
+ )
+ (Class
+  (Identifier [ TestSymbolTableHelper ]
+  )
+  (VarDecl
+   (IntegerType
+   )
+   (Identifier [ b ]
+   )
+  )
+  (MethodDecl
+   (IntegerType
+   )
+   (Identifier [ testLocal ]
+   )
+   (VarDecl
+    (IntegerType
+    )
+    (Identifier [ ret ]
+    )
+   )
+   (VarDecl
+    (BooleanType
+    )
+    (Identifier [ b ]
+    )
+   )
+   (Assign
+    (Identifier [ b ]
+    )
+    (False
+    )
+   )
+   (If
+    (IdentifierExp [ b ]
+    )
+    (Block
+     (Assign
+      (Identifier [ ret ]
+      )
+      (IntegerLiteral [ 0 ]
+      )
+     )
+    (Block
+     (Assign
+      (Identifier [ ret ]
+      )
+      (IntegerLiteral [ 1 ]
+      )
+     )
+   )
+   (IdentifierExp [ ret ]
+   )
+  )
+  (MethodDecl
+   (IntegerType
+   )
+   (Identifier [ setField ]
+   )
+   (Assign
+    (Identifier [ b ]
+    )
+    (IntegerLiteral [ 1 ]
+    )
+   )
+   (IdentifierExp [ b ]
+   )
+  )
+  (MethodDecl
+   (IntegerType
+   )
+   (Identifier [ testField ]
+   )
+   (IdentifierExp [ b ]
+   )
+  )
+ )
+)

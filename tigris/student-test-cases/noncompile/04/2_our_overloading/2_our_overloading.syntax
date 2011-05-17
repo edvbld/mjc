@@ -1,0 +1,140 @@
+(Program
+ (MainClass
+  (Identifier [ Main ]
+  )
+  (Identifier [ args ]
+  )
+  (Print
+   (Call [ run ]
+    (NewObject
+     (Identifier [ our_overloading ]
+     )
+    )
+    (Identifier [ run ]
+    )
+   )
+  )
+ )
+ (Class
+  (Identifier [ our_overloading ]
+  )
+  (VarDecl
+   (BooleanType
+   )
+   (Identifier [ a ]
+   )
+  )
+  (VarDecl
+   (BooleanType
+   )
+   (Identifier [ b ]
+   )
+  )
+  (VarDecl
+   (BooleanType
+   )
+   (Identifier [ c ]
+   )
+  )
+  (MethodDecl
+   (IntegerType
+   )
+   (Identifier [ run ]
+   )
+   (VarDecl
+    (IntegerType
+    )
+    (Identifier [ retv ]
+    )
+   )
+   (VarDecl
+    (IntegerType
+    )
+    (Identifier [ a ]
+    )
+   )
+   (VarDecl
+    (IntegerType
+    )
+    (Identifier [ b ]
+    )
+   )
+   (Assign
+    (Identifier [ a ]
+    )
+    (IntegerLiteral [ 0 ]
+    )
+   )
+   (Assign
+    (Identifier [ b ]
+    )
+    (IntegerLiteral [ 1 ]
+    )
+   )
+   (Assign
+    (Identifier [ retv ]
+    )
+    (Call [ check ]
+     (This
+     )
+     (Identifier [ check ]
+     )
+     (IdentifierExp [ a ]
+     )
+     (IdentifierExp [ b ]
+     )
+    )
+   )
+   (IdentifierExp [ retv ]
+   )
+  )
+  (MethodDecl
+   (IntegerType
+   )
+   (Identifier [ check ]
+   )
+   (Formal
+    (IntegerType
+    )
+    (Identifier [ a ]
+    )
+   )
+   (Formal
+    (IntegerType
+    )
+    (Identifier [ b ]
+    )
+   )
+   (VarDecl
+    (IntegerType
+    )
+    (Identifier [ c ]
+    )
+   )
+   (Assign
+    (Identifier [ c ]
+    )
+    (And
+     (Less
+      (IdentifierExp [ a ]
+      )
+      (IdentifierExp [ b ]
+      )
+     )
+     (Plus
+      (IdentifierExp [ a ]
+      )
+      (IdentifierExp [ b ]
+      )
+     )
+    )
+   )
+   (And
+    (IdentifierExp [ a ]
+    )
+    (IdentifierExp [ b ]
+    )
+   )
+  )
+ )
+)

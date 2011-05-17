@@ -1,0 +1,11 @@
+Compiling input file Test1_Good_Fibonacci.java into directory Test1_Good_Fibonacci/
+- Syntax analysis
+  ...abstract syntax tree: Test1_Good_Fibonacci/Test1_Good_Fibonacci.syntax
+- Semantic analysis
+  ...symbol table: Test1_Good_Fibonacci/Test1_Good_Fibonacci.symtab
+- Jasmin assembler
+  ... Test1_Good_Fibonacci/Test3.j
+  ... Test1_Good_Fibonacci/Fibonacci.j
+- Class files
+  ... Test1_Good_Fibonacci/Test3.class
+  ... Test1_Good_Fibonacci/Fibonacci.class

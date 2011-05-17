@@ -1,0 +1,228 @@
+(Program
+ (MainClass
+  (Identifier [ Test5 ]
+  )
+  (Identifier [ id ]
+  )
+ )
+ (Class
+  (Identifier [ Test5A ]
+  )
+  (VarDecl
+   (BooleanType
+   )
+   (Identifier [ x ]
+   )
+  )
+  (VarDecl
+   (IntegerType
+   )
+   (Identifier [ y ]
+   )
+  )
+  (VarDecl
+   (IntArrayType
+   )
+   (Identifier [ z ]
+   )
+  )
+  (MethodDecl
+   (IntegerType
+   )
+   (Identifier [ setX ]
+   )
+   (Formal
+    (IntArrayType
+    )
+    (Identifier [ illegalX ]
+    )
+   )
+   (Assign
+    (Identifier [ x ]
+    )
+    (IdentifierExp [ illegalX ]
+    )
+   )
+   (IntegerLiteral [ 0 ]
+   )
+  )
+  (MethodDecl
+   (BooleanType
+   )
+   (Identifier [ getX ]
+   )
+   (Call [ getY ]
+    (This
+    )
+    (Identifier [ getY ]
+    )
+   )
+  )
+  (MethodDecl
+   (IntegerType
+   )
+   (Identifier [ getY ]
+   )
+   (Call [ getZ ]
+    (This
+    )
+    (Identifier [ getZ ]
+    )
+   )
+  )
+  (MethodDecl
+   (IntArrayType
+   )
+   (Identifier [ getZ ]
+   )
+   (IdentifierExp [ z ]
+   )
+  )
+ )
+ (Class
+  (Identifier [ Test5B ]
+  )
+  (VarDecl
+   (BooleanType
+   )
+   (Identifier [ x ]
+   )
+  )
+  (MethodDecl
+   (BooleanType
+   )
+   (Identifier [ testScope ]
+   )
+   (VarDecl
+    (IntegerType
+    )
+    (Identifier [ x ]
+    )
+   )
+   (VarDecl
+    (BooleanType
+    )
+    (Identifier [ x ]
+    )
+   )
+   (Block
+    (Assign
+     (Identifier [ x ]
+     )
+     (IntegerLiteral [ 10 ]
+     )
+    )
+    (Block
+     (Assign
+      (Identifier [ x ]
+      )
+      (True
+      )
+     )
+   (IdentifierExp [ x ]
+   )
+  )
+  (MethodDecl
+   (BooleanType
+   )
+   (Identifier [ testCall ]
+   )
+   (Formal
+    (IntegerType
+    )
+    (Identifier [ a ]
+    )
+   )
+   (Formal
+    (BooleanType
+    )
+    (Identifier [ b ]
+    )
+   )
+   (Formal
+    (IntArrayType
+    )
+    (Identifier [ c ]
+    )
+   )
+   (And
+    (Less
+     (IdentifierExp [ a ]
+     )
+     (ArrayLookup
+      (IdentifierExp [ c ]
+      )
+      (IntegerLiteral [ 0 ]
+      )
+     )
+    )
+    (IdentifierExp [ b ]
+    )
+   )
+  )
+  (MethodDecl
+   (IntegerType
+   )
+   (Identifier [ testCall ]
+   )
+   (IntegerLiteral [ 1337 ]
+   )
+  )
+  (MethodDecl
+   (IntegerType
+   )
+   (Identifier [ invokeCallTest ]
+   )
+   (VarDecl
+    (IntegerType
+    )
+    (Identifier [ x ]
+    )
+   )
+   (VarDecl
+    (BooleanType
+    )
+    (Identifier [ y ]
+    )
+   )
+   (VarDecl
+    (IdentifierType [ Test5C ]
+    )
+    (Identifier [ doesNotExist ]
+    )
+   )
+   (Assign
+    (Identifier [ x ]
+    )
+    (Call [ testCall ]
+     (This
+     )
+     (Identifier [ testCall ]
+     )
+     (IntegerLiteral [ 10 ]
+     )
+     (True
+     )
+     (NewArray
+      (IntegerLiteral [ 10 ]
+      )
+     )
+    )
+   )
+   (Assign
+    (Identifier [ y ]
+    )
+    (Call [ testCall ]
+     (This
+     )
+     (Identifier [ testCall ]
+     )
+    )
+   )
+   (NewObject
+    (Identifier [ Test5A ]
+    )
+   )
+  )
+ )
+)

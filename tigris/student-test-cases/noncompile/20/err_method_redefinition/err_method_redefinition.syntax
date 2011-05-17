@@ -1,0 +1,76 @@
+(Program
+ (MainClass
+  (Identifier [ MainClass ]
+  )
+  (Identifier [ args ]
+  )
+  (Print
+   (IntegerLiteral [ 1 ]
+   )
+  )
+ )
+ (Class
+  (Identifier [ TestClass ]
+  )
+  (MethodDecl
+   (IntegerType
+   )
+   (Identifier [ test ]
+   )
+   (Formal
+    (IntegerType
+    )
+    (Identifier [ a ]
+    )
+   )
+   (Formal
+    (BooleanType
+    )
+    (Identifier [ b ]
+    )
+   )
+   (IntegerLiteral [ 1 ]
+   )
+  )
+  (MethodDecl
+   (IntegerType
+   )
+   (Identifier [ test ]
+   )
+   (Formal
+    (BooleanType
+    )
+    (Identifier [ b ]
+    )
+   )
+   (Formal
+    (IntegerType
+    )
+    (Identifier [ a ]
+    )
+   )
+   (IntegerLiteral [ 1 ]
+   )
+  )
+  (MethodDecl
+   (BooleanType
+   )
+   (Identifier [ test ]
+   )
+   (Formal
+    (IntegerType
+    )
+    (Identifier [ a ]
+    )
+   )
+   (Formal
+    (BooleanType
+    )
+    (Identifier [ b ]
+    )
+   )
+   (True
+   )
+  )
+ )
+)

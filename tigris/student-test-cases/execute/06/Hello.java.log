@@ -1,0 +1,9 @@
+Compiling input file Hello.java into directory Hello/
+- Syntax analysis
+  ...abstract syntax tree: Hello/Hello.syntax
+- Semantic analysis
+  ...symbol table: Hello/Hello.symtab
+- Jasmin assembler
+  ... Hello/Hello.j
+- Class files
+  ... Hello/Hello.class

@@ -1,0 +1,67 @@
+Main class: PQTest
+
+    Class: PQ
+        Fields:
+            int dummy
+            int[] pq
+            int N
+        Methods:
+            int init
+                Parameters:
+                    int size
+                Locals:
+            boolean isEmpty
+                Parameters:
+                Locals:
+            int size
+                Parameters:
+                Locals:
+            int arrayCopy
+                Parameters:
+                    int[] src
+                    int[] dst
+                    int n
+                Locals:
+                    int i
+            int insert
+                Parameters:
+                    int item
+                Locals:
+                    int[] newPq
+            int delMax
+                Parameters:
+                Locals:
+            int swim
+                Parameters:
+                    int k
+                Locals:
+            int sink
+                Parameters:
+                    int k
+                    int N
+                Locals:
+                    boolean done
+                    int j
+            boolean less
+                Parameters:
+                    int i
+                    int j
+                Locals:
+            int exch
+                Parameters:
+                    int i
+                    int j
+                Locals:
+                    int tmp
+            int div
+                Parameters:
+                    int nominator
+                    int denominator
+                Locals:
+                    int changeSign
+                    int current
+            int test
+                Parameters:
+                Locals:
+                    int c
+                    int i

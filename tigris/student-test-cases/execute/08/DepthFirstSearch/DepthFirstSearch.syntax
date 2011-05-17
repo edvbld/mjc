@@ -1,0 +1,1511 @@
+(Program
+ (MainClass
+  (Identifier [ DepthFirstSearch ]
+  )
+  (Identifier [ argv ]
+  )
+  (Print
+   (Call [ getId ]
+    (Call [ find ]
+     (NewObject
+      (Identifier [ DFS ]
+      )
+     )
+     (Identifier [ find ]
+     )
+     (Call [ init4 ]
+      (NewObject
+       (Identifier [ Node ]
+       )
+      )
+      (Identifier [ init4 ]
+      )
+      (Call [ init2 ]
+       (NewObject
+        (Identifier [ Node ]
+        )
+       )
+       (Identifier [ init2 ]
+       )
+       (Call [ init2 ]
+        (NewObject
+         (Identifier [ Node ]
+         )
+        )
+        (Identifier [ init2 ]
+        )
+        (Call [ init0 ]
+         (NewObject
+          (Identifier [ Node ]
+          )
+         )
+         (Identifier [ init0 ]
+         )
+         (IntegerLiteral [ 17 ]
+         )
+         (IntegerLiteral [ 13 ]
+         )
+        )
+        (Call [ init1 ]
+         (NewObject
+          (Identifier [ Node ]
+          )
+         )
+         (Identifier [ init1 ]
+         )
+         (Call [ init4 ]
+          (NewObject
+           (Identifier [ Node ]
+           )
+          )
+          (Identifier [ init4 ]
+          )
+          (Call [ init0 ]
+           (NewObject
+            (Identifier [ Node ]
+            )
+           )
+           (Identifier [ init0 ]
+           )
+           (IntegerLiteral [ 6 ]
+           )
+           (IntegerLiteral [ 14 ]
+           )
+          )
+          (Call [ init0 ]
+           (NewObject
+            (Identifier [ Node ]
+            )
+           )
+           (Identifier [ init0 ]
+           )
+           (IntegerLiteral [ 89 ]
+           )
+           (IntegerLiteral [ 15 ]
+           )
+          )
+          (Call [ init0 ]
+           (NewObject
+            (Identifier [ Node ]
+            )
+           )
+           (Identifier [ init0 ]
+           )
+           (IntegerLiteral [ 3904 ]
+           )
+           (IntegerLiteral [ 16 ]
+           )
+          )
+          (Call [ init1 ]
+           (NewObject
+            (Identifier [ Node ]
+            )
+           )
+           (Identifier [ init1 ]
+           )
+           (Call [ init0 ]
+            (NewObject
+             (Identifier [ Node ]
+             )
+            )
+            (Identifier [ init0 ]
+            )
+            (IntegerLiteral [ -2147483648 ]
+            )
+            (IntegerLiteral [ 17 ]
+            )
+           )
+           (IntegerLiteral [ 1994 ]
+           )
+           (IntegerLiteral [ 12 ]
+           )
+          )
+          (IntegerLiteral [ 13 ]
+          )
+          (IntegerLiteral [ 11 ]
+          )
+         )
+         (IntegerLiteral [ 1337 ]
+         )
+         (IntegerLiteral [ 10 ]
+         )
+        )
+        (IntegerLiteral [ 19 ]
+        )
+        (IntegerLiteral [ 9 ]
+        )
+       )
+       (Call [ init1 ]
+        (NewObject
+         (Identifier [ Node ]
+         )
+        )
+        (Identifier [ init1 ]
+        )
+        (Call [ init0 ]
+         (NewObject
+          (Identifier [ Node ]
+          )
+         )
+         (Identifier [ init0 ]
+         )
+         (IntegerLiteral [ 1 ]
+         )
+         (IntegerLiteral [ 18 ]
+         )
+        )
+        (IntegerLiteral [ 12 ]
+        )
+        (IntegerLiteral [ 8 ]
+        )
+       )
+       (IntegerLiteral [ 47701 ]
+       )
+       (IntegerLiteral [ 7 ]
+       )
+      )
+      (Call [ init3 ]
+       (NewObject
+        (Identifier [ Node ]
+        )
+       )
+       (Identifier [ init3 ]
+       )
+       (Call [ init2 ]
+        (NewObject
+         (Identifier [ Node ]
+         )
+        )
+        (Identifier [ init2 ]
+        )
+        (Call [ init0 ]
+         (NewObject
+          (Identifier [ Node ]
+          )
+         )
+         (Identifier [ init0 ]
+         )
+         (IntegerLiteral [ 0 ]
+         )
+         (IntegerLiteral [ 19 ]
+         )
+        )
+        (Call [ init0 ]
+         (NewObject
+          (Identifier [ Node ]
+          )
+         )
+         (Identifier [ init0 ]
+         )
+         (ArrayLength
+          (NewArray
+           (IntegerLiteral [ 51557 ]
+           )
+          )
+         )
+         (IntegerLiteral [ 26 ]
+         )
+        )
+        (Times
+         (IntegerLiteral [ 7 ]
+         )
+         (IntegerLiteral [ 12 ]
+         )
+        )
+        (IntegerLiteral [ 6 ]
+        )
+       )
+       (Call [ init0 ]
+        (NewObject
+         (Identifier [ Node ]
+         )
+        )
+        (Identifier [ init0 ]
+        )
+        (Minus
+         (IntegerLiteral [ 99 ]
+         )
+         (IntegerLiteral [ 87 ]
+         )
+        )
+        (IntegerLiteral [ 20 ]
+        )
+       )
+       (Call [ init2 ]
+        (NewObject
+         (Identifier [ Node ]
+         )
+        )
+        (Identifier [ init2 ]
+        )
+        (Call [ init0 ]
+         (NewObject
+          (Identifier [ Node ]
+          )
+         )
+         (Identifier [ init0 ]
+         )
+         (IntegerLiteral [ 4 ]
+         )
+         (IntegerLiteral [ 21 ]
+         )
+        )
+        (Call [ init0 ]
+         (NewObject
+          (Identifier [ Node ]
+          )
+         )
+         (Identifier [ init0 ]
+         )
+         (IntegerLiteral [ 177 ]
+         )
+         (IntegerLiteral [ 22 ]
+         )
+        )
+        (Minus
+         (IntegerLiteral [ 1 ]
+         )
+         (IntegerLiteral [ 4711 ]
+         )
+        )
+        (IntegerLiteral [ 5 ]
+        )
+       )
+       (IntegerLiteral [ 14 ]
+       )
+       (IntegerLiteral [ 4 ]
+       )
+      )
+      (Call [ init0 ]
+       (NewObject
+        (Identifier [ Node ]
+        )
+       )
+       (Identifier [ init0 ]
+       )
+       (IntegerLiteral [ 4711 ]
+       )
+       (IntegerLiteral [ 23 ]
+       )
+      )
+      (Call [ init2 ]
+       (NewObject
+        (Identifier [ Node ]
+        )
+       )
+       (Identifier [ init2 ]
+       )
+       (Call [ init0 ]
+        (NewObject
+         (Identifier [ Node ]
+         )
+        )
+        (Identifier [ init0 ]
+        )
+        (IntegerLiteral [ 67111 ]
+        )
+        (IntegerLiteral [ 24 ]
+        )
+       )
+       (Call [ init2 ]
+        (NewObject
+         (Identifier [ Node ]
+         )
+        )
+        (Identifier [ init2 ]
+        )
+        (Call [ init0 ]
+         (NewObject
+          (Identifier [ Node ]
+          )
+         )
+         (Identifier [ init0 ]
+         )
+         (IntegerLiteral [ 17 ]
+         )
+         (IntegerLiteral [ 25 ]
+         )
+        )
+        (Call [ init1 ]
+         (NewObject
+          (Identifier [ Node ]
+          )
+         )
+         (Identifier [ init1 ]
+         )
+         (Call [ init0 ]
+          (NewObject
+           (Identifier [ Node ]
+           )
+          )
+          (Identifier [ init0 ]
+          )
+          (IntegerLiteral [ 1337 ]
+          )
+          (IntegerLiteral [ 26 ]
+          )
+         )
+         (IntegerLiteral [ 1337 ]
+         )
+         (IntegerLiteral [ 3 ]
+         )
+        )
+        (IntegerLiteral [ 77777 ]
+        )
+        (IntegerLiteral [ 2 ]
+        )
+       )
+       (IntegerLiteral [ 0 ]
+       )
+       (IntegerLiteral [ 1 ]
+       )
+      )
+      (IntegerLiteral [ 12 ]
+      )
+      (IntegerLiteral [ 0 ]
+      )
+     )
+     (IntegerLiteral [ 67111 ]
+     )
+    )
+    (Identifier [ getId ]
+    )
+   )
+  )
+ )
+ (Class
+  (Identifier [ Stack ]
+  )
+  (VarDecl
+   (IntArrayType
+   )
+   (Identifier [ stack ]
+   )
+  )
+  (VarDecl
+   (IntegerType
+   )
+   (Identifier [ size ]
+   )
+  )
+  (MethodDecl
+   (IntegerType
+   )
+   (Identifier [ init ]
+   )
+   (Assign
+    (Identifier [ stack ]
+    )
+    (NewArray
+     (IntegerLiteral [ 1 ]
+     )
+    )
+   )
+   (Assign
+    (Identifier [ size ]
+    )
+    (IntegerLiteral [ 0 ]
+    )
+   )
+   (IntegerLiteral [ 0 ]
+   )
+  )
+  (MethodDecl
+   (BooleanType
+   )
+   (Identifier [ isEmpty ]
+   )
+   (VarDecl
+    (BooleanType
+    )
+    (Identifier [ i ]
+    )
+   )
+   (If
+    (Call [ equal ]
+     (NewObject
+      (Identifier [ Math ]
+      )
+     )
+     (Identifier [ equal ]
+     )
+     (IntegerLiteral [ 0 ]
+     )
+     (IdentifierExp [ size ]
+     )
+    )
+    (Assign
+     (Identifier [ i ]
+     )
+     (True
+     )
+    )
+    (Assign
+     (Identifier [ i ]
+     )
+     (False
+     )
+    )
+   )
+   (IdentifierExp [ i ]
+   )
+  )
+  (MethodDecl
+   (IntegerType
+   )
+   (Identifier [ push ]
+   )
+   (Formal
+    (IntegerType
+    )
+    (Identifier [ push ]
+    )
+   )
+   (VarDecl
+    (IntegerType
+    )
+    (Identifier [ i ]
+    )
+   )
+   (VarDecl
+    (IntArrayType
+    )
+    (Identifier [ tmp ]
+    )
+   )
+   (Assign
+    (Identifier [ i ]
+    )
+    (IntegerLiteral [ 0 ]
+    )
+   )
+   (If
+    (Call [ equal ]
+     (NewObject
+      (Identifier [ Math ]
+      )
+     )
+     (Identifier [ equal ]
+     )
+     (IdentifierExp [ size ]
+     )
+     (ArrayLength
+      (IdentifierExp [ stack ]
+      )
+     )
+    )
+    (Block
+     (Assign
+      (Identifier [ tmp ]
+      )
+      (NewArray
+       (Times
+        (IntegerLiteral [ 2 ]
+        )
+        (ArrayLength
+         (IdentifierExp [ stack ]
+         )
+        )
+       )
+      )
+     )
+     (While
+      (Less
+       (IdentifierExp [ i ]
+       )
+       (ArrayLength
+        (IdentifierExp [ stack ]
+        )
+       )
+      )
+      (Block
+       (ArrayAssign
+        (Identifier [ tmp ]
+        )
+        (IdentifierExp [ i ]
+        )
+        (ArrayLookup
+         (IdentifierExp [ stack ]
+         )
+         (IdentifierExp [ i ]
+         )
+        )
+       )
+       (Assign
+        (Identifier [ i ]
+        )
+        (Plus
+         (IdentifierExp [ i ]
+         )
+         (IntegerLiteral [ 1 ]
+         )
+        )
+       )
+     )
+     (Assign
+      (Identifier [ stack ]
+      )
+      (IdentifierExp [ tmp ]
+      )
+     )
+    (Block
+   )
+   (ArrayAssign
+    (Identifier [ stack ]
+    )
+    (IdentifierExp [ size ]
+    )
+    (IdentifierExp [ push ]
+    )
+   )
+   (Assign
+    (Identifier [ size ]
+    )
+    (Plus
+     (IdentifierExp [ size ]
+     )
+     (IntegerLiteral [ 1 ]
+     )
+    )
+   )
+   (IdentifierExp [ push ]
+   )
+  )
+  (MethodDecl
+   (IntegerType
+   )
+   (Identifier [ pop ]
+   )
+   (Assign
+    (Identifier [ size ]
+    )
+    (Plus
+     (IdentifierExp [ size ]
+     )
+     (IntegerLiteral [ -1 ]
+     )
+    )
+   )
+   (ArrayLookup
+    (IdentifierExp [ stack ]
+    )
+    (IdentifierExp [ size ]
+    )
+   )
+  )
+  (MethodDecl
+   (IntegerType
+   )
+   (Identifier [ peek ]
+   )
+   (ArrayLookup
+    (IdentifierExp [ stack ]
+    )
+    (Minus
+     (IdentifierExp [ size ]
+     )
+     (IntegerLiteral [ 1 ]
+     )
+    )
+   )
+  )
+ )
+ (Class
+  (Identifier [ Node ]
+  )
+  (VarDecl
+   (IdentifierType [ Node ]
+   )
+   (Identifier [ _a_0 ]
+   )
+  )
+  (VarDecl
+   (IdentifierType [ Node ]
+   )
+   (Identifier [ _a_1 ]
+   )
+  )
+  (VarDecl
+   (IdentifierType [ Node ]
+   )
+   (Identifier [ _a_2 ]
+   )
+  )
+  (VarDecl
+   (IdentifierType [ Node ]
+   )
+   (Identifier [ _a_3 ]
+   )
+  )
+  (VarDecl
+   (IdentifierType [ Node ]
+   )
+   (Identifier [ parent ]
+   )
+  )
+  (VarDecl
+   (IntegerType
+   )
+   (Identifier [ numChilds ]
+   )
+  )
+  (VarDecl
+   (IntegerType
+   )
+   (Identifier [ value ]
+   )
+  )
+  (VarDecl
+   (IntegerType
+   )
+   (Identifier [ id ]
+   )
+  )
+  (MethodDecl
+   (IdentifierType [ Node ]
+   )
+   (Identifier [ init4 ]
+   )
+   (Formal
+    (IdentifierType [ Node ]
+    )
+    (Identifier [ a_0 ]
+    )
+   )
+   (Formal
+    (IdentifierType [ Node ]
+    )
+    (Identifier [ a_1 ]
+    )
+   )
+   (Formal
+    (IdentifierType [ Node ]
+    )
+    (Identifier [ a_2 ]
+    )
+   )
+   (Formal
+    (IdentifierType [ Node ]
+    )
+    (Identifier [ a_3 ]
+    )
+   )
+   (Formal
+    (IntegerType
+    )
+    (Identifier [ val ]
+    )
+   )
+   (Formal
+    (IntegerType
+    )
+    (Identifier [ iid ]
+    )
+   )
+   (Assign
+    (Identifier [ _a_0 ]
+    )
+    (IdentifierExp [ a_0 ]
+    )
+   )
+   (Assign
+    (Identifier [ _a_1 ]
+    )
+    (IdentifierExp [ a_1 ]
+    )
+   )
+   (Assign
+    (Identifier [ _a_2 ]
+    )
+    (IdentifierExp [ a_2 ]
+    )
+   )
+   (Assign
+    (Identifier [ _a_3 ]
+    )
+    (IdentifierExp [ a_3 ]
+    )
+   )
+   (Assign
+    (Identifier [ value ]
+    )
+    (IdentifierExp [ val ]
+    )
+   )
+   (Assign
+    (Identifier [ id ]
+    )
+    (IdentifierExp [ iid ]
+    )
+   )
+   (Assign
+    (Identifier [ numChilds ]
+    )
+    (IntegerLiteral [ 4 ]
+    )
+   )
+   (This
+   )
+  )
+  (MethodDecl
+   (IdentifierType [ Node ]
+   )
+   (Identifier [ init3 ]
+   )
+   (Formal
+    (IdentifierType [ Node ]
+    )
+    (Identifier [ a_0 ]
+    )
+   )
+   (Formal
+    (IdentifierType [ Node ]
+    )
+    (Identifier [ a_1 ]
+    )
+   )
+   (Formal
+    (IdentifierType [ Node ]
+    )
+    (Identifier [ a_2 ]
+    )
+   )
+   (Formal
+    (IntegerType
+    )
+    (Identifier [ val ]
+    )
+   )
+   (Formal
+    (IntegerType
+    )
+    (Identifier [ iid ]
+    )
+   )
+   (Assign
+    (Identifier [ _a_0 ]
+    )
+    (IdentifierExp [ a_0 ]
+    )
+   )
+   (Assign
+    (Identifier [ _a_1 ]
+    )
+    (IdentifierExp [ a_1 ]
+    )
+   )
+   (Assign
+    (Identifier [ _a_2 ]
+    )
+    (IdentifierExp [ a_2 ]
+    )
+   )
+   (Assign
+    (Identifier [ value ]
+    )
+    (IdentifierExp [ val ]
+    )
+   )
+   (Assign
+    (Identifier [ id ]
+    )
+    (IdentifierExp [ iid ]
+    )
+   )
+   (Assign
+    (Identifier [ numChilds ]
+    )
+    (IntegerLiteral [ 3 ]
+    )
+   )
+   (This
+   )
+  )
+  (MethodDecl
+   (IdentifierType [ Node ]
+   )
+   (Identifier [ init2 ]
+   )
+   (Formal
+    (IdentifierType [ Node ]
+    )
+    (Identifier [ a_0 ]
+    )
+   )
+   (Formal
+    (IdentifierType [ Node ]
+    )
+    (Identifier [ a_1 ]
+    )
+   )
+   (Formal
+    (IntegerType
+    )
+    (Identifier [ val ]
+    )
+   )
+   (Formal
+    (IntegerType
+    )
+    (Identifier [ iid ]
+    )
+   )
+   (Assign
+    (Identifier [ _a_0 ]
+    )
+    (IdentifierExp [ a_0 ]
+    )
+   )
+   (Assign
+    (Identifier [ _a_1 ]
+    )
+    (IdentifierExp [ a_1 ]
+    )
+   )
+   (Assign
+    (Identifier [ value ]
+    )
+    (IdentifierExp [ val ]
+    )
+   )
+   (Assign
+    (Identifier [ id ]
+    )
+    (IdentifierExp [ iid ]
+    )
+   )
+   (Assign
+    (Identifier [ numChilds ]
+    )
+    (IntegerLiteral [ 2 ]
+    )
+   )
+   (This
+   )
+  )
+  (MethodDecl
+   (IdentifierType [ Node ]
+   )
+   (Identifier [ init1 ]
+   )
+   (Formal
+    (IdentifierType [ Node ]
+    )
+    (Identifier [ a_0 ]
+    )
+   )
+   (Formal
+    (IntegerType
+    )
+    (Identifier [ val ]
+    )
+   )
+   (Formal
+    (IntegerType
+    )
+    (Identifier [ iid ]
+    )
+   )
+   (Assign
+    (Identifier [ _a_0 ]
+    )
+    (IdentifierExp [ a_0 ]
+    )
+   )
+   (Assign
+    (Identifier [ value ]
+    )
+    (IdentifierExp [ val ]
+    )
+   )
+   (Assign
+    (Identifier [ id ]
+    )
+    (IdentifierExp [ iid ]
+    )
+   )
+   (Assign
+    (Identifier [ numChilds ]
+    )
+    (IntegerLiteral [ 1 ]
+    )
+   )
+   (This
+   )
+  )
+  (MethodDecl
+   (IdentifierType [ Node ]
+   )
+   (Identifier [ init0 ]
+   )
+   (Formal
+    (IntegerType
+    )
+    (Identifier [ val ]
+    )
+   )
+   (Formal
+    (IntegerType
+    )
+    (Identifier [ iid ]
+    )
+   )
+   (Assign
+    (Identifier [ value ]
+    )
+    (IdentifierExp [ val ]
+    )
+   )
+   (Assign
+    (Identifier [ id ]
+    )
+    (IdentifierExp [ iid ]
+    )
+   )
+   (Assign
+    (Identifier [ numChilds ]
+    )
+    (IntegerLiteral [ 0 ]
+    )
+   )
+   (This
+   )
+  )
+  (MethodDecl
+   (IntegerType
+   )
+   (Identifier [ getVal ]
+   )
+   (IdentifierExp [ value ]
+   )
+  )
+  (MethodDecl
+   (IdentifierType [ Node ]
+   )
+   (Identifier [ getNode ]
+   )
+   (Formal
+    (IntegerType
+    )
+    (Identifier [ i ]
+    )
+   )
+   (VarDecl
+    (IdentifierType [ Math ]
+    )
+    (Identifier [ math ]
+    )
+   )
+   (VarDecl
+    (IdentifierType [ Node ]
+    )
+    (Identifier [ node ]
+    )
+   )
+   (Assign
+    (Identifier [ math ]
+    )
+    (NewObject
+     (Identifier [ Math ]
+     )
+    )
+   )
+   (If
+    (Call [ equal ]
+     (IdentifierExp [ math ]
+     )
+     (Identifier [ equal ]
+     )
+     (IdentifierExp [ i ]
+     )
+     (IntegerLiteral [ 0 ]
+     )
+    )
+    (Assign
+     (Identifier [ node ]
+     )
+     (IdentifierExp [ _a_0 ]
+     )
+    )
+    (If
+     (Call [ equal ]
+      (IdentifierExp [ math ]
+      )
+      (Identifier [ equal ]
+      )
+      (IdentifierExp [ i ]
+      )
+      (IntegerLiteral [ 1 ]
+      )
+     )
+     (Assign
+      (Identifier [ node ]
+      )
+      (IdentifierExp [ _a_1 ]
+      )
+     )
+     (If
+      (Call [ equal ]
+       (IdentifierExp [ math ]
+       )
+       (Identifier [ equal ]
+       )
+       (IdentifierExp [ i ]
+       )
+       (IntegerLiteral [ 2 ]
+       )
+      )
+      (Assign
+       (Identifier [ node ]
+       )
+       (IdentifierExp [ _a_2 ]
+       )
+      )
+      (If
+       (Call [ equal ]
+        (IdentifierExp [ math ]
+        )
+        (Identifier [ equal ]
+        )
+        (IdentifierExp [ i ]
+        )
+        (IntegerLiteral [ 3 ]
+        )
+       )
+       (Assign
+        (Identifier [ node ]
+        )
+        (IdentifierExp [ _a_3 ]
+        )
+       )
+       (Assign
+        (Identifier [ node ]
+        )
+        (This
+        )
+       )
+      )
+     )
+    )
+   )
+   (IdentifierExp [ node ]
+   )
+  )
+  (MethodDecl
+   (IntegerType
+   )
+   (Identifier [ setParent ]
+   )
+   (Formal
+    (IdentifierType [ Node ]
+    )
+    (Identifier [ par ]
+    )
+   )
+   (Assign
+    (Identifier [ parent ]
+    )
+    (IdentifierExp [ par ]
+    )
+   )
+   (IntegerLiteral [ 0 ]
+   )
+  )
+  (MethodDecl
+   (IdentifierType [ Node ]
+   )
+   (Identifier [ getParent ]
+   )
+   (IdentifierExp [ parent ]
+   )
+  )
+  (MethodDecl
+   (IntegerType
+   )
+   (Identifier [ getNumChilds ]
+   )
+   (IdentifierExp [ numChilds ]
+   )
+  )
+  (MethodDecl
+   (IntegerType
+   )
+   (Identifier [ getId ]
+   )
+   (IdentifierExp [ id ]
+   )
+  )
+ )
+ (Class
+  (Identifier [ Math ]
+  )
+  (MethodDecl
+   (BooleanType
+   )
+   (Identifier [ equal ]
+   )
+   (Formal
+    (IntegerType
+    )
+    (Identifier [ i ]
+    )
+   )
+   (Formal
+    (IntegerType
+    )
+    (Identifier [ j ]
+    )
+   )
+   (VarDecl
+    (BooleanType
+    )
+    (Identifier [ kase ]
+    )
+   )
+   (If
+    (And
+     (Not
+      (Less
+       (IdentifierExp [ i ]
+       )
+       (IdentifierExp [ j ]
+       )
+      )
+     )
+     (Not
+      (Less
+       (IdentifierExp [ j ]
+       )
+       (IdentifierExp [ i ]
+       )
+      )
+     )
+    )
+    (Assign
+     (Identifier [ kase ]
+     )
+     (True
+     )
+    )
+    (Assign
+     (Identifier [ kase ]
+     )
+     (False
+     )
+    )
+   )
+   (IdentifierExp [ kase ]
+   )
+  )
+ )
+ (Class
+  (Identifier [ DFS ]
+  )
+  (VarDecl
+   (IdentifierType [ Node ]
+   )
+   (Identifier [ start ]
+   )
+  )
+  (VarDecl
+   (IdentifierType [ Node ]
+   )
+   (Identifier [ currNode ]
+   )
+  )
+  (VarDecl
+   (IntegerType
+   )
+   (Identifier [ currVal ]
+   )
+  )
+  (VarDecl
+   (IntegerType
+   )
+   (Identifier [ value ]
+   )
+  )
+  (VarDecl
+   (IdentifierType [ Stack ]
+   )
+   (Identifier [ stack ]
+   )
+  )
+  (MethodDecl
+   (IdentifierType [ Node ]
+   )
+   (Identifier [ find ]
+   )
+   (Formal
+    (IdentifierType [ Node ]
+    )
+    (Identifier [ startNode ]
+    )
+   )
+   (Formal
+    (IntegerType
+    )
+    (Identifier [ val ]
+    )
+   )
+   (VarDecl
+    (IntegerType
+    )
+    (Identifier [ tmp ]
+    )
+   )
+   (Assign
+    (Identifier [ start ]
+    )
+    (IdentifierExp [ startNode ]
+    )
+   )
+   (Assign
+    (Identifier [ currNode ]
+    )
+    (IdentifierExp [ start ]
+    )
+   )
+   (Assign
+    (Identifier [ value ]
+    )
+    (IdentifierExp [ val ]
+    )
+   )
+   (Assign
+    (Identifier [ stack ]
+    )
+    (NewObject
+     (Identifier [ Stack ]
+     )
+    )
+   )
+   (Assign
+    (Identifier [ tmp ]
+    )
+    (Call [ init ]
+     (IdentifierExp [ stack ]
+     )
+     (Identifier [ init ]
+     )
+    )
+   )
+   (Call [ DFS ]
+    (This
+    )
+    (Identifier [ DFS ]
+    )
+   )
+  )
+  (MethodDecl
+   (IdentifierType [ Node ]
+   )
+   (Identifier [ DFS ]
+   )
+   (VarDecl
+    (BooleanType
+    )
+    (Identifier [ found ]
+    )
+   )
+   (VarDecl
+    (IdentifierType [ Math ]
+    )
+    (Identifier [ math ]
+    )
+   )
+   (VarDecl
+    (IntegerType
+    )
+    (Identifier [ tmp ]
+    )
+   )
+   (Assign
+    (Identifier [ math ]
+    )
+    (NewObject
+     (Identifier [ Math ]
+     )
+    )
+   )
+   (Assign
+    (Identifier [ found ]
+    )
+    (False
+    )
+   )
+   (Assign
+    (Identifier [ currVal ]
+    )
+    (IntegerLiteral [ 0 ]
+    )
+   )
+   (While
+    (Not
+     (IdentifierExp [ found ]
+     )
+    )
+    (Block
+     (Print
+      (Call [ getId ]
+       (IdentifierExp [ currNode ]
+       )
+       (Identifier [ getId ]
+       )
+      )
+     )
+     (If
+      (Call [ equal ]
+       (IdentifierExp [ math ]
+       )
+       (Identifier [ equal ]
+       )
+       (Call [ getVal ]
+        (IdentifierExp [ currNode ]
+        )
+        (Identifier [ getVal ]
+        )
+       )
+       (IdentifierExp [ value ]
+       )
+      )
+      (Block
+       (Assign
+        (Identifier [ found ]
+        )
+        (True
+        )
+       )
+      (Block
+     )
+     (If
+      (And
+       (Not
+        (IdentifierExp [ found ]
+        )
+       )
+       (Call [ equal ]
+        (IdentifierExp [ math ]
+        )
+        (Identifier [ equal ]
+        )
+        (IdentifierExp [ currVal ]
+        )
+        (Call [ getNumChilds ]
+         (IdentifierExp [ currNode ]
+         )
+         (Identifier [ getNumChilds ]
+         )
+        )
+       )
+      )
+      (Block
+       (If
+        (Call [ isEmpty ]
+         (IdentifierExp [ stack ]
+         )
+         (Identifier [ isEmpty ]
+         )
+        )
+        (Block
+         (Assign
+          (Identifier [ found ]
+          )
+          (True
+          )
+         )
+        (Block
+         (Assign
+          (Identifier [ currNode ]
+          )
+          (Call [ getParent ]
+           (IdentifierExp [ currNode ]
+           )
+           (Identifier [ getParent ]
+           )
+          )
+         )
+         (Assign
+          (Identifier [ currVal ]
+          )
+          (Call [ pop ]
+           (IdentifierExp [ stack ]
+           )
+           (Identifier [ pop ]
+           )
+          )
+         )
+       )
+      (If
+       (Not
+        (IdentifierExp [ found ]
+        )
+       )
+       (Block
+        (Assign
+         (Identifier [ tmp ]
+         )
+         (Call [ setParent ]
+          (Call [ getNode ]
+           (IdentifierExp [ currNode ]
+           )
+           (Identifier [ getNode ]
+           )
+           (IdentifierExp [ currVal ]
+           )
+          )
+          (Identifier [ setParent ]
+          )
+          (IdentifierExp [ currNode ]
+          )
+         )
+        )
+        (Assign
+         (Identifier [ currNode ]
+         )
+         (Call [ getNode ]
+          (IdentifierExp [ currNode ]
+          )
+          (Identifier [ getNode ]
+          )
+          (IdentifierExp [ currVal ]
+          )
+         )
+        )
+        (Assign
+         (Identifier [ currVal ]
+         )
+         (Plus
+          (IdentifierExp [ currVal ]
+          )
+          (IntegerLiteral [ 1 ]
+          )
+         )
+        )
+        (Assign
+         (Identifier [ tmp ]
+         )
+         (Call [ push ]
+          (IdentifierExp [ stack ]
+          )
+          (Identifier [ push ]
+          )
+          (IdentifierExp [ currVal ]
+          )
+         )
+        )
+        (Assign
+         (Identifier [ currVal ]
+         )
+         (IntegerLiteral [ 0 ]
+         )
+        )
+       (Block
+      )
+     )
+   )
+   (IdentifierExp [ currNode ]
+   )
+  )
+ )
+)

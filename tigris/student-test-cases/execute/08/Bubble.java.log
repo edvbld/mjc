@@ -1,0 +1,26 @@
+Compiling input file Bubble.java into directory Bubble/
+- Syntax analysis
+  ...abstract syntax tree: Bubble/Bubble.syntax
+- Semantic analysis
+  ...symbol table: Bubble/Bubble.symtab
+- Jasmin assembler
+  ... Bubble/Bubble.j
+  ... Bubble/bool.j
+  ... Bubble/DD.j
+  ... Bubble/BSort.j
+  ... Bubble/A.j
+  ... Bubble/B.j
+- Class files
+  ... Bubble/Bubble.class
+  ... Bubble/bool.class
+  ... Bubble/DD.class
+  ... Bubble/BSort.class
+  ... Bubble/A.class
+Bubble/B.j:3: Warning - Syntax error.
+.var 
+     ^
+Bubble/B.j:3: Error - Couldn't repair and continue parse.
+.var 
+     ^
+Bubble/B.j: Found 2 errors
+  ... Bubble/B.class

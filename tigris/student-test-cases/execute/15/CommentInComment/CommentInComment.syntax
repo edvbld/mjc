@@ -1,0 +1,12 @@
+(Program
+ (MainClass
+  (Identifier [ CommentInComment ]
+  )
+  (Identifier [ args ]
+  )
+  (Print
+   (IntegerLiteral [ 123 ]
+   )
+  )
+ )
+)

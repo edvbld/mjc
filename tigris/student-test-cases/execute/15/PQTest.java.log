@@ -1,0 +1,11 @@
+Compiling input file PQTest.java into directory PQTest/
+- Syntax analysis
+  ...abstract syntax tree: PQTest/PQTest.syntax
+- Semantic analysis
+  ...symbol table: PQTest/PQTest.symtab
+- Jasmin assembler
+  ... PQTest/PQTest.j
+  ... PQTest/PQ.j
+- Class files
+  ... PQTest/PQTest.class
+  ... PQTest/PQ.class

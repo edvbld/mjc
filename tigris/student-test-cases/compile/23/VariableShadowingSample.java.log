@@ -1,0 +1,4 @@
+Compiling input file VariableShadowingSample.java into directory VariableShadowingSample/
+- Syntax analysis
+  ...abstract syntax tree: VariableShadowingSample/VariableShadowingSample.syntax
+Variable obj has type VariableShadowing, but tried to assign it type int

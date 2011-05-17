@@ -1,0 +1,309 @@
+(Program
+ (MainClass
+  (Identifier [ TestFactorial ]
+  )
+  (Identifier [ argv ]
+  )
+  (If
+   (Call [ run ]
+    (NewObject
+     (Identifier [ TestFactorialHelper ]
+     )
+    )
+    (Identifier [ run ]
+    )
+   )
+   (Block
+   (Block
+  )
+ )
+ (Class
+  (Identifier [ TestFactorialHelper ]
+  )
+  (MethodDecl
+   (BooleanType
+   )
+   (Identifier [ run ]
+   )
+   (VarDecl
+    (IdentifierType [ Factorial ]
+    )
+    (Identifier [ fac ]
+    )
+   )
+   (VarDecl
+    (IntegerType
+    )
+    (Identifier [ i ]
+    )
+   )
+   (VarDecl
+    (IntegerType
+    )
+    (Identifier [ j ]
+    )
+   )
+   (VarDecl
+    (IntegerType
+    )
+    (Identifier [ recResult ]
+    )
+   )
+   (VarDecl
+    (IntegerType
+    )
+    (Identifier [ itResult ]
+    )
+   )
+   (Assign
+    (Identifier [ recResult ]
+    )
+    (IntegerLiteral [ 0 ]
+    )
+   )
+   (Assign
+    (Identifier [ itResult ]
+    )
+    (IntegerLiteral [ 0 ]
+    )
+   )
+   (Assign
+    (Identifier [ i ]
+    )
+    (IntegerLiteral [ 1 ]
+    )
+   )
+   (Assign
+    (Identifier [ fac ]
+    )
+    (NewObject
+     (Identifier [ Factorial ]
+     )
+    )
+   )
+   (While
+    (Less
+     (IdentifierExp [ i ]
+     )
+     (IntegerLiteral [ 14 ]
+     )
+    )
+    (Block
+     (Assign
+      (Identifier [ j ]
+      )
+      (IntegerLiteral [ 0 ]
+      )
+     )
+     (While
+      (Less
+       (IdentifierExp [ j ]
+       )
+       (IntegerLiteral [ 2000000 ]
+       )
+      )
+      (Block
+       (Assign
+        (Identifier [ recResult ]
+        )
+        (Call [ recFac ]
+         (IdentifierExp [ fac ]
+         )
+         (Identifier [ recFac ]
+         )
+         (IdentifierExp [ i ]
+         )
+        )
+       )
+       (Assign
+        (Identifier [ itResult ]
+        )
+        (Call [ itFac ]
+         (IdentifierExp [ fac ]
+         )
+         (Identifier [ itFac ]
+         )
+         (IdentifierExp [ i ]
+         )
+        )
+       )
+       (Assign
+        (Identifier [ j ]
+        )
+        (Plus
+         (IdentifierExp [ j ]
+         )
+         (IntegerLiteral [ 1 ]
+         )
+        )
+       )
+     )
+     (Print
+      (IdentifierExp [ recResult ]
+      )
+     )
+     (Print
+      (IdentifierExp [ itResult ]
+      )
+     )
+     (Assign
+      (Identifier [ i ]
+      )
+      (Plus
+       (IdentifierExp [ i ]
+       )
+       (IntegerLiteral [ 1 ]
+       )
+      )
+     )
+   )
+   (True
+   )
+  )
+ )
+ (Class
+  (Identifier [ Factorial ]
+  )
+  (MethodDecl
+   (IntegerType
+   )
+   (Identifier [ recFac ]
+   )
+   (Formal
+    (IntegerType
+    )
+    (Identifier [ n ]
+    )
+   )
+   (VarDecl
+    (IntegerType
+    )
+    (Identifier [ ret ]
+    )
+   )
+   (Assign
+    (Identifier [ ret ]
+    )
+    (IntegerLiteral [ 1 ]
+    )
+   )
+   (If
+    (And
+     (Less
+      (IntegerLiteral [ 0 ]
+      )
+      (IdentifierExp [ n ]
+      )
+     )
+     (Less
+      (IdentifierExp [ n ]
+      )
+      (IntegerLiteral [ 2 ]
+      )
+     )
+    )
+    (Block
+     (Assign
+      (Identifier [ ret ]
+      )
+      (IntegerLiteral [ 1 ]
+      )
+     )
+    (Block
+     (Assign
+      (Identifier [ ret ]
+      )
+      (Times
+       (IdentifierExp [ n ]
+       )
+       (Call [ recFac ]
+        (This
+        )
+        (Identifier [ recFac ]
+        )
+        (Minus
+         (IdentifierExp [ n ]
+         )
+         (IntegerLiteral [ 1 ]
+         )
+        )
+       )
+      )
+     )
+   )
+   (IdentifierExp [ ret ]
+   )
+  )
+  (MethodDecl
+   (IntegerType
+   )
+   (Identifier [ itFac ]
+   )
+   (Formal
+    (IntegerType
+    )
+    (Identifier [ n ]
+    )
+   )
+   (VarDecl
+    (IntegerType
+    )
+    (Identifier [ res ]
+    )
+   )
+   (VarDecl
+    (IntegerType
+    )
+    (Identifier [ i ]
+    )
+   )
+   (Assign
+    (Identifier [ res ]
+    )
+    (IntegerLiteral [ 1 ]
+    )
+   )
+   (Assign
+    (Identifier [ i ]
+    )
+    (IntegerLiteral [ 1 ]
+    )
+   )
+   (While
+    (Less
+     (IdentifierExp [ i ]
+     )
+     (Plus
+      (IdentifierExp [ n ]
+      )
+      (IntegerLiteral [ 1 ]
+      )
+     )
+    )
+    (Block
+     (Assign
+      (Identifier [ res ]
+      )
+      (Times
+       (IdentifierExp [ res ]
+       )
+       (IdentifierExp [ i ]
+       )
+      )
+     )
+     (Assign
+      (Identifier [ i ]
+      )
+      (Plus
+       (IdentifierExp [ i ]
+       )
+       (IntegerLiteral [ 1 ]
+       )
+      )
+     )
+   )
+   (IdentifierExp [ res ]
+   )
+  )
+ )
+)

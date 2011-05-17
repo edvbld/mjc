@@ -1,0 +1,707 @@
+(Program
+ (MainClass
+  (Identifier [ Bubble ]
+  )
+  (Identifier [ argv ]
+  )
+  (If
+   (Not
+    (Call [ bool ]
+     (NewObject
+      (Identifier [ bool ]
+      )
+     )
+     (Identifier [ bool ]
+     )
+     (False
+     )
+    )
+   )
+   (Print
+    (Call [ DD ]
+     (NewObject
+      (Identifier [ DD ]
+      )
+     )
+     (Identifier [ DD ]
+     )
+    )
+   )
+   (Print
+    (Plus
+     (Call [ DD ]
+      (NewObject
+       (Identifier [ DD ]
+       )
+      )
+      (Identifier [ DD ]
+      )
+     )
+     (IntegerLiteral [ -2147483648 ]
+     )
+    )
+   )
+  )
+ )
+ (Class
+  (Identifier [ bool ]
+  )
+  (MethodDecl
+   (BooleanType
+   )
+   (Identifier [ bool ]
+   )
+   (Formal
+    (BooleanType
+    )
+    (Identifier [ bool ]
+    )
+   )
+   (IdentifierExp [ bool ]
+   )
+  )
+ )
+ (Class
+  (Identifier [ DD ]
+  )
+  (MethodDecl
+   (IntegerType
+   )
+   (Identifier [ DD ]
+   )
+   (VarDecl
+    (IntArrayType
+    )
+    (Identifier [ array ]
+    )
+   )
+   (VarDecl
+    (IntegerType
+    )
+    (Identifier [ k ]
+    )
+   )
+   (VarDecl
+    (IntegerType
+    )
+    (Identifier [ i ]
+    )
+   )
+   (VarDecl
+    (IdentifierType [ BSort ]
+    )
+    (Identifier [ bsort ]
+    )
+   )
+   (Assign
+    (Identifier [ array ]
+    )
+    (NewArray
+     (IntegerLiteral [ 10 ]
+     )
+    )
+   )
+   (Assign
+    (Identifier [ k ]
+    )
+    (IntegerLiteral [ 5 ]
+    )
+   )
+   (Assign
+    (Identifier [ i ]
+    )
+    (IntegerLiteral [ 0 ]
+    )
+   )
+   (While
+    (Less
+     (IdentifierExp [ i ]
+     )
+     (ArrayLength
+      (IdentifierExp [ array ]
+      )
+     )
+    )
+    (Block
+     (ArrayAssign
+      (Identifier [ array ]
+      )
+      (IdentifierExp [ i ]
+      )
+      (IdentifierExp [ k ]
+      )
+     )
+     (Assign
+      (Identifier [ k ]
+      )
+      (Minus
+       (IdentifierExp [ k ]
+       )
+       (IntegerLiteral [ 1 ]
+       )
+      )
+     )
+     (Assign
+      (Identifier [ i ]
+      )
+      (Plus
+       (IdentifierExp [ i ]
+       )
+       (IntegerLiteral [ 1 ]
+       )
+      )
+     )
+   )
+   (Assign
+    (Identifier [ bsort ]
+    )
+    (Call [ bsort ]
+     (Call [ b ]
+      (Call [ a ]
+       (NewObject
+        (Identifier [ A ]
+        )
+       )
+       (Identifier [ a ]
+       )
+       (NewObject
+        (Identifier [ A ]
+        )
+       )
+       (False
+       )
+      )
+      (Identifier [ b ]
+      )
+      (NewObject
+       (Identifier [ A ]
+       )
+      )
+      (False
+      )
+     )
+     (Identifier [ bsort ]
+     )
+    )
+   )
+   (Assign
+    (Identifier [ array ]
+    )
+    (Call [ rSort ]
+     (NewObject
+      (Identifier [ BSort ]
+      )
+     )
+     (Identifier [ rSort ]
+     )
+     (Call [ sort ]
+      (IdentifierExp [ bsort ]
+      )
+      (Identifier [ sort ]
+      )
+      (Call [ rSort ]
+       (NewObject
+        (Identifier [ BSort ]
+        )
+       )
+       (Identifier [ rSort ]
+       )
+       (Call [ sort ]
+        (IdentifierExp [ bsort ]
+        )
+        (Identifier [ sort ]
+        )
+        (IdentifierExp [ array ]
+        )
+       )
+      )
+     )
+    )
+   )
+   (Assign
+    (Identifier [ i ]
+    )
+    (IntegerLiteral [ 0 ]
+    )
+   )
+   (While
+    (And
+     (Less
+      (IdentifierExp [ i ]
+      )
+      (ArrayLength
+       (IdentifierExp [ array ]
+       )
+      )
+     )
+     (Less
+      (ArrayLookup
+       (IdentifierExp [ array ]
+       )
+       (IdentifierExp [ i ]
+       )
+      )
+      (IntegerLiteral [ 1000 ]
+      )
+     )
+    )
+    (Block
+     (Print
+      (ArrayLookup
+       (IdentifierExp [ array ]
+       )
+       (IdentifierExp [ i ]
+       )
+      )
+     )
+     (Assign
+      (Identifier [ i ]
+      )
+      (Plus
+       (IdentifierExp [ i ]
+       )
+       (IntegerLiteral [ 1 ]
+       )
+      )
+     )
+   )
+   (IntegerLiteral [ 0 ]
+   )
+  )
+ )
+ (Class
+  (Identifier [ BSort ]
+  )
+  (MethodDecl
+   (IntArrayType
+   )
+   (Identifier [ sort ]
+   )
+   (Formal
+    (IntArrayType
+    )
+    (Identifier [ array ]
+    )
+   )
+   (VarDecl
+    (IntegerType
+    )
+    (Identifier [ i ]
+    )
+   )
+   (VarDecl
+    (BooleanType
+    )
+    (Identifier [ done ]
+    )
+   )
+   (VarDecl
+    (IntegerType
+    )
+    (Identifier [ tmp ]
+    )
+   )
+   (Assign
+    (Identifier [ done ]
+    )
+    (False
+    )
+   )
+   (While
+    (Not
+     (IdentifierExp [ done ]
+     )
+    )
+    (Block
+     (Assign
+      (Identifier [ done ]
+      )
+      (True
+      )
+     )
+     (Assign
+      (Identifier [ i ]
+      )
+      (IntegerLiteral [ 0 ]
+      )
+     )
+     (While
+      (And
+       (Less
+        (IdentifierExp [ i ]
+        )
+        (Minus
+         (ArrayLength
+          (IdentifierExp [ array ]
+          )
+         )
+         (IntegerLiteral [ 1 ]
+         )
+        )
+       )
+       (Less
+        (ArrayLookup
+         (IdentifierExp [ array ]
+         )
+         (Plus
+          (IdentifierExp [ i ]
+          )
+          (IntegerLiteral [ 1 ]
+          )
+         )
+        )
+        (IntegerLiteral [ 1000 ]
+        )
+       )
+      )
+      (Block
+       (If
+        (Less
+         (ArrayLookup
+          (IdentifierExp [ array ]
+          )
+          (IdentifierExp [ i ]
+          )
+         )
+         (ArrayLookup
+          (IdentifierExp [ array ]
+          )
+          (Plus
+           (IdentifierExp [ i ]
+           )
+           (IntegerLiteral [ 1 ]
+           )
+          )
+         )
+        )
+        (Block
+        (Block
+         (Assign
+          (Identifier [ tmp ]
+          )
+          (ArrayLookup
+           (IdentifierExp [ array ]
+           )
+           (IdentifierExp [ i ]
+           )
+          )
+         )
+         (ArrayAssign
+          (Identifier [ array ]
+          )
+          (IdentifierExp [ i ]
+          )
+          (ArrayLookup
+           (IdentifierExp [ array ]
+           )
+           (Plus
+            (IdentifierExp [ i ]
+            )
+            (IntegerLiteral [ 1 ]
+            )
+           )
+          )
+         )
+         (ArrayAssign
+          (Identifier [ array ]
+          )
+          (Plus
+           (IdentifierExp [ i ]
+           )
+           (IntegerLiteral [ 1 ]
+           )
+          )
+          (IdentifierExp [ tmp ]
+          )
+         )
+         (Assign
+          (Identifier [ done ]
+          )
+          (False
+          )
+         )
+       )
+       (Assign
+        (Identifier [ i ]
+        )
+        (Plus
+         (IdentifierExp [ i ]
+         )
+         (IntegerLiteral [ 1 ]
+         )
+        )
+       )
+     )
+   )
+   (IdentifierExp [ array ]
+   )
+  )
+  (MethodDecl
+   (IntArrayType
+   )
+   (Identifier [ rSort ]
+   )
+   (Formal
+    (IntArrayType
+    )
+    (Identifier [ array ]
+    )
+   )
+   (VarDecl
+    (IntegerType
+    )
+    (Identifier [ i ]
+    )
+   )
+   (VarDecl
+    (IntegerType
+    )
+    (Identifier [ tmp ]
+    )
+   )
+   (Assign
+    (Identifier [ array ]
+    )
+    (Call [ sort ]
+     (This
+     )
+     (Identifier [ sort ]
+     )
+     (IdentifierExp [ array ]
+     )
+    )
+   )
+   (Assign
+    (Identifier [ i ]
+    )
+    (IntegerLiteral [ 0 ]
+    )
+   )
+   (While
+    (Less
+     (Times
+      (IdentifierExp [ i ]
+      )
+      (IntegerLiteral [ 2 ]
+      )
+     )
+     (ArrayLength
+      (IdentifierExp [ array ]
+      )
+     )
+    )
+    (Block
+     (Assign
+      (Identifier [ tmp ]
+      )
+      (ArrayLookup
+       (IdentifierExp [ array ]
+       )
+       (IdentifierExp [ i ]
+       )
+      )
+     )
+     (ArrayAssign
+      (Identifier [ array ]
+      )
+      (IdentifierExp [ i ]
+      )
+      (ArrayLookup
+       (IdentifierExp [ array ]
+       )
+       (Minus
+        (Minus
+         (ArrayLength
+          (IdentifierExp [ array ]
+          )
+         )
+         (IntegerLiteral [ 1 ]
+         )
+        )
+        (IdentifierExp [ i ]
+        )
+       )
+      )
+     )
+     (ArrayAssign
+      (Identifier [ array ]
+      )
+      (Minus
+       (Minus
+        (ArrayLength
+         (IdentifierExp [ array ]
+         )
+        )
+        (IntegerLiteral [ 1 ]
+        )
+       )
+       (IdentifierExp [ i ]
+       )
+      )
+      (IdentifierExp [ tmp ]
+      )
+     )
+     (Assign
+      (Identifier [ i ]
+      )
+      (Plus
+       (IdentifierExp [ i ]
+       )
+       (IntegerLiteral [ 1 ]
+       )
+      )
+     )
+   )
+   (IdentifierExp [ array ]
+   )
+  )
+ )
+ (Class
+  (Identifier [ A ]
+  )
+  (MethodDecl
+   (IdentifierType [ A ]
+   )
+   (Identifier [ a ]
+   )
+   (Formal
+    (IdentifierType [ A ]
+    )
+    (Identifier [ a ]
+    )
+   )
+   (Formal
+    (BooleanType
+    )
+    (Identifier [ i ]
+    )
+   )
+   (If
+    (IdentifierExp [ i ]
+    )
+    (Assign
+     (Identifier [ a ]
+     )
+     (NewObject
+      (Identifier [ A ]
+      )
+     )
+    )
+    (Assign
+     (Identifier [ a ]
+     )
+     (This
+     )
+    )
+   )
+   (IdentifierExp [ a ]
+   )
+  )
+  (MethodDecl
+   (IdentifierType [ B ]
+   )
+   (Identifier [ b ]
+   )
+   (Formal
+    (IdentifierType [ A ]
+    )
+    (Identifier [ a ]
+    )
+   )
+   (Formal
+    (BooleanType
+    )
+    (Identifier [ i ]
+    )
+   )
+   (VarDecl
+    (IdentifierType [ B ]
+    )
+    (Identifier [ b ]
+    )
+   )
+   (Assign
+    (Identifier [ b ]
+    )
+    (NewObject
+     (Identifier [ B ]
+     )
+    )
+   )
+   (If
+    (IdentifierExp [ i ]
+    )
+    (Assign
+     (Identifier [ b ]
+     )
+     (NewObject
+      (Identifier [ B ]
+      )
+     )
+    )
+    (Assign
+     (Identifier [ b ]
+     )
+     (IdentifierExp [ b ]
+     )
+    )
+   )
+   (IdentifierExp [ b ]
+   )
+  )
+ )
+ (Class
+  (Identifier [ B ]
+  )
+  (VarDecl
+   (BooleanType
+   )
+   (Identifier [ a ]
+   )
+  )
+  (MethodDecl
+   (IdentifierType [ A ]
+   )
+   (Identifier [ a ]
+   )
+   (Call [ a ]
+    (Call [ b ]
+     (Call [ a ]
+      (NewObject
+       (Identifier [ A ]
+       )
+      )
+      (Identifier [ a ]
+      )
+      (NewObject
+       (Identifier [ A ]
+       )
+      )
+      (IdentifierExp [ a ]
+      )
+     )
+     (Identifier [ b ]
+     )
+     (NewObject
+      (Identifier [ A ]
+      )
+     )
+     (False
+     )
+    )
+    (Identifier [ a ]
+    )
+   )
+  )
+  (MethodDecl
+   (IdentifierType [ BSort ]
+   )
+   (Identifier [ bsort ]
+   )
+   (NewObject
+    (Identifier [ BSort ]
+    )
+   )
+  )
+ )
+)

@@ -1,0 +1,9 @@
+Compiling input file CommentInComment.java into directory CommentInComment/
+- Syntax analysis
+  ...abstract syntax tree: CommentInComment/CommentInComment.syntax
+- Semantic analysis
+  ...symbol table: CommentInComment/CommentInComment.symtab
+- Jasmin assembler
+  ... CommentInComment/CommentInComment.j
+- Class files
+  ... CommentInComment/CommentInComment.class

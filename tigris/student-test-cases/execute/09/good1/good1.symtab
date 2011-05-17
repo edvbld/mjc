@@ -1,0 +1,27 @@
+Main class: Good1
+
+    Class: Good1Sorter
+        Fields:
+            int refr
+            int lb
+            int hb
+            int tmp
+            int dump
+        Methods:
+            int testing
+                Parameters:
+                Locals:
+                    int[] a
+                    int waste
+            int printArray
+                Parameters:
+                    int[] a
+                Locals:
+                    int i
+            int quickSort
+                Parameters:
+                    int[] array
+                    int start
+                    int end
+                Locals:
+                    int ret

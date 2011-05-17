@@ -1,0 +1,40 @@
+(Program
+ (MainClass
+  (Identifier [ IllegalVariableShadowingSample ]
+  )
+  (Identifier [ args ]
+  )
+ )
+ (Class
+  (Identifier [ IllegalVariableShadowing ]
+  )
+  (VarDecl
+   (IdentifierType [ IllegalVariableShadowing ]
+   )
+   (Identifier [ obj ]
+   )
+  )
+  (MethodDecl
+   (IdentifierType [ IllegalVariableShadowing ]
+   )
+   (Identifier [ f ]
+   )
+   (VarDecl
+    (BooleanType
+    )
+    (Identifier [ obj ]
+    )
+   )
+   (Assign
+    (Identifier [ obj ]
+    )
+    (NewObject
+     (Identifier [ IllegalVariableShadowing ]
+     )
+    )
+   )
+   (IdentifierExp [ obj ]
+   )
+  )
+ )
+)

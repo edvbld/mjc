@@ -1,0 +1,64 @@
+(Program
+ (MainClass
+  (Identifier [ UndeclaredTypeSample ]
+  )
+  (Identifier [ args ]
+  )
+ )
+ (Class
+  (Identifier [ DeclaredType ]
+  )
+  (VarDecl
+   (IdentifierType [ UndeclaredType ]
+   )
+   (Identifier [ obj ]
+   )
+  )
+  (MethodDecl
+   (IdentifierType [ UndeclaredType ]
+   )
+   (Identifier [ f ]
+   )
+   (NewObject
+    (Identifier [ UndeclaredType ]
+    )
+   )
+  )
+  (MethodDecl
+   (IntegerType
+   )
+   (Identifier [ g ]
+   )
+   (Formal
+    (IdentifierType [ UndeclaredType ]
+    )
+    (Identifier [ x ]
+    )
+   )
+   (IntegerLiteral [ 0 ]
+   )
+  )
+  (MethodDecl
+   (IntegerType
+   )
+   (Identifier [ h ]
+   )
+   (VarDecl
+    (IdentifierType [ UndeclaredType ]
+    )
+    (Identifier [ x ]
+    )
+   )
+   (Assign
+    (Identifier [ x ]
+    )
+    (NewObject
+     (Identifier [ UndeclaredType ]
+     )
+    )
+   )
+   (IntegerLiteral [ 0 ]
+   )
+  )
+ )
+)

@@ -1,0 +1,16 @@
+(Program
+ (MainClass
+  (Identifier [ Error2 ]
+  )
+  (Identifier [ args ]
+  )
+  (Print
+   (Call [ bar ]
+    (This
+    )
+    (Identifier [ bar ]
+    )
+   )
+  )
+ )
+)

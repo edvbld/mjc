@@ -1,0 +1,94 @@
+(Program
+ (MainClass
+  (Identifier [ Main ]
+  )
+  (Identifier [ a ]
+  )
+  (Print
+   (Call [ doit ]
+    (NewObject
+     (Identifier [ Modulo ]
+     )
+    )
+    (Identifier [ doit ]
+    )
+   )
+  )
+ )
+ (Class
+  (Identifier [ Modulo ]
+  )
+  (MethodDecl
+   (IntegerType
+   )
+   (Identifier [ doit ]
+   )
+   (VarDecl
+    (IntegerType
+    )
+    (Identifier [ a ]
+    )
+   )
+   (VarDecl
+    (IntegerType
+    )
+    (Identifier [ b ]
+    )
+   )
+   (Assign
+    (Identifier [ a ]
+    )
+    (IntegerLiteral [ 3 ]
+    )
+   )
+   (Assign
+    (Identifier [ b ]
+    )
+    (NewArray
+     (Plus
+      (Minus
+       (Times
+        (IdentifierExp [ a ]
+        )
+        (IntegerLiteral [ 3 ]
+        )
+       )
+       (Times
+        (IntegerLiteral [ 3 ]
+        )
+        (IdentifierExp [ a ]
+        )
+       )
+      )
+      (IntegerLiteral [ 10 ]
+      )
+     )
+    )
+   )
+   (If
+    (Less
+     (IdentifierExp [ a ]
+     )
+     (IntegerLiteral [ 5 ]
+     )
+    )
+    (Block
+     (Print
+      (IntegerLiteral [ 1 ]
+      )
+     )
+    (Block
+     (Print
+      (IntegerLiteral [ 0 ]
+      )
+     )
+   )
+   (Plus
+    (IdentifierExp [ a ]
+    )
+    (IntegerLiteral [ 3 ]
+    )
+   )
+  )
+ )
+)

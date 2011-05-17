@@ -1,0 +1,144 @@
+(Program
+ (MainClass
+  (Identifier [ IllegalExpressionSample ]
+  )
+  (Identifier [ args ]
+  )
+  (If
+   (Call [ run ]
+    (NewObject
+     (Identifier [ IES ]
+     )
+    )
+    (Identifier [ run ]
+    )
+    (IntegerLiteral [ 1 ]
+    )
+    (IntegerLiteral [ 2 ]
+    )
+    (IntegerLiteral [ 3 ]
+    )
+    (IntegerLiteral [ 4 ]
+    )
+   )
+   (Print
+    (IntegerLiteral [ 1111 ]
+    )
+   )
+   (Print
+    (IntegerLiteral [ 1100 ]
+    )
+   )
+  )
+ )
+ (Class
+  (Identifier [ IES ]
+  )
+  (MethodDecl
+   (BooleanType
+   )
+   (Identifier [ run ]
+   )
+   (Formal
+    (IntegerType
+    )
+    (Identifier [ x ]
+    )
+   )
+   (Formal
+    (IntegerType
+    )
+    (Identifier [ y ]
+    )
+   )
+   (Formal
+    (IntegerType
+    )
+    (Identifier [ u ]
+    )
+   )
+   (Formal
+    (IntegerType
+    )
+    (Identifier [ v ]
+    )
+   )
+   (VarDecl
+    (BooleanType
+    )
+    (Identifier [ a ]
+    )
+   )
+   (VarDecl
+    (BooleanType
+    )
+    (Identifier [ b ]
+    )
+   )
+   (Assign
+    (Identifier [ a ]
+    )
+    (Less
+     (Times
+      (IdentifierExp [ x ]
+      )
+      (IdentifierExp [ b ]
+      )
+     )
+     (IdentifierExp [ y ]
+     )
+    )
+   )
+   (Assign
+    (Identifier [ a ]
+    )
+    (Less
+     (Times
+      (IdentifierExp [ x ]
+      )
+      (IdentifierExp [ y ]
+      )
+     )
+     (IdentifierExp [ b ]
+     )
+    )
+   )
+   (Assign
+    (Identifier [ x ]
+    )
+    (Times
+     (Less
+      (IdentifierExp [ u ]
+      )
+      (IdentifierExp [ u ]
+      )
+     )
+     (IdentifierExp [ y ]
+     )
+    )
+   )
+   (Assign
+    (Identifier [ x ]
+    )
+    (Less
+     (Times
+      (Not
+       (IdentifierExp [ x ]
+       )
+      )
+      (IdentifierExp [ y ]
+      )
+     )
+     (Minus
+      (IdentifierExp [ u ]
+      )
+      (IdentifierExp [ v ]
+      )
+     )
+    )
+   )
+   (IdentifierExp [ b ]
+   )
+  )
+ )
+)

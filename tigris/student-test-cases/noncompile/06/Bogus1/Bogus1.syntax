@@ -1,0 +1,62 @@
+(Program
+ (MainClass
+  (Identifier [ Bogus1 ]
+  )
+  (Identifier [ args ]
+  )
+  (Print
+   (Times
+    (Call [ getRandom ]
+     (NewObject
+      (Identifier [ Random ]
+      )
+     )
+     (Identifier [ getRandom ]
+     )
+     (IntegerLiteral [ 67 ]
+     )
+    )
+    (Times
+     (IntegerLiteral [ 4 ]
+     )
+     (Times
+      (IntegerLiteral [ 5 ]
+      )
+      (Times
+       (IntegerLiteral [ 6 ]
+       )
+       (Call [ getRandom ]
+        (NewObject
+         (Identifier [ Random ]
+         )
+        )
+        (Identifier [ getRandom ]
+        )
+        (True
+        )
+       )
+      )
+     )
+    )
+   )
+  )
+ )
+ (Class
+  (Identifier [ Random ]
+  )
+  (MethodDecl
+   (IntegerType
+   )
+   (Identifier [ getRandom ]
+   )
+   (Formal
+    (IntegerType
+    )
+    (Identifier [ value ]
+    )
+   )
+   (IntegerLiteral [ 4 ]
+   )
+  )
+ )
+)

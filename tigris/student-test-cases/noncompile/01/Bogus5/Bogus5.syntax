@@ -1,0 +1,88 @@
+(Program
+ (MainClass
+  (Identifier [ Bogus5 ]
+  )
+  (Identifier [ args ]
+  )
+  (If
+   (False
+   )
+   (Block
+    (Print
+     (True
+     )
+    )
+   (Block
+    (Print
+     (Call [ namn ]
+      (NewObject
+       (Identifier [ namn ]
+       )
+      )
+      (Identifier [ namn ]
+      )
+      (IntegerLiteral [ 4 ]
+      )
+     )
+    )
+  )
+ )
+ (Class
+  (Identifier [ namn ]
+  )
+  (MethodDecl
+   (BooleanType
+   )
+   (Identifier [ namn ]
+   )
+   (Formal
+    (IntegerType
+    )
+    (Identifier [ namn ]
+    )
+   )
+   (VarDecl
+    (IntegerType
+    )
+    (Identifier [ namn ]
+    )
+   )
+   (VarDecl
+    (BooleanType
+    )
+    (Identifier [ namn2 ]
+    )
+   )
+   (Assign
+    (Identifier [ namn2 ]
+    )
+    (False
+    )
+   )
+   (Assign
+    (Identifier [ namn ]
+    )
+    (IntegerLiteral [ 7 ]
+    )
+   )
+   (If
+    (Less
+     (IdentifierExp [ namn ]
+     )
+     (IdentifierExp [ namn ]
+     )
+    )
+    (Block
+     (Assign
+      (Identifier [ namn2 ]
+      )
+      (True
+      )
+     )
+    (Block
+   )
+   (IdentifierExp [ namn2 ]
+   )
+  )
+ )
+)

@@ -1,0 +1,6 @@
+Compiling input file GenPrime.java into directory GenPrime/
+Syntax error:
+se.helino.mjc.parser.ParseException: Encountered " <IDENTIFIER> "i "" at line 48, column 13.
+Was expecting:
+    "else" ...
+    

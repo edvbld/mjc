@@ -1,0 +1,90 @@
+(Program
+ (MainClass
+  (Identifier [ Test3 ]
+  )
+  (Identifier [ a ]
+  )
+  (Print
+   (Call [ fibonacci ]
+    (NewObject
+     (Identifier [ Fibonacci ]
+     )
+    )
+    (Identifier [ fibonacci ]
+    )
+    (IntegerLiteral [ 5 ]
+    )
+   )
+  )
+ )
+ (Class
+  (Identifier [ Fibonacci ]
+  )
+  (MethodDecl
+   (IntegerType
+   )
+   (Identifier [ fibonacci ]
+   )
+   (Formal
+    (IntegerType
+    )
+    (Identifier [ n ]
+    )
+   )
+   (VarDecl
+    (IntegerType
+    )
+    (Identifier [ f ]
+    )
+   )
+   (If
+    (Less
+     (IdentifierExp [ n ]
+     )
+     (IntegerLiteral [ 3 ]
+     )
+    )
+    (Block
+     (Assign
+      (Identifier [ f ]
+      )
+      (IntegerLiteral [ 1 ]
+      )
+     )
+    (Block
+     (Assign
+      (Identifier [ f ]
+      )
+      (Plus
+       (Call [ fibonacci ]
+        (This
+        )
+        (Identifier [ fibonacci ]
+        )
+        (Minus
+         (IdentifierExp [ n ]
+         )
+         (IntegerLiteral [ 1 ]
+         )
+        )
+       )
+       (Call [ fibonacci ]
+        (This
+        )
+        (Identifier [ fibonacci ]
+        )
+        (Minus
+         (IdentifierExp [ n ]
+         )
+         (IntegerLiteral [ 2 ]
+         )
+        )
+       )
+      )
+     )
+   )
+   (IdentifierExp [ f ]
+   )
+  )
+ )
+)

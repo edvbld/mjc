@@ -1,0 +1,11 @@
+Compiling input file good1.java into directory good1/
+- Syntax analysis
+  ...abstract syntax tree: good1/good1.syntax
+- Semantic analysis
+  ...symbol table: good1/good1.symtab
+- Jasmin assembler
+  ... good1/Good1.j
+  ... good1/Good1Sorter.j
+- Class files
+  ... good1/Good1.class
+  ... good1/Good1Sorter.class

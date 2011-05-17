@@ -1,0 +1,90 @@
+(Program
+ (MainClass
+  (Identifier [ Test7 ]
+  )
+  (Identifier [ a ]
+  )
+  (Print
+   (Call [ init ]
+    (NewObject
+     (Identifier [ methodA ]
+     )
+    )
+    (Identifier [ init ]
+    )
+    (IntegerLiteral [ 3 ]
+    )
+   )
+  )
+ )
+ (Class
+  (Identifier [ methodA ]
+  )
+  (VarDecl
+   (IntegerType
+   )
+   (Identifier [ i ]
+   )
+  )
+  (MethodDecl
+   (IntegerType
+   )
+   (Identifier [ init ]
+   )
+   (Formal
+    (IntegerType
+    )
+    (Identifier [ a ]
+    )
+   )
+   (Assign
+    (Identifier [ i ]
+    )
+    (Call [ init ]
+     (IdentifierExp [ methodC ]
+     )
+     (Identifier [ init ]
+     )
+     (IdentifierExp [ a ]
+     )
+    )
+   )
+   (IdentifierExp [ i ]
+   )
+  )
+ )
+ (Class
+  (Identifier [ methodB ]
+  )
+  (VarDecl
+   (IntegerType
+   )
+   (Identifier [ i ]
+   )
+  )
+  (MethodDecl
+   (IntegerType
+   )
+   (Identifier [ init ]
+   )
+   (Formal
+    (IntegerType
+    )
+    (Identifier [ a ]
+    )
+   )
+   (Assign
+    (Identifier [ i ]
+    )
+    (Plus
+     (IdentifierExp [ i ]
+     )
+     (IdentifierExp [ a ]
+     )
+    )
+   )
+   (IdentifierExp [ i ]
+   )
+  )
+ )
+)

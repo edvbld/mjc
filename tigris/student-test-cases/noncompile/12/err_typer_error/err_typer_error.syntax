@@ -1,0 +1,150 @@
+(Program
+ (MainClass
+  (Identifier [ MainClass ]
+  )
+  (Identifier [ args ]
+  )
+  (Print
+   (Call [ main ]
+    (NewObject
+     (Identifier [ Klass1 ]
+     )
+    )
+    (Identifier [ main ]
+    )
+    (IntegerLiteral [ 1 ]
+    )
+    (IntegerLiteral [ 2 ]
+    )
+    (IntegerLiteral [ 3 ]
+    )
+    (Call [ getTrue ]
+     (NewObject
+      (Identifier [ Klass2 ]
+      )
+     )
+     (Identifier [ getTrue ]
+     )
+    )
+    (IntegerLiteral [ 5 ]
+    )
+    (IntegerLiteral [ 6 ]
+    )
+    (Call [ main ]
+     (NewObject
+      (Identifier [ Klass1 ]
+      )
+     )
+     (Identifier [ main ]
+     )
+     (IntegerLiteral [ 0 ]
+     )
+     (IntegerLiteral [ 0 ]
+     )
+     (IntegerLiteral [ 0 ]
+     )
+     (False
+     )
+     (IntegerLiteral [ 0 ]
+     )
+     (IntegerLiteral [ 0 ]
+     )
+     (True
+     )
+    )
+   )
+  )
+ )
+ (Class
+  (Identifier [ Klass1 ]
+  )
+  (MethodDecl
+   (IdentifierType [ Klass2 ]
+   )
+   (Identifier [ get ]
+   )
+   (NewObject
+    (Identifier [ Klass2 ]
+    )
+   )
+  )
+  (MethodDecl
+   (BooleanType
+   )
+   (Identifier [ main ]
+   )
+   (Formal
+    (IntegerType
+    )
+    (Identifier [ i ]
+    )
+   )
+   (Formal
+    (IntegerType
+    )
+    (Identifier [ j ]
+    )
+   )
+   (Formal
+    (IntegerType
+    )
+    (Identifier [ l ]
+    )
+   )
+   (Formal
+    (BooleanType
+    )
+    (Identifier [ m ]
+    )
+   )
+   (Formal
+    (IntegerType
+    )
+    (Identifier [ o ]
+    )
+   )
+   (Formal
+    (IntegerType
+    )
+    (Identifier [ p ]
+    )
+   )
+   (Formal
+    (BooleanType
+    )
+    (Identifier [ q ]
+    )
+   )
+   (VarDecl
+    (IdentifierType [ Klass2 ]
+    )
+    (Identifier [ k ]
+    )
+   )
+   (Assign
+    (Identifier [ k ]
+    )
+    (Call [ get ]
+     (This
+     )
+     (Identifier [ get ]
+     )
+    )
+   )
+   (False
+   )
+  )
+ )
+ (Class
+  (Identifier [ Klass2 ]
+  )
+  (MethodDecl
+   (IntegerType
+   )
+   (Identifier [ getTrue ]
+   )
+   (IntegerLiteral [ 1 ]
+   )
+  )
+ )
+)

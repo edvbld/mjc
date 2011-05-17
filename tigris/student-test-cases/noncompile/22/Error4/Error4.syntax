@@ -1,0 +1,58 @@
+(Program
+ (MainClass
+  (Identifier [ Error4 ]
+  )
+  (Identifier [ args ]
+  )
+ )
+ (Class
+  (Identifier [ A ]
+  )
+  (MethodDecl
+   (IntArrayType
+   )
+   (Identifier [ ar ]
+   )
+   (VarDecl
+    (IntArrayType
+    )
+    (Identifier [ ar ]
+    )
+   )
+   (Assign
+    (Identifier [ ar ]
+    )
+    (NewArray
+     (IntegerLiteral [ 5 ]
+     )
+    )
+   )
+   (IdentifierExp [ ar ]
+   )
+  )
+ )
+ (Class
+  (Identifier [ B ]
+  )
+  (MethodDecl
+   (IntegerType
+   )
+   (Identifier [ a ]
+   )
+   (ArrayLookup
+    (Call [ ar ]
+     (NewObject
+      (Identifier [ A ]
+      )
+     )
+     (Identifier [ ar ]
+     )
+    )
+    (NewArray
+     (IntegerLiteral [ 3 ]
+     )
+    )
+   )
+  )
+ )
+)

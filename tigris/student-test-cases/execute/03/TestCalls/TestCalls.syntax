@@ -1,0 +1,164 @@
+(Program
+ (MainClass
+  (Identifier [ TestCalls ]
+  )
+  (Identifier [ args ]
+  )
+  (Print
+   (Call [ test ]
+    (NewObject
+     (Identifier [ TestCallsA ]
+     )
+    )
+    (Identifier [ test ]
+    )
+   )
+  )
+ )
+ (Class
+  (Identifier [ TestCallsA ]
+  )
+  (VarDecl
+   (IdentifierType [ TestCallsB ]
+   )
+   (Identifier [ testCallsB ]
+   )
+  )
+  (MethodDecl
+   (IntegerType
+   )
+   (Identifier [ test ]
+   )
+   (VarDecl
+    (IntegerType
+    )
+    (Identifier [ test1 ]
+    )
+   )
+   (VarDecl
+    (IntegerType
+    )
+    (Identifier [ test2 ]
+    )
+   )
+   (Assign
+    (Identifier [ test1 ]
+    )
+    (Call [ test1 ]
+     (This
+     )
+     (Identifier [ test1 ]
+     )
+     (IntegerLiteral [ 100000 ]
+     )
+     (IntegerLiteral [ 200000 ]
+     )
+     (IntegerLiteral [ 300000 ]
+     )
+    )
+   )
+   (Assign
+    (Identifier [ test2 ]
+    )
+    (IntegerLiteral [ 999999 ]
+    )
+   )
+   (Assign
+    (Identifier [ testCallsB ]
+    )
+    (NewObject
+     (Identifier [ TestCallsB ]
+     )
+    )
+   )
+   (Print
+    (Call [ test ]
+     (IdentifierExp [ testCallsB ]
+     )
+     (Identifier [ test ]
+     )
+    )
+   )
+   (IdentifierExp [ test1 ]
+   )
+  )
+  (MethodDecl
+   (IntegerType
+   )
+   (Identifier [ test1 ]
+   )
+   (Formal
+    (IntegerType
+    )
+    (Identifier [ a ]
+    )
+   )
+   (Formal
+    (IntegerType
+    )
+    (Identifier [ b ]
+    )
+   )
+   (Formal
+    (IntegerType
+    )
+    (Identifier [ c ]
+    )
+   )
+   (Print
+    (IdentifierExp [ a ]
+    )
+   )
+   (Print
+    (IdentifierExp [ b ]
+    )
+   )
+   (Print
+    (IdentifierExp [ c ]
+    )
+   )
+   (IntegerLiteral [ 1 ]
+   )
+  )
+  (MethodDecl
+   (IntegerType
+   )
+   (Identifier [ test1 ]
+   )
+   (Formal
+    (IntegerType
+    )
+    (Identifier [ a ]
+    )
+   )
+   (Formal
+    (IntegerType
+    )
+    (Identifier [ b ]
+    )
+   )
+   (Print
+    (IdentifierExp [ a ]
+    )
+   )
+   (Print
+    (IdentifierExp [ b ]
+    )
+   )
+   (IntegerLiteral [ 2 ]
+   )
+  )
+ )
+ (Class
+  (Identifier [ TestCallsB ]
+  )
+  (MethodDecl
+   (IntegerType
+   )
+   (Identifier [ test ]
+   )
+   (IntegerLiteral [ 1337 ]
+   )
+  )
+ )
+)

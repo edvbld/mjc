@@ -1,0 +1,17 @@
+Compiling input file DepthFirstSearch.java into directory DepthFirstSearch/
+- Syntax analysis
+  ...abstract syntax tree: DepthFirstSearch/DepthFirstSearch.syntax
+- Semantic analysis
+  ...symbol table: DepthFirstSearch/DepthFirstSearch.symtab
+- Jasmin assembler
+  ... DepthFirstSearch/DepthFirstSearch.j
+  ... DepthFirstSearch/Stack.j
+  ... DepthFirstSearch/Node.j
+  ... DepthFirstSearch/Math.j
+  ... DepthFirstSearch/DFS.j
+- Class files
+  ... DepthFirstSearch/DepthFirstSearch.class
+  ... DepthFirstSearch/Stack.class
+  ... DepthFirstSearch/Node.class
+  ... DepthFirstSearch/Math.class
+  ... DepthFirstSearch/DFS.class

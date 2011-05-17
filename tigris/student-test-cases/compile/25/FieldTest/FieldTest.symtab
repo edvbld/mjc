@@ -1,0 +1,27 @@
+Main class: FieldTest
+
+    Class: Field
+        Fields:
+            int i
+            Field f
+            int[] a
+        Methods:
+            int test
+                Parameters:
+                Locals:
+                    Field f
+                    int r
+            int getI
+                Parameters:
+                Locals:
+            int setI
+                Parameters:
+                    int v
+                Locals:
+            int init
+                Parameters:
+                Locals:
+            int hej
+                Parameters:
+                    int j
+                Locals:

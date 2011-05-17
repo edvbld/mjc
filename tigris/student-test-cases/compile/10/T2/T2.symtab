@@ -1,0 +1,53 @@
+Main class: T2
+
+    Class: Caller
+        Fields:
+        Methods:
+            int call
+                Parameters:
+                Locals:
+                    int i
+                    Utils u
+    Class: Abc
+        Fields:
+            int a
+            int b
+        Methods:
+            int add
+                Parameters:
+                    int x
+                    int y
+                Locals:
+                    int result
+    Class: Utils
+        Fields:
+            int a
+            int b
+        Methods:
+            int add
+                Parameters:
+                    int x
+                    int y
+                Locals:
+                    int result
+            int sub
+                Parameters:
+                    int x
+                    int y
+                Locals:
+                    int result
+            int sum
+                Parameters:
+                    int[] a
+                Locals:
+                    int len
+                    int i
+                    int s
+            int[] range
+                Parameters:
+                    int start
+                    int stop
+                Locals:
+                    int[] a
+                    int len
+                    int i

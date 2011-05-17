@@ -1,0 +1,30 @@
+(Program
+ (MainClass
+  (Identifier [ Bogus2 ]
+  )
+  (Identifier [ args ]
+  )
+  (Print
+   (Call [ test ]
+    (NewObject
+     (Identifier [ Bogus2 ]
+     )
+    )
+    (Identifier [ test ]
+    )
+   )
+  )
+ )
+ (Class
+  (Identifier [ Bogus2 ]
+  )
+  (MethodDecl
+   (IntegerType
+   )
+   (Identifier [ test ]
+   )
+   (IntegerLiteral [ 0 ]
+   )
+  )
+ )
+)

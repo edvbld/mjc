@@ -1,0 +1,36 @@
+(Program
+ (MainClass
+  (Identifier [ MainClass ]
+  )
+  (Identifier [ args ]
+  )
+  (Print
+   (Call [ createB ]
+    (NewObject
+     (Identifier [ B ]
+     )
+    )
+    (Identifier [ createB ]
+    )
+   )
+  )
+ )
+ (Class
+  (Identifier [ A ]
+  )
+ )
+ (Class
+  (Identifier [ B ]
+  )
+  (MethodDecl
+   (IdentifierType [ B ]
+   )
+   (Identifier [ createB ]
+   )
+   (NewObject
+    (Identifier [ A ]
+    )
+   )
+  )
+ )
+)

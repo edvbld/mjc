@@ -1,0 +1,16 @@
+Main class: Bogus1
+
+    Class: Test
+        Fields:
+        Methods:
+            int testing
+                Parameters:
+                Locals:
+                    int b
+            int t
+                Parameters:
+                    int i
+                Locals:
+                    int a
+                    int b
+                    int c

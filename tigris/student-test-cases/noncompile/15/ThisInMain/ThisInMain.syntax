@@ -1,0 +1,38 @@
+(Program
+ (MainClass
+  (Identifier [ ThisInMain ]
+  )
+  (Identifier [ args ]
+  )
+  (Print
+   (Call [ method ]
+    (NewObject
+     (Identifier [ OtherClass ]
+     )
+    )
+    (Identifier [ method ]
+    )
+    (This
+    )
+   )
+  )
+ )
+ (Class
+  (Identifier [ OtherClass ]
+  )
+  (MethodDecl
+   (IntegerType
+   )
+   (Identifier [ method ]
+   )
+   (Formal
+    (IdentifierType [ MainClass ]
+    )
+    (Identifier [ obj ]
+    )
+   )
+   (IntegerLiteral [ 0 ]
+   )
+  )
+ )
+)

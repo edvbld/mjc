@@ -1,0 +1,11 @@
+Compiling input file Test7.java into directory Test7/
+- Syntax analysis
+  ...abstract syntax tree: Test7/Test7.syntax
+- Semantic analysis
+  ...symbol table: Test7/Test7.symtab
+- Jasmin assembler
+  ... Test7/Test7.j
+  ... Test7/makeList.j
+- Class files
+  ... Test7/Test7.class
+  ... Test7/makeList.class

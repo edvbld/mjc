@@ -1,0 +1,13 @@
+Compiling input file TestPrimeSieve.java into directory TestPrimeSieve/
+- Syntax analysis
+  ...abstract syntax tree: TestPrimeSieve/TestPrimeSieve.syntax
+- Semantic analysis
+  ...symbol table: TestPrimeSieve/TestPrimeSieve.symtab
+- Jasmin assembler
+  ... TestPrimeSieve/TestPrimeSieve.j
+  ... TestPrimeSieve/PrimeSieveHelper.j
+  ... TestPrimeSieve/PrimeSieve.j
+- Class files
+  ... TestPrimeSieve/TestPrimeSieve.class
+  ... TestPrimeSieve/PrimeSieveHelper.class
+  ... TestPrimeSieve/PrimeSieve.class

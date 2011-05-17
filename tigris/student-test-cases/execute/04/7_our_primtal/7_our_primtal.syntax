@@ -1,0 +1,446 @@
+(Program
+ (MainClass
+  (Identifier [ Main ]
+  )
+  (Identifier [ args ]
+  )
+  (Print
+   (Call [ run ]
+    (NewObject
+     (Identifier [ our_primtal ]
+     )
+    )
+    (Identifier [ run ]
+    )
+   )
+  )
+ )
+ (Class
+  (Identifier [ our_primtal ]
+  )
+  (VarDecl
+   (IntArrayType
+   )
+   (Identifier [ primes ]
+   )
+  )
+  (VarDecl
+   (IntegerType
+   )
+   (Identifier [ count ]
+   )
+  )
+  (VarDecl
+   (IntegerType
+   )
+   (Identifier [ number ]
+   )
+  )
+  (MethodDecl
+   (IntegerType
+   )
+   (Identifier [ print ]
+   )
+   (VarDecl
+    (IntegerType
+    )
+    (Identifier [ i ]
+    )
+   )
+   (Assign
+    (Identifier [ i ]
+    )
+    (IntegerLiteral [ 0 ]
+    )
+   )
+   (While
+    (Less
+     (IdentifierExp [ i ]
+     )
+     (IdentifierExp [ number ]
+     )
+    )
+    (Block
+     (Print
+      (ArrayLookup
+       (IdentifierExp [ primes ]
+       )
+       (IdentifierExp [ i ]
+       )
+      )
+     )
+     (Assign
+      (Identifier [ i ]
+      )
+      (Plus
+       (IdentifierExp [ i ]
+       )
+       (IntegerLiteral [ 1 ]
+       )
+      )
+     )
+   )
+   (IntegerLiteral [ 0 ]
+   )
+  )
+  (MethodDecl
+   (IntegerType
+   )
+   (Identifier [ run ]
+   )
+   (VarDecl
+    (IntegerType
+    )
+    (Identifier [ test ]
+    )
+   )
+   (VarDecl
+    (BooleanType
+    )
+    (Identifier [ retbool ]
+    )
+   )
+   (VarDecl
+    (IntegerType
+    )
+    (Identifier [ retint ]
+    )
+   )
+   (Assign
+    (Identifier [ test ]
+    )
+    (IntegerLiteral [ 3 ]
+    )
+   )
+   (Assign
+    (Identifier [ number ]
+    )
+    (IntegerLiteral [ 100 ]
+    )
+   )
+   (Assign
+    (Identifier [ primes ]
+    )
+    (NewArray
+     (IdentifierExp [ number ]
+     )
+    )
+   )
+   (Assign
+    (Identifier [ count ]
+    )
+    (IntegerLiteral [ 0 ]
+    )
+   )
+   (Assign
+    (Identifier [ retbool ]
+    )
+    (Call [ add_prime ]
+     (This
+     )
+     (Identifier [ add_prime ]
+     )
+     (IntegerLiteral [ 2 ]
+     )
+    )
+   )
+   (While
+    (Less
+     (IdentifierExp [ count ]
+     )
+     (IdentifierExp [ number ]
+     )
+    )
+    (Block
+     (If
+      (Call [ is_prime ]
+       (This
+       )
+       (Identifier [ is_prime ]
+       )
+       (IdentifierExp [ test ]
+       )
+      )
+      (Block
+       (Assign
+        (Identifier [ retbool ]
+        )
+        (Call [ add_prime ]
+         (This
+         )
+         (Identifier [ add_prime ]
+         )
+         (IdentifierExp [ test ]
+         )
+        )
+       )
+      (Block
+     )
+     (Assign
+      (Identifier [ test ]
+      )
+      (Plus
+       (IdentifierExp [ test ]
+       )
+       (IntegerLiteral [ 1 ]
+       )
+      )
+     )
+   )
+   (Assign
+    (Identifier [ retint ]
+    )
+    (Call [ print ]
+     (This
+     )
+     (Identifier [ print ]
+     )
+    )
+   )
+   (IntegerLiteral [ 0 ]
+   )
+  )
+  (MethodDecl
+   (BooleanType
+   )
+   (Identifier [ is_prime ]
+   )
+   (Formal
+    (IntegerType
+    )
+    (Identifier [ x ]
+    )
+   )
+   (VarDecl
+    (IntegerType
+    )
+    (Identifier [ i ]
+    )
+   )
+   (VarDecl
+    (BooleanType
+    )
+    (Identifier [ retbool ]
+    )
+   )
+   (Assign
+    (Identifier [ retbool ]
+    )
+    (True
+    )
+   )
+   (Assign
+    (Identifier [ i ]
+    )
+    (IntegerLiteral [ 0 ]
+    )
+   )
+   (While
+    (And
+     (Less
+      (IdentifierExp [ i ]
+      )
+      (IdentifierExp [ count ]
+      )
+     )
+     (IdentifierExp [ retbool ]
+     )
+    )
+    (Block
+     (If
+      (Call [ mod ]
+       (This
+       )
+       (Identifier [ mod ]
+       )
+       (IdentifierExp [ x ]
+       )
+       (ArrayLookup
+        (IdentifierExp [ primes ]
+        )
+        (IdentifierExp [ i ]
+        )
+       )
+      )
+      (Block
+       (Assign
+        (Identifier [ retbool ]
+        )
+        (False
+        )
+       )
+      (Block
+       (Assign
+        (Identifier [ retbool ]
+        )
+        (True
+        )
+       )
+     )
+     (Assign
+      (Identifier [ i ]
+      )
+      (Plus
+       (IdentifierExp [ i ]
+       )
+       (IntegerLiteral [ 1 ]
+       )
+      )
+     )
+   )
+   (IdentifierExp [ retbool ]
+   )
+  )
+  (MethodDecl
+   (BooleanType
+   )
+   (Identifier [ add_prime ]
+   )
+   (Formal
+    (IntegerType
+    )
+    (Identifier [ p ]
+    )
+   )
+   (VarDecl
+    (BooleanType
+    )
+    (Identifier [ retbool ]
+    )
+   )
+   (If
+    (Less
+     (IdentifierExp [ number ]
+     )
+     (IdentifierExp [ count ]
+     )
+    )
+    (Block
+     (Assign
+      (Identifier [ retbool ]
+      )
+      (False
+      )
+     )
+    (Block
+     (ArrayAssign
+      (Identifier [ primes ]
+      )
+      (IdentifierExp [ count ]
+      )
+      (IdentifierExp [ p ]
+      )
+     )
+     (Assign
+      (Identifier [ count ]
+      )
+      (Plus
+       (IdentifierExp [ count ]
+       )
+       (IntegerLiteral [ 1 ]
+       )
+      )
+     )
+     (Assign
+      (Identifier [ retbool ]
+      )
+      (True
+      )
+     )
+   )
+   (IdentifierExp [ retbool ]
+   )
+  )
+  (MethodDecl
+   (BooleanType
+   )
+   (Identifier [ mod ]
+   )
+   (Formal
+    (IntegerType
+    )
+    (Identifier [ x ]
+    )
+   )
+   (Formal
+    (IntegerType
+    )
+    (Identifier [ m ]
+    )
+   )
+   (VarDecl
+    (IntegerType
+    )
+    (Identifier [ rest ]
+    )
+   )
+   (VarDecl
+    (BooleanType
+    )
+    (Identifier [ retbool ]
+    )
+   )
+   (Assign
+    (Identifier [ rest ]
+    )
+    (IdentifierExp [ x ]
+    )
+   )
+   (While
+    (Not
+     (Less
+      (IdentifierExp [ rest ]
+      )
+      (IdentifierExp [ m ]
+      )
+     )
+    )
+    (Block
+     (Assign
+      (Identifier [ rest ]
+      )
+      (Minus
+       (IdentifierExp [ rest ]
+       )
+       (IdentifierExp [ m ]
+       )
+      )
+     )
+   )
+   (If
+    (And
+     (Less
+      (IdentifierExp [ rest ]
+      )
+      (IntegerLiteral [ 1 ]
+      )
+     )
+     (Not
+      (Less
+       (IdentifierExp [ rest ]
+       )
+       (IntegerLiteral [ 0 ]
+       )
+      )
+     )
+    )
+    (Block
+     (Assign
+      (Identifier [ retbool ]
+      )
+      (True
+      )
+     )
+    (Block
+     (Assign
+      (Identifier [ retbool ]
+      )
+      (False
+      )
+     )
+   )
+   (IdentifierExp [ retbool ]
+   )
+  )
+ )
+)

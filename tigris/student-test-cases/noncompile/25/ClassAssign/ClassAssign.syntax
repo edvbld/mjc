@@ -1,0 +1,20 @@
+(Program
+ (MainClass
+  (Identifier [ ClassAssign ]
+  )
+  (Identifier [ id ]
+  )
+  (Assign
+   (Identifier [ A ]
+   )
+   (NewObject
+    (Identifier [ A ]
+    )
+   )
+  )
+ )
+ (Class
+  (Identifier [ A ]
+  )
+ )
+)

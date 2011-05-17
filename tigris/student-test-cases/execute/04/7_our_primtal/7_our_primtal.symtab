@@ -1,0 +1,36 @@
+Main class: Main
+
+    Class: our_primtal
+        Fields:
+            int[] primes
+            int count
+            int number
+        Methods:
+            int print
+                Parameters:
+                Locals:
+                    int i
+            int run
+                Parameters:
+                Locals:
+                    int test
+                    boolean retbool
+                    int retint
+            boolean is_prime
+                Parameters:
+                    int x
+                Locals:
+                    int i
+                    boolean retbool
+            boolean add_prime
+                Parameters:
+                    int p
+                Locals:
+                    boolean retbool
+            boolean mod
+                Parameters:
+                    int x
+                    int m
+                Locals:
+                    int rest
+                    boolean retbool

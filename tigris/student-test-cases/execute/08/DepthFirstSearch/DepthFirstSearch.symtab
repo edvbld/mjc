@@ -1,0 +1,123 @@
+Main class: DepthFirstSearch
+
+    Class: Stack
+        Fields:
+            int[] stack
+            int size
+        Methods:
+            int init
+                Parameters:
+                Locals:
+            boolean isEmpty
+                Parameters:
+                Locals:
+                    boolean i
+            int push
+                Parameters:
+                    int push
+                Locals:
+                    int i
+                    int[] tmp
+            int pop
+                Parameters:
+                Locals:
+            int peek
+                Parameters:
+                Locals:
+    Class: Node
+        Fields:
+            Node _a_0
+            Node _a_1
+            Node _a_2
+            Node _a_3
+            Node parent
+            int numChilds
+            int value
+            int id
+        Methods:
+            Node init4
+                Parameters:
+                    Node a_0
+                    Node a_1
+                    Node a_2
+                    Node a_3
+                    int val
+                    int iid
+                Locals:
+            Node init3
+                Parameters:
+                    Node a_0
+                    Node a_1
+                    Node a_2
+                    int val
+                    int iid
+                Locals:
+            Node init2
+                Parameters:
+                    Node a_0
+                    Node a_1
+                    int val
+                    int iid
+                Locals:
+            Node init1
+                Parameters:
+                    Node a_0
+                    int val
+                    int iid
+                Locals:
+            Node init0
+                Parameters:
+                    int val
+                    int iid
+                Locals:
+            int getVal
+                Parameters:
+                Locals:
+            Node getNode
+                Parameters:
+                    int i
+                Locals:
+                    Math math
+                    Node node
+            int setParent
+                Parameters:
+                    Node par
+                Locals:
+            Node getParent
+                Parameters:
+                Locals:
+            int getNumChilds
+                Parameters:
+                Locals:
+            int getId
+                Parameters:
+                Locals:
+    Class: Math
+        Fields:
+        Methods:
+            boolean equal
+                Parameters:
+                    int i
+                    int j
+                Locals:
+                    boolean kase
+    Class: DFS
+        Fields:
+            Node start
+            Node currNode
+            int currVal
+            int value
+            Stack stack
+        Methods:
+            Node find
+                Parameters:
+                    Node startNode
+                    int val
+                Locals:
+                    int tmp
+            Node DFS
+                Parameters:
+                Locals:
+                    boolean found
+                    Math math
+                    int tmp
