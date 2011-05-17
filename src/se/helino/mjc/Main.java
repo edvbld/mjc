@@ -156,19 +156,25 @@ public class Main {
         } catch(ParseException e) {
             System.out.println("Syntax error:");
             System.out.println(e.toString());
+            System.exit(1);
         } catch(MJTypeException e) {
             for(String error : e.getErrors())
                 System.out.println(error);
+            System.exit(1);
         } catch(FileNotFoundException e) {
             System.out.println("Could not find file " + e.toString());
+            System.exit(1);
         } catch(IOException e) {
             System.out.println("Could not open file " + e.toString());
+            System.exit(1);
         } catch(jas.jasError e) {
             System.err.println("JAS Error: " + e.getMessage());
+            System.exit(1);
         } catch(Exception e) {
             System.err.println("Exception in " + 
                                e.getClass().getName() + ": " +
                                e.getMessage());
+            System.exit(1);
         }
     }
 }
