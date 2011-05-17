@@ -13,6 +13,19 @@ SKIP:
 | "\n"
 | "\t"
 | <"//" (~["\n","\r"])* ("\n"|"\r"|"\r\n")>
+| "/*" : WithinComment
+}
+
+<WithinComment>
+SKIP:
+{
+    "*/" : DEFAULT
+}
+
+<WithinComment>
+MORE:
+{
+    <~[]>
 }
 
 TOKEN:
