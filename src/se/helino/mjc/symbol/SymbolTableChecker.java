@@ -27,6 +27,11 @@ public class SymbolTableChecker implements TypeVisitor {
     }
 
     public void visit(MJMainClass n) { 
+        if(table.isNameOfClass(n.getClassId().getName())) {
+            errors.add("A class with name " + n.getClassId().getName() + 
+                       " is already defined");
+            return;
+        }
         for(MJStatement s : n.getStatements()) {
             s.accept(this);
         }
