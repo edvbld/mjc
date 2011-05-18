@@ -90,10 +90,11 @@ public class SymbolTableChecker implements TypeVisitor {
     public void visit(MJAssign n) {
         MJType lhs = n.getId().accept(this);
         MJType rhs = n.getExpression().accept(this);
-        if(!rhs.toString().equals(lhs.toString()))
+        if(!rhs.toString().equals(lhs.toString())) {
             errors.add("Variable " + n.getId().getName() + " has type " +
                         lhs.toString() + ", but tried to assign it type " +
                         rhs.toString());
+        }
     }
 
     public void visit(MJArrayAssign n) {
@@ -127,8 +128,9 @@ public class SymbolTableChecker implements TypeVisitor {
         MJType type;
         if(currentMethod != null) {
             type = currentMethod.getType(name);
-            if(type != null)
+            if(type != null) {
                 return type;
+            }
         }
         if(currentClass != null) {
             type = currentClass.getType(name);
@@ -295,8 +297,12 @@ public class SymbolTableChecker implements TypeVisitor {
 
 
     public MJType visit(MJNewObject n) { 
-        MJType mjClass = n.getId().accept(this);
-        return mjClass;
+        MJType type = table.getType(n.getId().getName());
+        if(type != null) {
+            return type;
+        } 
+        errors.add("Variable " + n.getId().getName() + " has unknown type");
+        return new MJUnknownType();
     }
 
     public MJType visit(MJNewArray n) { 
