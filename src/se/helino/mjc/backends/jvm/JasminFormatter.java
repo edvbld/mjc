@@ -117,6 +117,7 @@ public class JasminFormatter implements Visitor {
         for(MJMethodDecl m : n.getMethods()) {
             m.accept(this);
         }
+        currentClass = null;
         out.close();
     }
 
@@ -150,6 +151,7 @@ public class JasminFormatter implements Visitor {
         out.println(Utils.toTypePrefix(currentMethod.getReturnType()) + 
                     "return");
         out.println(".end method");
+        currentMethod = null;
     }
     
     public void visit(MJCall n) {
