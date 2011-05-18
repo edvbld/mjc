@@ -1,6 +1,0 @@
-Compiling input file booleanarray.java into directory booleanarray/
-Syntax error:
-se.helino.mjc.parser.ParseException: Encountered " "return" "return "" at line 92, column 17.
-Was expecting:
-    "else" ...
-    

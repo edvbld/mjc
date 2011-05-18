@@ -1,4 +1,0 @@
-Compiling input file TestCalls.java into directory TestCalls/
-- Syntax analysis
-  ...abstract syntax tree: TestCalls/TestCalls.syntax
-A method with name test1 is already defined

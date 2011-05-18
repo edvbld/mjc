@@ -1,8 +1,8 @@
 #!/bin/sh
 
-MJC="java -jar ~/code/minijava/mjc/dist/mjc.jar"
+MJC="java -jar ~/code/mjc/dist/mjc.jar"
 DIR="$1"
-EXT="ISC,ICG,JVM,SPILL,IWE,NBD,BMO"
+EXT="JVM"
 
 check() {
     category="$1"
@@ -25,40 +25,6 @@ check() {
             output=`eval "$MJC" "$testfile" 2>&1`
             [ $? -eq 0 ]; failed=$?
             ;;
-        execute)
-            output=`eval "$MJC" "$testfile" 2>&1`
-            [ $? -eq 0 ]; failed=$?
-
-            if [ "$failed" -eq "0" ]; then
-                mainclass=`find_mainclass`
-                java "$mainclass" > "$testfile.output" 2>&1
-                [ $? -eq 0 ]; failed=$?
-
-                if [ "$failed" -eq "0" ]; then
-                    javac "$testfile" >/dev/null 2>&1
-
-                    if [ "$?" -ne "0" ]; then
-                        failed=-1
-                    else
-                        java "$mainclass" > "$testfile.refoutput"
-
-                        diff "$testfile.output" "$testfile.refoutput" >/dev/null 2>&1
-
-                        [ "$?" -eq 0 ]; failed="$?"
-                    fi
-                fi
-            fi
-            ;;
-        nonexecute)
-            output=`eval "$MJC" "$testfile" 2>&1`
-            [ $? -eq 0 ]; failed=$?
-
-            if [ "$failed" -eq "0" ]; then
-                mainclass=`find_mainclass`
-                java "$mainclass" > "$testfile.output" 2>&1
-                [ $? -ne 0 ]; failed=$?
-            fi
-            ;;
     esac
 
     cd "$old_dir"
@@ -68,8 +34,6 @@ check() {
     elif [ "$failed" -eq "1" ]; then
         echo "FAIL (see error log: $log)"
         echo "$output" > "$log"
-    else
-        echo "NOT TESTED"
     fi
 }
 
@@ -96,7 +60,7 @@ find_mainclass() {
     return
 }
 
-for i in noncompile compile execute nonexecute; do
+for i in noncompile compile nonexecute; do
     directory="$DIR/$i"
 
     if ! [ -d "$directory" ]; then

@@ -1,6 +1,0 @@
-Compiling input file Primefinder2.java into directory Primefinder2/
-Syntax error:
-se.helino.mjc.parser.ParseException: Encountered " "}" "} "" at line 20, column 5.
-Was expecting:
-    "else" ...
-    
