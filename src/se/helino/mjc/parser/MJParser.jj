@@ -182,7 +182,7 @@ MJMethodDecl MethodDeclProd():
     MJMethodArg arg;
     MJVarDecl vd;
     MJMethodDecl method;
-    MJMethodBody body = null;
+    MJMethodBody body = new MJMethodBody();
     MJExpression retExp;
 }
 {
@@ -197,7 +197,7 @@ MJMethodDecl MethodDeclProd():
         { method.addMJMethodArg(arg); }
     )*
     <RPAREN> <LCURLY>
-    (body = MethodBodyProd())?
+    (body = MethodBodyProd(body))?
     { method.addMJMethodBody(body); }
     <RETURN> retExp = ExpressionProd() <SEMICOLON>
     { method.setReturnExpression(retExp); }
@@ -205,23 +205,19 @@ MJMethodDecl MethodDeclProd():
     { return method; }
 }
 
-MJMethodBody MethodBodyProd():
+MJMethodBody MethodBodyProd(MJMethodBody body):
 {
     MJVarDecl vd;
     MJStatement s;
-    MJMethodBody body = new MJMethodBody();
 }
 {
     LOOKAHEAD(2)
     (
-        LOOKAHEAD(2)
         vd = VarDeclProd()
         { body.addMJVarDecl(vd); }
-        |
-        s = StatementProd()
-        { body.addMJStatement(s); }
-    )+
-    {return body; }
+        (body = MethodBodyProd(body))?
+        { return body; }
+    )
     |
     (
         s = StatementProd()
