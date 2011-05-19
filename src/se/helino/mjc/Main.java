@@ -109,6 +109,7 @@ public class Main {
     }
 
     private static boolean quiet = false;
+    private static boolean tigris = false;
     private static void println(String s) {
         if(!quiet)
             System.out.println(s);
@@ -125,33 +126,51 @@ public class Main {
                 if(args[i].equals("-q")) {
                     quiet = true;
                 }
+                else if(args[i].equals("-S")) {
+                    tigris = true;
+                    quiet = true;
+                }
                 else {
                     fname = args[i];
                 }
             }
             String name = strip(fname);
-            new File(name).mkdir();
+            if(!tigris) {
+                new File(name).mkdir();
+            }
             println("Compiling input file " + fname + 
                     " into directory " + name + "/"); 
             MJProgram p = parse(fname);
             println("- Syntax analysis");
             println("  ...abstract syntax tree: " + 
                      name + "/" + name + ".syntax");
-            printSyntax(p, name);
+            if(!tigris) {
+                printSyntax(p, name);
+            }
             ProgramTable pt = typeCheck(p);
             println("- Semantic analysis");
             println("  ...symbol table: " + 
                      name + "/" + name + ".symtab");
-            printSymbolTable(pt, name);
+            if(!tigris) {
+                printSymbolTable(pt, name);
+            }
             println("- Jasmin assembler");
-            ArrayList<String> jasminAssemblies = 
-                generateJasminAssembler(pt, p, name);
-            for(String s : jasminAssemblies)
+
+            ArrayList<String> jasminAssemblies = new ArrayList<String>();
+            if(tigris) {
+                generateJasminAssembler(pt, p, ".");
+            } else {
+                jasminAssemblies = generateJasminAssembler(pt, p, name);
+            }
+
+            if(!tigris) {
+                for(String s : jasminAssemblies)
                 println("  ... " + s);
-            println("- Class files");
-            for(String s : jasminAssemblies) {
-                generateClassFile(name, s);
-                println("  ... " + s.substring(0, s.length() - 2) + ".class");
+                println("- Class files");
+                for(String s : jasminAssemblies) {
+                    generateClassFile(name, s);
+                    println("  ... " + s.substring(0, s.length() - 2) + ".class");
+                }
             }
         } catch(ParseException e) {
             System.out.println("Syntax error:");
